@@ -5,7 +5,7 @@ namespace Inventory.Api.Configurations
 {
     public static class IdentityServerServicesRegistration
     {
-        public static WebApplicationBuilder ConfigureIdentityServerServices(this WebApplicationBuilder builder)
+        public static WebApplicationBuilder AddIdentityServerServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddIdentityServer()
             .AddSigningCredential(new X509Certificate2(Path.Combine("idsrv3test.pfx"), "idsrv3test"))
