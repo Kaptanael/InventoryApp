@@ -1,7 +1,4 @@
-﻿using IdentityModel;
-using IdentityServer4.Validation;
-
-namespace Inventory.Api.Services;
+﻿namespace Inventory.Api.Services;
 
 public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
 {
