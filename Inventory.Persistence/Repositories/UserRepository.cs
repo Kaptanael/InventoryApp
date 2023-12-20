@@ -1,7 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using System.Data;
-
-namespace Inventory.Api.Repositories;
+﻿namespace Inventory.Persistence.Repositories;
 
 public class UserRepository : IUserRepository
 {
@@ -11,6 +8,7 @@ public class UserRepository : IUserRepository
     {
         _configuration = configuration;
     }
+
     private string ConnectionString
     {
         get

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Inventory.Api.Repositories;
+namespace Inventory.Application.Contracts.Persistence;
 
 public interface IUserRepository
 {

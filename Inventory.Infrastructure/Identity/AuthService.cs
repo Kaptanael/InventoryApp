@@ -1,17 +1,13 @@
-﻿using IdentityModel.Client;
-using RefreshTokenRequest = IdentityModel.Client.RefreshTokenRequest;
-using TokenResponse = IdentityModel.Client.TokenResponse;
+﻿namespace Inventory.Infrastructure.Identity;
 
-namespace Inventory.Api.Services;
-
-public class AuthenticationService : IAuthenticationService
+public class AuthService : IAuthService
 {
     private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;
     private readonly ILogger _logger;
     private readonly string _address;
 
-    public AuthenticationService(HttpClient httpClient, IConfiguration configuration, ILogger<AuthenticationService> logger)
+    public AuthService(HttpClient httpClient, IConfiguration configuration, ILogger<AuthService> logger)
     {
         _httpClient = httpClient;
         _configuration = configuration;

@@ -1,4 +1,4 @@
-﻿namespace Inventory.Api.Services;
+﻿namespace Inventory.Infrastructure.Identity;
 
 public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
 {
@@ -16,7 +16,7 @@ public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
         {
             //int userId = await _userService.GetUserId(context.UserName, context.Password);
 
-            if (context.UserName == "kaptan" && context.Password== "12345678")
+            if (context.UserName == "kaptan" && context.Password == "12345678")
             {
                 //context.Result = new GrantValidationResult(userId.ToString(), OidcConstants.AuthenticationMethods.Password);
                 context.Result = new GrantValidationResult("kaptan", OidcConstants.AuthenticationMethods.Password);

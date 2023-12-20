@@ -1,8 +1,4 @@
-﻿using IdentityServer4.Models;
-using IdentityServer4.Services;
-using System.Security.Claims;
-
-namespace Inventory.Api.Services;
+﻿namespace Inventory.Infrastructure.Identity;
 
 public class ProfileService : IProfileService
 {

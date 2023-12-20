@@ -1,15 +1,10 @@
-using Inventory.Api.Configurations;
-using Inventory.Api.Repositories;
-using Inventory.Api.Services;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
-builder.AddIdentityServerServices();
+builder.AddIdentityServerServicesFromAppSettings();
+builder.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
+builder.Services.AddPersistenceServices();
 
 builder.Services.AddCors(o =>
 {
@@ -25,6 +20,7 @@ builder.Services.AddControllers(config =>
         RequireAuthenticatedUser().
         RequireClaim(builder.Configuration["IdentityServer:ClaimType"], builder.Configuration["IdentityServer:ClaimValue"]).Build()));
 });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
