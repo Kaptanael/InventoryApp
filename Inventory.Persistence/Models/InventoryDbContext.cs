@@ -25,10 +25,15 @@ public partial class InventoryDbContext : DbContext
     {
         modelBuilder.Entity<User>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("User");
+            entity.HasKey(e => e.Id).HasName("PK_User_Id");
 
+            entity.ToTable("User");
+
+            entity.HasIndex(e => e.Id, "IX_User");
+
+            entity.HasIndex(e => e.UserName, "IX_User_UserName").IsUnique();
+
+            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Email)
                 .IsRequired()
@@ -46,7 +51,9 @@ public partial class InventoryDbContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
-            entity.Property(e => e.UserName).HasMaxLength(50);
+            entity.Property(e => e.UserName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         OnModelCreatingPartial(modelBuilder);
