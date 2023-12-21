@@ -14,13 +14,11 @@ public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {
         try
         {
-            //int userId = await _userService.GetUserId(context.UserName, context.Password);
-
-            if (context.UserName == "kaptan" && context.Password == "12345678")
+            var user = await _userService.GetUser(context.UserName, context.Password);
+            if (user != null)
             {
-                //context.Result = new GrantValidationResult(userId.ToString(), OidcConstants.AuthenticationMethods.Password);
-                context.Result = new GrantValidationResult("kaptan", OidcConstants.AuthenticationMethods.Password);
-            }
+                context.Result = new GrantValidationResult(user.Id.ToString(), OidcConstants.AuthenticationMethods.Password);
+            }            
         }
         catch (Exception ex)
         {

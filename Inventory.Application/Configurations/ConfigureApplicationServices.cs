@@ -6,6 +6,7 @@ public static class ConfigureApplicationServices
     {
         builder.AddSerilogFromAppSettings();
         builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        builder.Services.AddAutoMapper(typeof(MappingProfile));
         //builder.Services.AddFluentValidationAutoValidation();
         builder.Services.AddScoped<IUserService, UserService>();
         return builder;

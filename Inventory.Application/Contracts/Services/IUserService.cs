@@ -2,9 +2,9 @@
 
 public interface IUserService
 {
-    Task<int> GetUserId(string loginId, string password);
+    Task<UserForListDto> GetUser(string userName, string password);
 
-    Task<UserForListDto> GetUserById(int userId);
+    Task<UserForListDto> GetUser(Guid id);
 
-    Task<bool> IsActiveUser(int userId);
+    Task<bool> IsActiveUser(Guid id);
 }

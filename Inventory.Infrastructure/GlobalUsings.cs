@@ -10,6 +10,7 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.AspNetCore.Builder;
 global using System.Security.Cryptography.X509Certificates;
+global using IdentityServer4.Extensions;
 
 global using Inventory.Infrastructure.Extensions;
 global using Inventory.Application.Contracts.Services;

@@ -1,8 +1,10 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddIdentityServerServicesFromAppSettings().AddApplicationServices();
-builder.Services.AddInfrastructureServices().AddPersistenceServices();
+builder.AddIdentityServerServicesFromAppSettings()
+    .AddApplicationServices();
+builder.Services.AddInfrastructureServices()
+    .AddPersistenceServices();
 
 builder.Services.AddCors(o =>
 {

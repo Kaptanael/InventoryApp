@@ -2,85 +2,34 @@
 
 public class UserRepository : IUserRepository
 {
-    private readonly IConfiguration _configuration;
+    private readonly InventoryDbContext _context;
 
-    public UserRepository(IConfiguration configuration)
+    public UserRepository(InventoryDbContext context)
     {
-        _configuration = configuration;
+        _context = context;
     }
-
-    private string ConnectionString
+    
+    public async Task<User> GetUser(string userName, string password)
     {
-        get
-        {
-            return _configuration.GetConnectionString("DefaultConnection");
-        }
+        var user = await _context.Users.FirstOrDefaultAsync(u=>u.UserName == userName && u.Password == password); 
+        return user;
     }
 
-    public async Task<int> GetUserId(string loginId, string password)
+    public async Task<User> GetUser(Guid id)
     {
-        int userId = 0;
-        string sql = @"SELECT UserID FROM Users WHERE IsActive = 1 AND LoginId=@LoginId AND Password=@Password";
-
-        using (SqlConnection con = new SqlConnection(ConnectionString))
-        {
-            SqlCommand command = new SqlCommand(sql, con);
-            command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("LoginId", loginId);
-            command.Parameters.AddWithValue("Password", password);
-
-            await con.OpenAsync();
-
-            object obj = await command.ExecuteScalarAsync();
-            if (obj != null)
-            {
-                userId = Convert.ToInt32(obj.ToString());
-            }
-
-            await con.CloseAsync();               
-        }            
-
-        return userId;
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        return user;
     }
 
-    public async Task<DataTable> GetUserById(int userId)
-    {   
-        DataTable dataTable = new DataTable();
-        string sql = @"SELECT * FROM Users WHERE IsActive = 1 AND UserID=@UserID";
-
-        using (SqlConnection con = new SqlConnection(ConnectionString))
-        {
-            SqlCommand command = new SqlCommand(sql, con);
-            command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("UserID", userId);                
-
-            await con.OpenAsync();
-            await command.ExecuteNonQueryAsync(); 
-            await con.CloseAsync();
-
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-            dataAdapter.Fill(dataTable);
-        }
-
-        return dataTable;
-    }
-
-    public async Task<bool> IsActiveUser(int userId)
+    public async Task<bool> IsActiveUser(Guid id)
     {
         bool isActive = false;
-        string sql = @"SELECT COUNT(*) FROM Users WHERE IsActive = 1 AND UserID=@UserID";
-
-        using (SqlConnection con = new SqlConnection(ConnectionString))
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        
+        if (user != null) 
         {
-            SqlCommand command = new SqlCommand(sql, con);
-            command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("UserID", userId);                
-
-            await con.OpenAsync();
-            isActive = Convert.ToBoolean(await command.ExecuteScalarAsync());                
-            await con.CloseAsync();                
+            isActive = user.IsActive;
         }
-
         return isActive;
-    }        
+    }   
 }
