@@ -57,9 +57,9 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Scripts" />
-    <Folder Include="Scripts\12-21-2023" />
+    <Folder Include="Scripts\21-12-2023" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\12-21-2023\01_AZ_01_CREATE_USER.sql" />
+    <None Include="Scripts\21-12-2023\01_AZ_01_CREATE_USER.sql" />
   </ItemGroup>
 </Project>
