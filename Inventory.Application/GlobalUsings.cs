@@ -10,8 +10,10 @@ global using Microsoft.Extensions.DependencyInjection;
 global using System.Security.Cryptography.X509Certificates;
 global using System.Data;
 global using AutoMapper;
-global using Inventory.Application.Mappings;
+global using Newtonsoft.Json;
 
+
+global using Inventory.Application.Mappings;
 global using Inventory.Persistence.Models;
 global using Inventory.Application.Contracts.Services;
 global using Inventory.Application.Features;

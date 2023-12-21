@@ -27,7 +27,7 @@ public class AuthService : IAuthService
                 GrantType = "password",
                 ClientId = "recruitmentweb",
                 ClientSecret = "s*|9%2~*=95*+|t8*~3**%;U73*+-c",
-                Scope = "recruitment.fullaccess offline_access",
+                Scope = "inventory.fullaccess offline_access",
                 UserName = username,
                 Password = password
             });
