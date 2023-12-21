@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Data Source=.;Initial Catalog=InventoryDB; user id=sa;password=123456; Integrated Security=false;TrustServerCertificate=True"  -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models/ -force
