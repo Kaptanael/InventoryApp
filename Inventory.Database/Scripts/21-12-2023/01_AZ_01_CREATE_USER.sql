@@ -1,7 +1,7 @@
 ﻿USE [InventoryDB]
 GO
 
-/****** Object:  Table [dbo].[User]    Script Date: 12/21/2023 1:59:36 PM ******/
+/****** Object:  Table [dbo].[User]    Script Date: 12/22/2023 3:22:11 PM ******/
 SET ANSI_NULLS ON
 GO
 
