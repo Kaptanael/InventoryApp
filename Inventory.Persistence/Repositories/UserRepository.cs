@@ -31,5 +31,26 @@ public class UserRepository : IUserRepository
             isActive = user.IsActive;
         }
         return isActive;
-    }   
+    }
+
+    public async Task<Guid> Insert(User user)
+    {
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+        return user.Id;
+    }
+
+    public async Task<Guid> Update(User user)
+    {
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+        return user.Id;
+    }
+
+    public async Task<Guid> Delete(User user)
+    {
+         _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
+        return user.Id;
+    }
 }

@@ -1,7 +1,7 @@
 ﻿USE [InventoryDB]
 GO
 
-/****** Object:  Table [dbo].[UserRole]    Script Date: 12/22/2023 3:21:58 PM ******/
+/****** Object:  Table [dbo].[UserRole]    Script Date: 12/25/2023 6:48:08 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,8 +10,8 @@ GO
 
 CREATE TABLE [dbo].[UserRole](
 	[Id] [uniqueidentifier] NOT NULL,
-	[UserId] [uniqueidentifier] NULL,
-	[RoleId] [uniqueidentifier] NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[RoleId] [uniqueidentifier] NOT NULL,
  CONSTRAINT [PK_UserRole] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
