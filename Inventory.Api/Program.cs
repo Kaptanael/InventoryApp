@@ -1,4 +1,6 @@
 
+using Inventory.Persistence.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddIdentityServerServicesFromAppSettings()
@@ -25,6 +27,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+SeedData.PopulateDb(app);
 
 if (app.Environment.IsDevelopment())
 {
