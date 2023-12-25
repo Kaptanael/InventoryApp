@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Inventory.Persistence.Models;
+namespace Inventory.Api.Models;
 
 public partial class InventoryDbContext : DbContext
 {
@@ -76,9 +76,12 @@ public partial class InventoryDbContext : DbContext
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
 
+            entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
+                .HasForeignKey(d => d.RoleId)
+                .HasConstraintName("FK_UserRole_Role");
+
             entity.HasOne(d => d.User).WithMany(p => p.UserRoles)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_UserRole_User");
         });
 

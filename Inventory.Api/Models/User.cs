@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Inventory.Persistence.Models;
+namespace Inventory.Api.Models;
 
 public partial class User
 {

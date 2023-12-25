@@ -6,6 +6,7 @@ public static class ConfigurePersistenceServices
     {
         services.AddDbContext<InventoryDbContext>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRoleRepository, RoleRepository>();
 
         return services;
     }
