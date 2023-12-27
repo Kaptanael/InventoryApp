@@ -15,13 +15,35 @@ public class RoleRepository : IRoleRepository
         return roles;
     }
 
-    public async Task<Role> Get(Guid id)
+    public async Task<Role> GetById(Guid id)
     {
         var role = await _context.Roles.FirstOrDefaultAsync(u => u.Id == id);
         return role;
     }
 
-    public async Task<Guid> Add(Role role)
+    public async Task<bool> IsExist(string name, Guid? id = null)
+    {
+        if (id == null)
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(u => u.Name.ToUpper() == name.Trim().ToUpper());
+            if (role != null)
+            {
+                return true;
+            }
+        }
+        else 
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(u => u.Name.ToUpper() == name.Trim().ToUpper() && u.Id !=id);
+            if (role != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public async Task<Guid> Create(Role role)
     {
         await _context.Roles.AddAsync(role);
         await _context.SaveChangesAsync();

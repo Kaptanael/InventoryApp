@@ -1,12 +1,18 @@
 
-using Inventory.Persistence.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddIdentityServerServicesFromAppSettings()
+    .AddIdentityAuthentication()
     .AddApplicationServices();
 builder.Services.AddInfrastructureServices()
     .AddPersistenceServices();
+
+builder.Services.AddControllers(config =>
+{    
+    config.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().
+        RequireAuthenticatedUser().
+        RequireClaim(builder.Configuration["IdentityServer:ClaimType"], builder.Configuration["IdentityServer:ClaimValue"]).Build()));
+});
 
 builder.Services.AddCors(o =>
 {
@@ -14,13 +20,6 @@ builder.Services.AddCors(o =>
         builder => builder.AllowAnyOrigin()
         .AllowAnyMethod()
         .AllowAnyHeader());
-});
-
-builder.Services.AddControllers(config =>
-{
-    config.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().
-        RequireAuthenticatedUser().
-        RequireClaim(builder.Configuration["IdentityServer:ClaimType"], builder.Configuration["IdentityServer:ClaimValue"]).Build()));
 });
 
 builder.Services.AddEndpointsApiExplorer();
@@ -36,12 +35,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("CorsPolicy");
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.UseIdentityServer();
+
+app.UseCors("CorsPolicy");
 app.MapControllers();
 
 app.Run();

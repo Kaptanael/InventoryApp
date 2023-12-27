@@ -11,11 +11,13 @@ global using System.Security.Cryptography.X509Certificates;
 global using System.Data;
 global using AutoMapper;
 global using Newtonsoft.Json;
-
+global using FluentValidation.Results;
 
 global using Inventory.Application.Mappings;
 global using Inventory.Persistence.Models;
 global using Inventory.Application.Contracts.Services;
 global using Inventory.Application.Features;
 global using Inventory.Persistence.Repositories;
+global using Inventory.Application.Exceptions;
+global using Inventory.Application.Wrapper;
 

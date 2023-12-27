@@ -1,6 +1,6 @@
-﻿namespace Recruitment.IdentityServer.Controllers;
+﻿namespace Inventory.Api.Controllers.V1;
 
-[Route("[controller]")]
+[Route("api/v1/[controller]")]
 [ApiController]
 public class AuthController : ControllerBase
 {

@@ -1,4 +1,6 @@
-﻿namespace Inventory.Infrastructure.Configurations;
+﻿using IdentityServer4.AccessTokenValidation;
+
+namespace Inventory.Infrastructure.Configurations;
 
 public static class IdentityServerServices
 {
@@ -23,4 +25,27 @@ public static class IdentityServerServices
         .AddCustomUserStore();
         return builder;
     }
+
+    public static WebApplicationBuilder AddIdentityAuthentication(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+            .AddIdentityServerAuthentication(
+                IdentityServerAuthenticationDefaults.AuthenticationScheme,
+                options => {
+                    options.Authority = builder.Configuration["IdentityServer:Authority"];
+                    options.RequireHttpsMetadata = false;
+                    options.Audience = builder.Configuration["IdentityServer:ApiName"];
+                    options.TokenValidationParameters.ValidateIssuer = false;
+                    //options.TokenValidationParameters.ValidIssuers = new[]
+                    //{
+                    //    builder.Configuration["IdentityServer:ValidIssuer"]
+                    //};
+                },
+                null
+            );
+
+        return builder;
+    }
+
+
 }
