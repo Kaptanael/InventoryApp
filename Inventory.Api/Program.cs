@@ -1,11 +1,11 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddIdentityServerServicesFromAppSettings()
-    .AddIdentityAuthentication()
-    .AddApplicationServices();
-builder.Services.AddInfrastructureServices()
-    .AddPersistenceServices();
+builder.AddIdentityServerServicesFromAppSettings();
+builder.AddIdentityAuthentication();
+builder.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
+builder.Services.AddPersistenceServices();
 
 builder.Services.AddControllers(config =>
 {    
