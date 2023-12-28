@@ -14,11 +14,11 @@ global using Newtonsoft.Json;
 global using FluentValidation.Results;
 
 global using Inventory.Application.Mappings;
-global using Inventory.Persistence.Models;
 global using Inventory.Application.Contracts.Services;
 global using Inventory.Application.Features;
-global using Inventory.Persistence.Repositories;
 global using Inventory.Application.Exceptions;
 global using Inventory.Application.Wrapper;
 global using Inventory.Application.Services;
+global using Inventory.Domain.Models;
+global using Inventory.Application.Repositories;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Inventory.Persistence.Models;
+namespace Inventory.Domain.Models;
 
 public partial class UserRole
 {
@@ -11,7 +11,7 @@ public partial class UserRole
 
     public Guid RoleId { get; set; }
 
-    public virtual Role Role { get; set; }
+    public virtual Role Role { get; set; } = null!;
 
-    public virtual User User { get; set; }
+    public virtual User User { get; set; } = null!;
 }

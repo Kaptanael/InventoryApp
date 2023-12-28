@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Inventory.Persistence.Models;
+namespace Inventory.Domain.Models;
 
 public partial class InventoryDbContext : DbContext
 {
@@ -14,6 +14,8 @@ public partial class InventoryDbContext : DbContext
         : base(options)
     {
     }
+
+    public virtual DbSet<Menu> Menus { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
 
@@ -27,14 +29,24 @@ public partial class InventoryDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Menu>(entity =>
+        {
+            entity.ToTable("Menu");
+
+            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+            entity.Property(e => e.Name).HasMaxLength(50);
+
+            entity.HasOne(d => d.ParentMenu).WithMany(p => p.InverseParentMenu)
+                .HasForeignKey(d => d.ParentMenuId)
+                .HasConstraintName("FK_Menu_ParentMenu");
+        });
+
         modelBuilder.Entity<Role>(entity =>
         {
             entity.ToTable("Role");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<User>(entity =>
@@ -49,25 +61,13 @@ public partial class InventoryDbContext : DbContext
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Email)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.FirstName)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.LastName)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.Mobile)
-                .IsRequired()
-                .HasMaxLength(20);
-            entity.Property(e => e.Password)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.FirstName).HasMaxLength(50);
+            entity.Property(e => e.LastName).HasMaxLength(50);
+            entity.Property(e => e.Mobile).HasMaxLength(20);
+            entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
-            entity.Property(e => e.UserName)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.UserName).HasMaxLength(50);
         });
 
         modelBuilder.Entity<UserRole>(entity =>

@@ -1,4 +1,4 @@
-﻿namespace Inventory.Persistence.Repositories;
+﻿namespace Inventory.Application.Repositories;
 
 public interface IUserRepository
 {
