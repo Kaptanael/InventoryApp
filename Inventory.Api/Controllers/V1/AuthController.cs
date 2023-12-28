@@ -5,10 +5,19 @@
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
+    private readonly IUserService _userService;
 
-    public AuthController(IAuthService authService)
+    public AuthController(IAuthService authService, IUserService userService)
     {
         _authService = authService;
+        _userService = userService;
+    }
+
+    [AllowAnonymous]
+    [HttpPost("Register")]
+    public async Task<IActionResult> Register(UserForCreateDto request)
+    {
+        return Ok(await _userService.CreateAsync(request));
     }
 
     [AllowAnonymous]

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace Inventory.Persistence.Data;
+﻿namespace Inventory.Persistence.Data;
 
 public class SeedData
 {
@@ -26,7 +24,7 @@ public class SeedData
                     new Role { Id= SALE_ROLE_ID, Name = "Sale"}
                 };
 
-            context.Roles.AddRange(roles);            
+            context.Roles.AddRange(roles);
         }
 
         if (!context.Users.Any())
@@ -43,8 +41,10 @@ public class SeedData
                         Email = "test@test.com",
                         Mobile="01721525318",
                         IsActive=true,
-                        CreatedBy = 1,
+                        CreatedBy = ADMIN_USER_ID,
                         CreatedDate= DateTime.Now,
+                        UpdatedBy = ADMIN_USER_ID,
+                        UpdatedDate= DateTime.Now,
                         UserRoles = new List<UserRole>()
                         {
                             new UserRole { UserId = ADMIN_USER_ID, RoleId=ADMIN_ROLE_ID,}
@@ -52,7 +52,7 @@ public class SeedData
                     }
                 };
 
-            context.Users.AddRange(users);            
+            context.Users.AddRange(users);
         }
 
         context.SaveChanges();

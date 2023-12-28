@@ -1,6 +1,9 @@
 
+using Inventory.Application.Contracts.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.AddIdentityServerServicesFromAppSettings();
 builder.AddIdentityAuthentication();
 builder.AddApplicationServices();

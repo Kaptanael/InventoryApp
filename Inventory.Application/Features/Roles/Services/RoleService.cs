@@ -4,10 +4,12 @@ public class RoleService : IRoleService
 {
     private readonly IMapper _mapper;
     private readonly IRoleRepository _roleRepository;
+    private readonly IServiceProvider _serviceProvider;
 
-    public RoleService(IMapper mapper, IRoleRepository roleRepository)
+    public RoleService(IMapper mapper, IServiceProvider serviceProvider, IRoleRepository roleRepository)
     {
         _mapper = mapper;
+        _serviceProvider = serviceProvider;
         _roleRepository = roleRepository;
     }
 
@@ -34,7 +36,7 @@ public class RoleService : IRoleService
     public async Task<BaseCommandResponse> CreateAsync(RoleForCreateDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new RoleForCreateDtoValidator();
+        var validator = new RoleForCreateDtoValidator(_serviceProvider);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -56,7 +58,7 @@ public class RoleService : IRoleService
     public async Task<BaseCommandResponse> UpdateAsync(Guid id, RoleForUpdateDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new RoleForUpdateDtoValidator();
+        var validator = new RoleForUpdateDtoValidator(_serviceProvider);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)

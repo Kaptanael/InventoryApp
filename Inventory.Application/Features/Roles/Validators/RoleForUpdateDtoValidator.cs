@@ -2,10 +2,12 @@
 
 public class RoleForUpdateDtoValidator : AbstractValidator<RoleForUpdateDto>
 {
-    public IRoleRepository RoleRepository { get; set; }
+    private readonly IRoleRepository _roleRepository;
 
-    public RoleForUpdateDtoValidator()
+    public RoleForUpdateDtoValidator(IServiceProvider serviceProvider)
     {
+        _roleRepository = serviceProvider.GetService<IRoleRepository>();
+
         RuleFor(a => a.Id)
             .NotEmpty().WithMessage("{PropertyName} is required")
             .NotNull().WithMessage("{PropertyName} is required");
@@ -22,6 +24,6 @@ public class RoleForUpdateDtoValidator : AbstractValidator<RoleForUpdateDto>
 
     private bool IsExistRole(string name, Guid id)
     {
-        return RoleRepository.IsExist(name, id).Result;
+        return _roleRepository.IsExist(name, id).Result;
     }
 }

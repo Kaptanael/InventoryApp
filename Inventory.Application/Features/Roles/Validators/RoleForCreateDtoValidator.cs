@@ -1,11 +1,15 @@
-﻿namespace Inventory.Application.Features;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Inventory.Application.Features;
 
 public class RoleForCreateDtoValidator : AbstractValidator<RoleForCreateDto>
 {
-    public IRoleRepository RoleRepository { get; set; }
+    private readonly IRoleRepository _roleRepository;
 
-    public RoleForCreateDtoValidator()
+    public RoleForCreateDtoValidator(IServiceProvider serviceProvider)
     {
+        _roleRepository = serviceProvider.GetService<IRoleRepository>();
+
         RuleFor(a => a.Name)
             .NotEmpty().WithMessage("{PropertyName} is required")
             .NotNull().WithMessage("{PropertyName} is required")
@@ -18,6 +22,9 @@ public class RoleForCreateDtoValidator : AbstractValidator<RoleForCreateDto>
 
     private bool IsExistRole(string name)
     {
-        return RoleRepository.IsExist(name).Result;
+        //var serviceProvider = new ServiceCollection().BuildServiceProvider().GetRequiredService<IServiceProvider>();
+        //var roleRepository = serviceProvider.GetService<IRoleRepository>();
+
+        return _roleRepository.IsExist(name).Result;
     }
 }

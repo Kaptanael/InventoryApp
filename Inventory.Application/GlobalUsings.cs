@@ -20,4 +20,5 @@ global using Inventory.Application.Features;
 global using Inventory.Persistence.Repositories;
 global using Inventory.Application.Exceptions;
 global using Inventory.Application.Wrapper;
+global using Inventory.Application.Services;
 

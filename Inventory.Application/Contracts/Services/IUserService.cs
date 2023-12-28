@@ -2,6 +2,8 @@
 
 public interface IUserService
 {
+    Task<BaseCommandResponse> CreateAsync(UserForCreateDto request);
+
     Task<UserForListDto> GetUser(string userName, string password);
 
     Task<UserForListDto> GetUser(Guid id);

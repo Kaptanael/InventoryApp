@@ -11,4 +11,5 @@ global using Inventory.Persistence.Configurations;
 global using Inventory.Api.Services;
 global using Inventory.Application.Models;
 global using Inventory.Persistence.Data;
+global using Inventory.Application.Contracts.Services;
 

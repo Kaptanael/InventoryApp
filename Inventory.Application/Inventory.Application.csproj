@@ -9,8 +9,6 @@
 	<ItemGroup>
 		<Folder Include="Contracts\Persistence\" />
 		<Folder Include="Extensions\" />
-		<Folder Include="Features\Users\Validators\" />
-		<Folder Include="Services\" />
 	</ItemGroup>
 
 	<ItemGroup>		

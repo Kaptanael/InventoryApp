@@ -21,6 +21,28 @@ public class UserRepository : IUserRepository
         return user;
     }
 
+    public async Task<bool> IsExistUsername(string username)
+    {        
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        if (user != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public async Task<bool> IsExistEmail(string email)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        if (user != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public async Task<bool> IsActiveUser(Guid id)
     {
         bool isActive = false;
