@@ -2,12 +2,16 @@
 
 public static class ConfigurePersistenceServices
 {
-    public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
+    public static WebApplicationBuilder AddPersistenceServices(this WebApplicationBuilder builder)
     {
-        services.AddDbContext<InventoryDbContext>();
-        services.AddScoped<IUserRepository, UserRepository>();
-        services.AddScoped<IRoleRepository, RoleRepository>();
+        builder.Services.AddDbContext<InventoryDbContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
+        builder.Services.AddDbContext<InventoryDbContext>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
-        return services;
+        return builder;
     }
 }

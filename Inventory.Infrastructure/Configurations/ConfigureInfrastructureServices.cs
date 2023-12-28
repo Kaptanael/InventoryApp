@@ -2,11 +2,14 @@
 
 public static class ConfigureInfrastructureServices
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+    public static WebApplicationBuilder AddInfrastructureServices(this WebApplicationBuilder builder)
     {
-        services.AddScoped<IDateTimeService, DateTimeService>();
-        services.AddScoped<IAuthService, AuthService>();
-        return services;
+        builder.AddIdentityServerServicesFromAppSettings();
+        builder.AddIdentityAuthentication();
+        builder.Services.AddScoped<IDateTimeService, DateTimeService>();
+        builder.Services.AddScoped<IAuthService, AuthService>();
+
+        return builder;
     }
 
     public static WebApplicationBuilder AddIdentityServerServicesFromAppSettings(this WebApplicationBuilder builder)
