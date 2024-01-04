@@ -110,16 +110,16 @@ public partial class InventoryDbContext : DbContext
 
         modelBuilder.Entity<UserRole>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("UserRole");
+            entity.ToTable("UserRole");
 
-            entity.HasOne(d => d.Role).WithMany()
+            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
                 .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_UserRole_Role");
 
-            entity.HasOne(d => d.User).WithMany()
+            entity.HasOne(d => d.User).WithMany(p => p.UserRoles)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_UserRole_User");
