@@ -1,7 +1,7 @@
 ﻿USE [InventoryDB]
 GO
 
-/****** Object:  Table [dbo].[User]    Script Date: 12/25/2023 6:48:38 PM ******/
+/****** Object:  Table [dbo].[User]    Script Date: 1/4/2024 7:03:07 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -14,13 +14,13 @@ CREATE TABLE [dbo].[User](
 	[FirstName] [nvarchar](50) NOT NULL,
 	[LastName] [nvarchar](50) NOT NULL,
 	[Password] [nvarchar](50) NOT NULL,
-	[Email] [nvarchar](20) NOT NULL,
+	[Email] [nvarchar](50) NOT NULL,
 	[Mobile] [nvarchar](20) NOT NULL,
 	[IsActive] [bit] NOT NULL,
-	[CreatedBy] [bigint] NOT NULL,
+	[CreatedBy] [uniqueidentifier] NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
-	[UpdatedBy] [bigint] NULL,
-	[UpdatedDate] [datetime] NULL,
+	[UpdatedBy] [uniqueidentifier] NOT NULL,
+	[UpdatedDate] [datetime] NOT NULL,
  CONSTRAINT [PK_User_Id] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

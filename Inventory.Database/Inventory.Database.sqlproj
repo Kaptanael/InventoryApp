@@ -59,10 +59,15 @@
     <Folder Include="Scripts" />
     <Folder Include="Scripts\21-12-2023" />
     <Folder Include="Scripts\22-12-2023" />
+    <Folder Include="Scripts\04-01-2024" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\21-12-2023\01_AZ_01_CREATE_USER.sql" />
-    <None Include="Scripts\22-12-2023\01_AZ_01_CREATE_Role.sql" />
-    <None Include="Scripts\22-12-2023\02_AZ_02_CREATE_UserRole.sql" />
+    <None Include="Scripts\21-12-2023\01_AZ_01_User.sql" />
+    <None Include="Scripts\22-12-2023\02_AZ_02_Role.sql" />
+    <None Include="Scripts\22-12-2023\03_AZ_03_UserRole.sql" />
+    <None Include="Scripts\04-01-2024\06_AZ_06_Branch.sql" />
+    <None Include="Scripts\04-01-2024\07_AZ_07_Warehouse.sql" />
+    <None Include="Scripts\04-01-2024\05_AZ_05_RoleMenu.sql" />
+    <None Include="Scripts\04-01-2024\04_AZ_04_Menu.sql" />
   </ItemGroup>
 </Project>
