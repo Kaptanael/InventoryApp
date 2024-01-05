@@ -10,6 +10,8 @@
 		<Folder Include="Extensions\" />
 		<Folder Include="Features\Branches\Validators\" />
 		<Folder Include="Features\Branches\Services\" />
+		<Folder Include="Features\Warehouses\Validators\" />
+		<Folder Include="Features\Warehouses\Services\" />
 	</ItemGroup>
 
 	<ItemGroup>		
