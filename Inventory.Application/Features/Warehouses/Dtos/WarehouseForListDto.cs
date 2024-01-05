@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Inventory.Application.Features;
 
-namespace Inventory.Domain.Models;
-
-public partial class Branch
+public class WarehouseForListDto
 {
     public Guid Id { get; set; }
+
+    public Guid BranchId { get; set; }
 
     public string Name { get; set; }
 
@@ -26,6 +25,4 @@ public partial class Branch
     public Guid UpdatedBy { get; set; }
 
     public DateTime UpdatedDate { get; set; }
-
-    public virtual ICollection<Warehouse> Warehouses { get; set; } = new List<Warehouse>();
 }
