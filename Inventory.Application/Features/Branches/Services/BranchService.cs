@@ -1,0 +1,109 @@
+﻿namespace Inventory.Application.Features;
+
+public class BranchService 
+{
+    private readonly IMapper _mapper;
+    private readonly IBranchRepository _branchRepository;
+    private readonly IServiceProvider _serviceProvider;
+
+    public BranchService(IMapper mapper, IServiceProvider serviceProvider, IBranchRepository branchRepository)
+    {
+        _mapper = mapper;
+        _serviceProvider = serviceProvider;
+        _branchRepository = branchRepository;
+    }
+
+    public async Task<List<BranchForListDto>> GetAll()
+    {
+        var branchesFromRepo = await _branchRepository.GetAll();
+        var branchesToReturn = _mapper.Map<List<BranchForListDto>>(branchesFromRepo);
+        return branchesToReturn;
+    }
+
+    public async Task<BranchForListDto> GetById(Guid id)
+    {
+        var branchFromRepo = await _branchRepository.GetById(id);
+        var branchToReturn = _mapper.Map<BranchForListDto>(branchFromRepo);
+        return branchToReturn;
+    }
+
+    public async Task<bool> IsExist(string name, Guid? id = null)
+    {
+        var isExist = await _branchRepository.IsExist(name, id);
+        return isExist;
+    }
+
+    //public async Task<BaseCommandResponse> CreateAsync(BranchForCreateDto request)
+    //{
+    //    var response = new BaseCommandResponse();
+    //    var validator = new RoleForCreateDtoValidator(_serviceProvider);
+    //    var validationResult = await validator.ValidateAsync(request);
+
+    //    if (validationResult.IsValid == false)
+    //    {
+    //        response.Success = false;
+    //        response.Message = "Creating Failed";
+    //        response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+    //        return response;
+    //    }
+
+    //    var entity = new Branch { Name = request.Name };
+    //    await _branchRepository.Create(entity);
+
+    //    response.Success = true;
+    //    response.Message = "Creating Successful";
+    //    return response;
+    //}
+
+    //public async Task<BaseCommandResponse> UpdateAsync(Guid id, BranchForUpdateDto request)
+    //{
+    //    var response = new BaseCommandResponse();
+    //    var validator = new RoleForUpdateDtoValidator(_serviceProvider);
+    //    var validationResult = await validator.ValidateAsync(request);
+
+    //    if (validationResult.IsValid == false)
+    //    {
+    //        response.Success = false;
+    //        response.Message = "Updating Failed";
+    //        response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+    //        return response;
+    //    }
+
+    //    if (id != request.Id)
+    //    {
+    //        throw new BadRequestException("Id does not match");
+    //    }
+
+    //    var entity = await _branchRepository.GetById(id);
+
+    //    if (entity is null)
+    //    {
+    //        throw new NotFoundException(nameof(Role), id.ToString());
+    //    }
+
+    //    entity.Id = request.Id;
+    //    entity.Name = request.Name;
+    //    await _branchRepository.Update(entity);
+
+    //    response.Success = true;
+    //    response.Message = "Updating Successful";
+    //    return response;
+    //}
+
+    //public async Task<BaseCommandResponse> DeleteAsync(Guid id)
+    //{
+    //    var response = new BaseCommandResponse();
+    //    var entity = await _branchRepository.GetById(id);
+
+    //    if (entity is null)
+    //    {
+    //        throw new NotFoundException(nameof(Role), id.ToString());
+    //    }
+
+    //    var result = await _branchRepository.Delete(entity);
+
+    //    response.Success = true;
+    //    response.Message = "Deleting Successful";
+    //    return response;
+    //}
+}
