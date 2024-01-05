@@ -43,23 +43,23 @@ public class RoleRepository : IRoleRepository
         return false;
     }
 
-    public async Task<Guid> Create(Role role)
+    public async Task<Guid> Create(Role model)
     {
-        await _context.Roles.AddAsync(role);
+        await _context.Roles.AddAsync(model);
         await _context.SaveChangesAsync();
-        return role.Id;
+        return model.Id;
     }
 
-    public async Task<bool> Update(Role role)
+    public async Task<bool> Update(Role model)
     {
-        _context.Roles.Update(role);
+        _context.Roles.Update(model);
         await _context.SaveChangesAsync();
         return true;
     }
 
-    public async Task<bool> Delete(Role role)
+    public async Task<bool> Delete(Role model)
     {
-        _context.Roles.Remove(role);
+        _context.Roles.Remove(model);
         await _context.SaveChangesAsync();
         return true;
     }

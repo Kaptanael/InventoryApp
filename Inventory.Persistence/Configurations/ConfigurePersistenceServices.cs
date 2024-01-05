@@ -8,9 +8,11 @@ public static class ConfigurePersistenceServices
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
+
         builder.Services.AddDbContext<InventoryDbContext>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+        builder.Services.AddScoped<IBranchRepository, BranchRepository>();
 
         return builder;
     }

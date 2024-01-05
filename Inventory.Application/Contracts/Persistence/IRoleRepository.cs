@@ -8,10 +8,10 @@ public interface IRoleRepository
 
     Task<List<Role>> GetAll();
 
-    Task<Guid> Create(Role role);    
+    Task<Guid> Create(Role model);    
 
-    Task<bool> Update(Role role);
+    Task<bool> Update(Role model);
 
-    Task<bool> Delete(Role role);
+    Task<bool> Delete(Role model);
 
 }
