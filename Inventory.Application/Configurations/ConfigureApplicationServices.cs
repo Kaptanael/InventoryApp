@@ -9,7 +9,7 @@ public static class ConfigureApplicationServices
         builder.Services.AddAutoMapper(typeof(MappingProfile));
         //builder.Services.AddFluentValidationAutoValidation();
         builder.Services.AddScoped<IUserService, UserService>();
-        builder.Services.AddScoped<IRoleService, RoleService>();
+        builder.Services.AddScoped<IRoleService, BranchService>();
         return builder;
     }
 
