@@ -1,6 +1,6 @@
 <!-- Preloader -->
 <div class="preloader flex-column justify-content-center align-items-center">
-  <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="Inventory" height="60" width="60">
+  <img class="animation_wobble" src="dist/img/AdminLTELogo.png" alt="Inventory" height="60" width="60">
 </div>
 
 <!-- Navbar -->
@@ -85,22 +85,22 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">15 Notifications</span>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
+        <a href="#" class="dropdown-item" [routerLink]="['/']">
           <i class="fas fa-envelope mr-2"></i> 4 new messages
           <span class="float-right text-muted text-sm">3 mins</span>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
+        <a href="#" class="dropdown-item" [routerLink]="['/']">
           <i class="fas fa-users mr-2"></i> 8 friend requests
           <span class="float-right text-muted text-sm">12 hours</span>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
+        <a href="#" class="dropdown-item" [routerLink]="['/']">
           <i class="fas fa-file mr-2"></i> 3 new reports
           <span class="float-right text-muted text-sm">2 days</span>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        <a href="#" class="dropdown-item dropdown-footer" [routerLink]="['/']">See All Notifications</a>
       </div>
     </li>
   </ul>
