@@ -8,7 +8,6 @@
 
 	<ItemGroup>
 		<Folder Include="Extensions\" />
-		<Folder Include="Features\Branches\Validators\" />
 		<Folder Include="Features\Warehouses\Validators\" />
 		<Folder Include="Features\Warehouses\Services\" />
 	</ItemGroup>

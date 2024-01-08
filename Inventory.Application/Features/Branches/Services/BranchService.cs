@@ -1,15 +1,23 @@
 ﻿namespace Inventory.Application.Features;
 
-public class BranchService 
+public class BranchService
 {
     private readonly IMapper _mapper;
     private readonly IBranchRepository _branchRepository;
     private readonly IServiceProvider _serviceProvider;
+    private readonly IDateTimeService _dateTimeService;
+    private readonly ICurrentUserService _currentUserService;
 
-    public BranchService(IMapper mapper, IServiceProvider serviceProvider, IBranchRepository branchRepository)
+    public BranchService(IMapper mapper,
+        IServiceProvider serviceProvider,
+        IDateTimeService dateTimeService,
+        ICurrentUserService currentUserService,
+        IBranchRepository branchRepository)
     {
         _mapper = mapper;
         _serviceProvider = serviceProvider;
+        _dateTimeService = dateTimeService;
+        _currentUserService = currentUserService;
         _branchRepository = branchRepository;
     }
 
@@ -33,77 +41,94 @@ public class BranchService
         return isExist;
     }
 
-    //public async Task<BaseCommandResponse> CreateAsync(BranchForCreateDto request)
-    //{
-    //    var response = new BaseCommandResponse();
-    //    var validator = new RoleForCreateDtoValidator(_serviceProvider);
-    //    var validationResult = await validator.ValidateAsync(request);
+    public async Task<BaseCommandResponse> CreateAsync(BranchForCreateDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new BranchForCreateDtoValidator(_serviceProvider);
+        var validationResult = await validator.ValidateAsync(request);
 
-    //    if (validationResult.IsValid == false)
-    //    {
-    //        response.Success = false;
-    //        response.Message = "Creating Failed";
-    //        response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-    //        return response;
-    //    }
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Creating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-    //    var entity = new Branch { Name = request.Name };
-    //    await _branchRepository.Create(entity);
+        var entity = new Branch();
+        entity.Name = request.Name;
+        entity.Description = request.Description;
+        entity.StreetAddress = request.StreetAddress;
+        entity.City = request.City;
+        entity.Province = request.Province;
+        entity.Country = request.Country;
+        entity.CreatedBy = _currentUserService.UserId;
+        entity.CreatedDate = _dateTimeService.Now;
+        entity.UpdatedBy = _currentUserService.UserId;
+        entity.UpdatedDate = _dateTimeService.Now;
+        await _branchRepository.Create(entity);
 
-    //    response.Success = true;
-    //    response.Message = "Creating Successful";
-    //    return response;
-    //}
+        response.Success = true;
+        response.Message = "Creating Successful";
+        return response;
+    }
 
-    //public async Task<BaseCommandResponse> UpdateAsync(Guid id, BranchForUpdateDto request)
-    //{
-    //    var response = new BaseCommandResponse();
-    //    var validator = new RoleForUpdateDtoValidator(_serviceProvider);
-    //    var validationResult = await validator.ValidateAsync(request);
+    public async Task<BaseCommandResponse> UpdateAsync(Guid id, BranchForUpdateDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new BranchForUpdateDtoValidator(_serviceProvider);
+        var validationResult = await validator.ValidateAsync(request);
 
-    //    if (validationResult.IsValid == false)
-    //    {
-    //        response.Success = false;
-    //        response.Message = "Updating Failed";
-    //        response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-    //        return response;
-    //    }
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Updating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-    //    if (id != request.Id)
-    //    {
-    //        throw new BadRequestException("Id does not match");
-    //    }
+        if (id != request.Id)
+        {
+            throw new BadRequestException("Id does not match");
+        }
 
-    //    var entity = await _branchRepository.GetById(id);
+        var entity = await _branchRepository.GetById(id);
 
-    //    if (entity is null)
-    //    {
-    //        throw new NotFoundException(nameof(Role), id.ToString());
-    //    }
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(Role), id.ToString());
+        }
 
-    //    entity.Id = request.Id;
-    //    entity.Name = request.Name;
-    //    await _branchRepository.Update(entity);
+        entity.Id = request.Id;
+        entity.Name = request.Name;
+        entity.Description = request.Description;
+        entity.StreetAddress = request.StreetAddress;
+        entity.City = request.City;
+        entity.Province = request.Province;
+        entity.Country = request.Country;        
+        entity.UpdatedBy = _currentUserService.UserId;
+        entity.UpdatedDate = _dateTimeService.Now;
+        await _branchRepository.Update(entity);
 
-    //    response.Success = true;
-    //    response.Message = "Updating Successful";
-    //    return response;
-    //}
+        response.Success = true;
+        response.Message = "Updating Successful";
+        return response;
+    }
 
-    //public async Task<BaseCommandResponse> DeleteAsync(Guid id)
-    //{
-    //    var response = new BaseCommandResponse();
-    //    var entity = await _branchRepository.GetById(id);
+    public async Task<BaseCommandResponse> DeleteAsync(Guid id)
+    {
+        var response = new BaseCommandResponse();
+        var entity = await _branchRepository.GetById(id);
 
-    //    if (entity is null)
-    //    {
-    //        throw new NotFoundException(nameof(Role), id.ToString());
-    //    }
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(Role), id.ToString());
+        }
 
-    //    var result = await _branchRepository.Delete(entity);
+        var result = await _branchRepository.Delete(entity);
 
-    //    response.Success = true;
-    //    response.Message = "Deleting Successful";
-    //    return response;
-    //}
+        response.Success = true;
+        response.Message = "Deleting Successful";
+        return response;
+    }
 }

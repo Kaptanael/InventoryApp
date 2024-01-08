@@ -21,4 +21,5 @@ global using Inventory.Application.Wrapper;
 global using Inventory.Application.Services;
 global using Inventory.Domain.Models;
 global using Inventory.Application.Repositories;
+global using Inventory.Application.Contracts.Infrastructure;
 
