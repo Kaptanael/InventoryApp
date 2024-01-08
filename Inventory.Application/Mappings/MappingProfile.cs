@@ -6,5 +6,7 @@ public class MappingProfile : Profile
     {
         CreateMap<User, UserForListDto>().ReverseMap();
         CreateMap<Role, RoleForListDto>().ReverseMap();
+        CreateMap<Branch, BranchForListDto>().ReverseMap();
+        CreateMap<Warehouse, WarehouseForListDto>().ReverseMap();
     }
 }
