@@ -11,6 +11,7 @@ public static class ConfigureApplicationServices
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IRoleService, RoleService>();
         builder.Services.AddScoped<IBranchService, BranchService>();
+        builder.Services.AddScoped<IWarehouseService, WarehouseService>();
         return builder;
     }
 

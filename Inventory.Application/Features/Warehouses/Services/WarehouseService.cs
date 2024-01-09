@@ -1,6 +1,6 @@
 ﻿namespace Inventory.Application.Features;
 
-public class WarehouseService 
+public class WarehouseService : IWarehouseService
 {
     private readonly IMapper _mapper;
     private readonly IWarehouseRepository _warehouseRepository;
