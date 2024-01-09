@@ -1,6 +1,6 @@
 ﻿namespace Inventory.Application.Features;
 
-public class BranchService
+public class BranchService : IBranchService
 {
     private readonly IMapper _mapper;
     private readonly IBranchRepository _branchRepository;
@@ -105,7 +105,7 @@ public class BranchService
         entity.StreetAddress = request.StreetAddress;
         entity.City = request.City;
         entity.Province = request.Province;
-        entity.Country = request.Country;        
+        entity.Country = request.Country;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTimeService.Now;
         await _branchRepository.Update(entity);

@@ -10,6 +10,7 @@ public static class ConfigureApplicationServices
         //builder.Services.AddFluentValidationAutoValidation();
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IRoleService, RoleService>();
+        builder.Services.AddScoped<IBranchService, BranchService>();
         return builder;
     }
 
