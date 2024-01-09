@@ -1,50 +1,50 @@
 ﻿namespace Inventory.Application.Features;
 
-public class BranchService : IBranchService
+public class WarehouseService 
 {
     private readonly IMapper _mapper;
-    private readonly IBranchRepository _branchRepository;
+    private readonly IWarehouseRepository _warehouseRepository;
     private readonly IServiceProvider _serviceProvider;
     private readonly IDateTimeService _dateTimeService;
     private readonly ICurrentUserService _currentUserService;
 
-    public BranchService(IMapper mapper,
+    public WarehouseService(IMapper mapper,
         IServiceProvider serviceProvider,
         IDateTimeService dateTimeService,
         ICurrentUserService currentUserService,
-        IBranchRepository branchRepository)
+        IWarehouseRepository warehouseRepository)
     {
         _mapper = mapper;
         _serviceProvider = serviceProvider;
         _dateTimeService = dateTimeService;
         _currentUserService = currentUserService;
-        _branchRepository = branchRepository;
+        _warehouseRepository = warehouseRepository;
     }
 
-    public async Task<List<BranchForListDto>> GetAll()
+    public async Task<List<WarehouseForListDto>> GetAll()
     {
-        var branchesFromRepo = await _branchRepository.GetAll();
-        var branchesToReturn = _mapper.Map<List<BranchForListDto>>(branchesFromRepo);
-        return branchesToReturn;
+        var warehouseFromRepo = await _warehouseRepository.GetAll();
+        var warehousesToReturn = _mapper.Map<List<WarehouseForListDto>>(warehouseFromRepo);
+        return warehousesToReturn;
     }
 
-    public async Task<BranchForListDto> GetById(Guid id)
+    public async Task<WarehouseForListDto> GetById(Guid id)
     {
-        var branchFromRepo = await _branchRepository.GetById(id);
-        var branchToReturn = _mapper.Map<BranchForListDto>(branchFromRepo);
-        return branchToReturn;
+        var warehouseFromRepo = await _warehouseRepository.GetById(id);
+        var warehouseToReturn = _mapper.Map<WarehouseForListDto>(warehouseFromRepo);
+        return warehouseToReturn;
     }
 
     public async Task<bool> IsExist(string name, Guid? id = null)
     {
-        var isExist = await _branchRepository.IsExist(name, id);
+        var isExist = await _warehouseRepository.IsExist(name, id);
         return isExist;
     }
 
-    public async Task<BaseCommandResponse> CreateAsync(BranchForCreateDto request)
+    public async Task<BaseCommandResponse> CreateAsync(WarehouseForCreateDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new BranchForCreateDtoValidator(_serviceProvider);
+        var validator = new WarehouseForCreateDtoValidator(_serviceProvider);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -55,7 +55,8 @@ public class BranchService : IBranchService
             return response;
         }
 
-        var entity = new Branch();
+        var entity = new Warehouse();
+        entity.BranchId = request.BranchId;
         entity.Name = request.Name;
         entity.Description = request.Description;
         entity.StreetAddress = request.StreetAddress;
@@ -66,17 +67,17 @@ public class BranchService : IBranchService
         entity.CreatedDate = _dateTimeService.Now;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTimeService.Now;
-        await _branchRepository.Create(entity);
+        await _warehouseRepository.Create(entity);
 
         response.Success = true;
         response.Message = "Creating Successful";
         return response;
     }
 
-    public async Task<BaseCommandResponse> UpdateAsync(Guid id, BranchForUpdateDto request)
+    public async Task<BaseCommandResponse> UpdateAsync(Guid id, WarehouseForUpdateDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new BranchForUpdateDtoValidator(_serviceProvider);
+        var validator = new WarehouseForUpdateDtoValidator(_serviceProvider);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -92,14 +93,15 @@ public class BranchService : IBranchService
             throw new BadRequestException("Id does not match");
         }
 
-        var entity = await _branchRepository.GetById(id);
+        var entity = await _warehouseRepository.GetById(id);
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(Branch), id.ToString());
+            throw new NotFoundException(nameof(Warehouse), id.ToString());
         }
 
         entity.Id = request.Id;
+        entity.BranchId = request.BranchId;
         entity.Name = request.Name;
         entity.Description = request.Description;
         entity.StreetAddress = request.StreetAddress;
@@ -108,7 +110,7 @@ public class BranchService : IBranchService
         entity.Country = request.Country;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTimeService.Now;
-        await _branchRepository.Update(entity);
+        await _warehouseRepository.Update(entity);
 
         response.Success = true;
         response.Message = "Updating Successful";
@@ -118,14 +120,14 @@ public class BranchService : IBranchService
     public async Task<BaseCommandResponse> DeleteAsync(Guid id)
     {
         var response = new BaseCommandResponse();
-        var entity = await _branchRepository.GetById(id);
+        var entity = await _warehouseRepository.GetById(id);
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(Branch), id.ToString());
+            throw new NotFoundException(nameof(Warehouse), id.ToString());
         }
 
-        var result = await _branchRepository.Delete(entity);
+        var result = await _warehouseRepository.Delete(entity);
 
         response.Success = true;
         response.Message = "Deleting Successful";
