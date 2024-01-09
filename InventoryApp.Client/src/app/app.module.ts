@@ -10,6 +10,7 @@ import { FooterComponent } from './common/component/footer/footer.component';
 import { AppRoutingModule } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LoginComponent } from './login/login.component';
     //SidebarComponent,
     //FooterComponent,
     //HomeComponent,
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule

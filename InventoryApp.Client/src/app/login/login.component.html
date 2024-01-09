@@ -3,12 +3,12 @@
     <div class="circle circle-one"></div>
     <div class="form-container">
       <h1>LOGIN</h1>
-      <form>
+      <form (ngSubmit)='onLogin()'>
         <label class="mt-4">User Name</label>
-        <input type="text" placeholder="USERNAME" autofoc autocomplete="off" />
+        <input type="text" placeholder="USERNAME" name="loginId" [(ngModel)]="loginId" autofoc autocomplete="off" />
 
         <label class="mt-4">Password</label>
-        <input type="password" placeholder="PASSWORD" autocomplete="off" class="mb-4"/>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="PASSWORD" autocomplete="off" class="mb-4"/>
 
         <button type="submit" class="mt-5">SUBMIT</button>
       </form>
