@@ -11,6 +11,11 @@ import { AppRoutingModule } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './common/service/auth-interceptor.service';
+import { LoginService } from './login/login.service';
+import { AuthService } from './common/service/auth.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -23,16 +28,21 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    //HeaderComponent,
     RouterModule,
-    //SidebarComponent,
-    //FooterComponent,
-    //HomeComponent,
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true
+    },
+
+    AuthService,
+    AuthGuard,
+    LoginService
+  ]
 })
 export class AppModule { }
