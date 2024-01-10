@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace Inventory.Application.Features;
+﻿namespace Inventory.Application.Features;
 
 public class RoleForCreateDtoValidator : AbstractValidator<RoleForCreateDto>
 {
@@ -11,8 +9,7 @@ public class RoleForCreateDtoValidator : AbstractValidator<RoleForCreateDto>
         _roleRepository = serviceProvider.GetService<IRoleRepository>();
 
         RuleFor(a => a.Name)
-            .NotEmpty().WithMessage("{PropertyName} is required")
-            .NotNull().WithMessage("{PropertyName} is required")
+            .NotEmpty().WithMessage("{PropertyName} is required")            
             .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters");
 
         RuleFor(x => x)
