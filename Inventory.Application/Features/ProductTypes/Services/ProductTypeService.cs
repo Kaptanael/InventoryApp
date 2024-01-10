@@ -1,50 +1,50 @@
 ﻿namespace Inventory.Application.Features;
 
-public class WarehouseService : IWarehouseService
+public class ProductTypeService : IProductTypeService
 {
-    private readonly IMapper _mapper;    
+    private readonly IMapper _mapper;
     private readonly IServiceProvider _serviceProvider;
     private readonly IDateTimeService _dateTimeService;
     private readonly ICurrentUserService _currentUserService;
-    private readonly IWarehouseRepository _warehouseRepository;
+    private readonly IProductTypeRepository _productTypeRepository;
 
-    public WarehouseService(IMapper mapper,
+    public ProductTypeService(IMapper mapper,
         IServiceProvider serviceProvider,
         IDateTimeService dateTimeService,
         ICurrentUserService currentUserService,
-        IWarehouseRepository warehouseRepository)
+        IProductTypeRepository roleRepository)
     {
         _mapper = mapper;
         _serviceProvider = serviceProvider;
         _dateTimeService = dateTimeService;
         _currentUserService = currentUserService;
-        _warehouseRepository = warehouseRepository;
+        _productTypeRepository = roleRepository;
     }
 
-    public async Task<List<WarehouseForListDto>> GetAll()
+    public async Task<List<ProductTypeForListDto>> GetAll()
     {
-        var warehouseFromRepo = await _warehouseRepository.GetAll();
-        var warehousesToReturn = _mapper.Map<List<WarehouseForListDto>>(warehouseFromRepo);
-        return warehousesToReturn;
+        var productTypesFromRepo = await _productTypeRepository.GetAll();
+        var productTypesToReturn = _mapper.Map<List<ProductTypeForListDto>>(productTypesFromRepo);
+        return productTypesToReturn;
     }
 
-    public async Task<WarehouseForListDto> GetById(Guid id)
+    public async Task<ProductTypeForListDto> GetById(Guid id)
     {
-        var warehouseFromRepo = await _warehouseRepository.GetById(id);
-        var warehouseToReturn = _mapper.Map<WarehouseForListDto>(warehouseFromRepo);
-        return warehouseToReturn;
+        var productTypeFromRepo = await _productTypeRepository.GetById(id);
+        var productTypeToReturn = _mapper.Map<ProductTypeForListDto>(productTypeFromRepo);
+        return productTypeToReturn;
     }
 
     public async Task<bool> IsExist(string name, Guid? id = null)
     {
-        var isExist = await _warehouseRepository.IsExist(name, id);
+        var isExist = await _productTypeRepository.IsExist(name, id);
         return isExist;
     }
 
-    public async Task<BaseCommandResponse> CreateAsync(WarehouseForCreateDto request)
+    public async Task<BaseCommandResponse> CreateAsync(ProductTypeForCreateDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new WarehouseForCreateDtoValidator(_serviceProvider);
+        var validator = new ProductTypeForCreateDtoValidator(_serviceProvider);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -55,29 +55,24 @@ public class WarehouseService : IWarehouseService
             return response;
         }
 
-        var entity = new Warehouse();
-        entity.BranchId = request.BranchId;
-        entity.Name = request.Name;
-        entity.Description = request.Description;
-        entity.StreetAddress = request.StreetAddress;
-        entity.City = request.City;
-        entity.Province = request.Province;
-        entity.Country = request.Country;
+        var entity = new ProductType();
+        entity.Name = request.Name.Trim();
+        entity.Description = request.Description.Trim();
         entity.CreatedBy = _currentUserService.UserId;
         entity.CreatedDate = _dateTimeService.Now;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTimeService.Now;
-        await _warehouseRepository.Create(entity);
+        await _productTypeRepository.Create(entity);
 
         response.Success = true;
         response.Message = "Creating Successful";
         return response;
     }
 
-    public async Task<BaseCommandResponse> UpdateAsync(Guid id, WarehouseForUpdateDto request)
+    public async Task<BaseCommandResponse> UpdateAsync(Guid id, ProductTypeForUpdateDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new WarehouseForUpdateDtoValidator(_serviceProvider);
+        var validator = new ProductTypeForUpdateDtoValidator(_serviceProvider);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -93,24 +88,21 @@ public class WarehouseService : IWarehouseService
             throw new BadRequestException("Id does not match");
         }
 
-        var entity = await _warehouseRepository.GetById(id);
+        var entity = await _productTypeRepository.GetById(id);
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(Warehouse), id.ToString());
+            throw new NotFoundException(nameof(ProductType), id.ToString());
         }
 
         entity.Id = request.Id;
-        entity.BranchId = request.BranchId;
-        entity.Name = request.Name;
-        entity.Description = request.Description;
-        entity.StreetAddress = request.StreetAddress;
-        entity.City = request.City;
-        entity.Province = request.Province;
-        entity.Country = request.Country;
+        entity.Name = request.Name.Trim();
+        entity.Description = request.Description.Trim();
+        entity.CreatedBy = _currentUserService.UserId;
+        entity.CreatedDate = _dateTimeService.Now;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTimeService.Now;
-        await _warehouseRepository.Update(entity);
+        await _productTypeRepository.Update(entity);
 
         response.Success = true;
         response.Message = "Updating Successful";
@@ -120,14 +112,14 @@ public class WarehouseService : IWarehouseService
     public async Task<BaseCommandResponse> DeleteAsync(Guid id)
     {
         var response = new BaseCommandResponse();
-        var entity = await _warehouseRepository.GetById(id);
+        var entity = await _productTypeRepository.GetById(id);
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(Warehouse), id.ToString());
+            throw new NotFoundException(nameof(ProductType), id.ToString());
         }
 
-        var result = await _warehouseRepository.Delete(entity);
+        var result = await _productTypeRepository.Delete(entity);
 
         response.Success = true;
         response.Message = "Deleting Successful";
