@@ -29,6 +29,10 @@ public partial class User
 
     public DateTime UpdatedDate { get; set; }
 
+    public virtual ICollection<ProductType> ProductTypeCreatedByNavigations { get; set; } = new List<ProductType>();
+
+    public virtual ICollection<ProductType> ProductTypeUpdatedByNavigations { get; set; } = new List<ProductType>();
+
     public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 
     public virtual ICollection<Warehouse> WarehouseCreatedByNavigations { get; set; } = new List<Warehouse>();
