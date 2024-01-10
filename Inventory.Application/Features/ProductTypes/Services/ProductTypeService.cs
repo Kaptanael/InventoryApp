@@ -57,7 +57,7 @@ public class ProductTypeService : IProductTypeService
 
         var entity = new ProductType();
         entity.Name = request.Name.Trim();
-        entity.Description = request.Description.Trim();
+        entity.Description = request.Description?.Trim();
         entity.CreatedBy = _currentUserService.UserId;
         entity.CreatedDate = _dateTimeService.Now;
         entity.UpdatedBy = _currentUserService.UserId;
@@ -97,7 +97,7 @@ public class ProductTypeService : IProductTypeService
 
         entity.Id = request.Id;
         entity.Name = request.Name.Trim();
-        entity.Description = request.Description.Trim();
+        entity.Description = request.Description?.Trim();
         entity.CreatedBy = _currentUserService.UserId;
         entity.CreatedDate = _dateTimeService.Now;
         entity.UpdatedBy = _currentUserService.UserId;
