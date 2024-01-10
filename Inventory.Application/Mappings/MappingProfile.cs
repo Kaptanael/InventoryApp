@@ -8,5 +8,6 @@ public class MappingProfile : Profile
         CreateMap<Role, RoleForListDto>().ReverseMap();
         CreateMap<Branch, BranchForListDto>().ReverseMap();
         CreateMap<Warehouse, WarehouseForListDto>().ReverseMap();
+        CreateMap<ProductType, ProductTypeForListDto>().ReverseMap();
     }
 }
