@@ -14,8 +14,7 @@ export class AddEditBranchComponent {
   }
 
 
-  goToList() {
-    console.log('asasasasa');
+  goToList() {    
     this.router.navigate(['/branch']);
   }
 

@@ -21,40 +21,29 @@
                 <div class="col-md-12">
                   <input type="hidden" data-val="true" data-val-length="The field Branch Id must be a string with a maximum length of 38." data-val-length-max="38" id="branchId" name="branchId" value="a6e1c619-3850-47aa-9325-baf021ca2226">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label class="control-label" for="branchName">Branch Name</label>
                         <input class="form-control" type="text" data-val="true" data-val-length="The field Branch Name must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Branch Name field is required." id="branchName" maxlength="50" name="branchName" value="">
                         <span class="text-danger field-validation-valid" data-valmsg-for="branchName" data-valmsg-replace="true"></span>
                       </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="control-label" for="isDefaultBranch">Is Default Branch ?</label>
-                        <div class="checkbox">
-                          <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" data-val="true" data-val-required="The Is Default Branch ? field is required." id="isDefaultBranch" name="isDefaultBranch" value="true" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><input name="isDefaultBranch" type="hidden" value="false"> &nbsp; Yes.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label" for="description">Branch Description</label>
-                    <input class="form-control" type="text" data-val="true" data-val-length="The field Branch Description must be a string with a maximum length of 50." data-val-length-max="50" id="description" maxlength="50" name="description" value="">
-                    <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
                   </div>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
-                        <label class="control-label" for="street1">Street Address 1</label>
-                        <input class="form-control" type="text" data-val="true" data-val-length="The field Street Address 1 must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Street Address 1 field is required." id="street1" maxlength="50" name="street1" value="">
-                        <span class="text-danger field-validation-valid" data-valmsg-for="street1" data-valmsg-replace="true"></span>
+                        <label class="control-label" for="description">Branch Description</label>
+                        <input class="form-control" type="text" data-val="true" data-val-length="The field Branch Description must be a string with a maximum length of 50." data-val-length-max="50" id="description" maxlength="50" name="description" value="">
+                        <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
                       <div class="form-group">
-                        <label class="control-label" for="street2">Street Address 2</label>
-                        <input class="form-control" type="text" data-val="true" data-val-length="The field Street Address 2 must be a string with a maximum length of 50." data-val-length-max="50" id="street2" maxlength="50" name="street2" value="">
-                        <span class="text-danger field-validation-valid" data-valmsg-for="street2" data-valmsg-replace="true"></span>
+                        <label class="control-label" for="street1">Street Address</label>
+                        <input class="form-control" type="text" data-val="true" data-val-length="The field Street Address 1 must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Street Address 1 field is required." id="street1" maxlength="50" name="street1" value="">
+                        <span class="text-danger field-validation-valid" data-valmsg-for="street1" data-valmsg-replace="true"></span>
                       </div>
                     </div>
                   </div>
@@ -85,15 +74,15 @@
               </div>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">              
+            <div class="card-footer">
               <div class="input-group">
                 <span class="input-group-append">
                   <button type="submit" class="btn btn-primary mr-2">Save</button>
                 </span>
                 <span class="input-group-append">
-                  <a class="btn btn-default" (click)="goToList()" >Back To List</a>
+                  <a class="btn btn-default" (click)="goToList()">Back To List</a>
                 </span>
-              </div>              
+              </div>
             </div>
             <!-- /.card-footer-->
           </div>
@@ -103,17 +92,11 @@
           <div class="info-box bg-gradient-info">
             <span class="info-box-icon"><i class="fa fa-info"></i></span>
             <div class="info-box-content">
-              <p class="progress-description">
+              <p>
                 Branch office is an outlet of a Company. To get started, you should have minimum one branch as your main office or headquarter.
               </p>
             </div>
-          </div>
-          <div class="callout callout-info" style="margin-bottom: 0!important;">
-            <h4><i class="fa fa-info"></i> Info:</h4>
-            <p>
-              Branch office is an outlet of a Company. To get started, you should have minimum one branch as your main office or headquarter.
-            </p>
-          </div>
+          </div>          
         </div>
       </div>
     </section>
