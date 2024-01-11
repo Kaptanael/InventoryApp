@@ -4,7 +4,13 @@ import { AddEditWarehouseComponent } from './add-edit-warehouse.component';
 
 const routes: Routes = [{
   path: '',
-  component: AddEditWarehouseComponent
+  children:
+    [
+      {
+        path: '',
+        component: AddEditWarehouseComponent
+      }
+    ]
 }];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

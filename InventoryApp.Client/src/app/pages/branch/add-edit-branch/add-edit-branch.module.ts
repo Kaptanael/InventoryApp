@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { AddEditBranchRoutingModule } from './add-edit-branch-routing.module';
+import { AddEditBranchComponent } from './add-edit-branch.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AddEditBranchComponent],
   imports: [
     CommonModule,
     AddEditBranchRoutingModule,

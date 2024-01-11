@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { WarehouseRoutingModule } from './warehouse-routing.module';
 import { RouterModule } from '@angular/router';
+import { WarehouseComponent } from './warehouse.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [WarehouseComponent],
   imports: [
     CommonModule,
     WarehouseRoutingModule,
