@@ -1,0 +1,115 @@
+
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <i class="fa fa-cubes text-primary"></i> Create Warehouse
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+
+          <div class="box-body">
+
+
+
+
+            <div class="row">
+              <div class="col-md-12">
+
+                <input type="hidden" data-val="true" data-val-length="The field Warehouse Id must be a string with a maximum length of 38." data-val-length-max="38" id="warehouseId" name="warehouseId" value="d7b15501-ae08-4b74-8bfc-e5d251975542">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label" for="warehouseName">Warehouse Name</label>
+                      <input class="form-control" type="text" data-val="true" data-val-length="The field Warehouse Name must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Warehouse Name field is required." id="warehouseName" maxlength="50" name="warehouseName" value="">
+                      <span class="text-danger field-validation-valid" data-valmsg-for="warehouseName" data-valmsg-replace="true"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label" for="branchId">Branch Id</label>
+                      <select class="form-control select2 select2-hidden-accessible" data-val="true" data-val-length="The field Branch Id must be a string with a maximum length of 38." data-val-length-max="38" id="branchId" name="branchId" tabindex="-1" aria-hidden="true">
+                        <option value="df53dc3c-9a3a-4009-92e6-661e246965e0">HQ</option>
+                      </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-branchId-container"><span class="select2-selection__rendered" id="select2-branchId-container" title="HQ">HQ</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                      <span class="text-danger field-validation-valid" data-valmsg-for="branchId" data-valmsg-replace="true"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="description">Warehouse Description</label>
+                  <input class="form-control" type="text" data-val="true" data-val-length="The field Warehouse Description must be a string with a maximum length of 50." data-val-length-max="50" id="description" maxlength="50" name="description" value="">
+                  <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label" for="street1">Street Address 1</label>
+                      <input class="form-control" type="text" data-val="true" data-val-length="The field Street Address 1 must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Street Address 1 field is required." id="street1" maxlength="50" name="street1" value="">
+                      <span class="text-danger field-validation-valid" data-valmsg-for="street1" data-valmsg-replace="true"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label" for="street2">Street Address 2</label>
+                      <input class="form-control" type="text" data-val="true" data-val-length="The field Street Address 2 must be a string with a maximum length of 50." data-val-length-max="50" id="street2" maxlength="50" name="street2" value="">
+                      <span class="text-danger field-validation-valid" data-valmsg-for="street2" data-valmsg-replace="true"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="control-label" for="city">City</label>
+                      <input class="form-control" type="text" data-val="true" data-val-length="The field City must be a string with a maximum length of 30." data-val-length-max="30" id="city" maxlength="30" name="city" value="">
+                      <span class="text-danger field-validation-valid" data-valmsg-for="city" data-valmsg-replace="true"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="control-label" for="province">Province</label>
+                      <input class="form-control" type="text" data-val="true" data-val-length="The field Province must be a string with a maximum length of 30." data-val-length-max="30" id="province" maxlength="30" name="province" value="">
+                      <span class="text-danger field-validation-valid" data-valmsg-for="province" data-valmsg-replace="true"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="control-label" for="country">Country</label>
+                      <input class="form-control" type="text" data-val="true" data-val-length="The field Country must be a string with a maximum length of 30." data-val-length-max="30" id="country" maxlength="30" name="country" value="">
+                      <span class="text-danger field-validation-valid" data-valmsg-for="country" data-valmsg-replace="true"></span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <div class="form-group">
+              <input type="submit" value="Create" class="btn btn-primary">
+              <a class="btn btn-default" href="/Warehouse">Back to List</a>
+            </div>
+          </div>
+          <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+      </div>
+      <div class="col-md-3">
+        <div class="callout callout-info" style="margin-bottom: 0!important;">
+          <h4><i class="fa fa-info"></i> Info:</h4>
+          <p>
+            Warehouse is commercial building for storage of goods or products. One branch office can have single or multiple warehouse.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
