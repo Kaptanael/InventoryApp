@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BranchComponent } from './branch.component';
+import { AddEditBranchComponent } from './add-edit-branch.component';
 
 
 const routes: Routes = [{
@@ -9,10 +9,7 @@ const routes: Routes = [{
     [
       {
         path: '',
-        component: BranchComponent
-      },
-      {
-        path: 'add-edit-branch', loadChildren: () => import('./add-edit-branch/add-edit-branch.module').then(m => m.AddEditBranchModule)
+        component: AddEditBranchComponent
       }
     ]
 }];
@@ -21,4 +18,4 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BranchRoutingModule { }
+export class AddEditBranchRoutingModule { }
