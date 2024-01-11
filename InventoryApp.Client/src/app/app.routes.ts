@@ -14,6 +14,12 @@ const routes: Routes = [
       },
       {
         path: "warehouse", loadChildren: () => import('./pages/warehouse/warehouse.module').then(m => m.WarehouseModule)
+      },
+      {
+        path: "product-type", loadChildren: () => import('./pages/product-type/product-type.module').then(m => m.ProductTypeModule)
+      },
+      {
+        path: "user", loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
       }
     ]
   },
