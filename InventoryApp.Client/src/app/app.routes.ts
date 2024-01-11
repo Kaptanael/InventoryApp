@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: '**',
+    redirectTo: "/page-not-found"
   }
 ];
 
