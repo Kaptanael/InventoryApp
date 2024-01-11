@@ -5,7 +5,16 @@ import { WarehouseComponent } from './warehouse.component';
 
 const routes: Routes = [{
   path: '',
-  component: WarehouseComponent
+  children:
+    [
+      {
+        path: '',
+        component: WarehouseComponent
+      },
+      {
+        path: 'add-edit-warehouse', loadChildren: () => import('./add-edit-warehouse/add-edit-warehouse.module').then(m => m.AddEditWarehouseModule)
+      }
+    ]
 }];
 
 @NgModule({
