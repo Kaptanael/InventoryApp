@@ -1,1 +1,170 @@
-<p>branch works!</p>
+<section class="content">
+  <div class="container-fluid">
+    <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+          <a class="btn btn-primary btn-block margin-bottom" href="/Branch/Create"><i class="fa fa-building"></i> <span>New Branch</span></a>
+          <input type="hidden" id="transMessage">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Product In</h3>
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="/PurchaseOrder"><i class="fa fa-circle-o text-red"></i> Purchase</a></li>
+                <li><a href="/Receiving"><i class="fa fa-circle-o text-yellow"></i> Receiving</a></li>
+                <li><a href="/TransferOrder"><i class="fa fa-circle-o text-light-blue"></i> Transfer Order</a></li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Product Out</h3>
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="/SalesOrder"><i class="fa fa-circle-o text-red"></i> Sales</a></li>
+                <li><a href="/Shipment"><i class="fa fa-circle-o text-yellow"></i> Shipment</a></li>
+                <li><a href="/TransferOrder"><i class="fa fa-circle-o text-light-blue"></i> Transfer Order</a></li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-building text-primary"></i> <span>Branch List</span></h3>
+              <div class="box-tools pull-right">
+                <div class="has-feedback">
+                  <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="mailbox-controls">
+                <div class="text-center">
+                  <button type="button" id="btn-export-excel" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"></i></button>
+                  <button type="button" id="btn-export-pdf" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"></i></button>
+                  <button type="button" id="btn-export-csv" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i></button>
+                </div>
+              </div>
+              <div class="table-responsive mailbox-messages">
+
+
+
+                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                  <table class="table table-hover table-striped dataTable no-footer" style="width: 100%;" id="DataTables_Table_0" role="grid">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending" style="width: 280px;"></th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
+                Branch Name
+            : activate to sort column ascending" style="width: 391px;">
+                          Branch Name
+                        </th>
+                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
+                Branch Description
+            : activate to sort column ascending" style="width: 0px;">
+                          Branch Description
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
+                Street Address 1
+            : activate to sort column ascending" style="width: 454px;">
+                          Street Address 1
+                        </th>
+                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
+                Street Address 2
+            : activate to sort column ascending" style="width: 0px;">
+                          Street Address 2
+                        </th>
+                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
+                City
+            : activate to sort column ascending" style="width: 0px;">
+                          City
+                        </th>
+                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
+                Province
+            : activate to sort column ascending" style="width: 0px;">
+                          Province
+                        </th>
+                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
+                Country
+            : activate to sort column ascending" style="width: 0px;">
+                          Country
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">
+                          <div class="tools">
+                            <a class="btn btn-primary btn-xs" href="/Branch/Edit/df53dc3c-9a3a-4009-92e6-661e246965e0"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-primary btn-xs" href="/Branch/Details/df53dc3c-9a3a-4009-92e6-661e246965e0"><i class="fa fa-list"></i></a>
+                            <a class="btn btn-danger btn-xs" href="/Branch/Delete/df53dc3c-9a3a-4009-92e6-661e246965e0"><i class="fa fa-trash"></i></a>
+                          </div>
+
+                        </td>
+                        <td>
+                          HQ
+                        </td>
+                        <td class="hidden">
+                        </td>
+                        <td>
+                          Rua Orós, 92
+                        </td>
+                        <td class="hidden">
+                        </td>
+                        <td class="hidden">
+                        </td>
+                        <td class="hidden">
+                        </td>
+                        <td class="hidden">
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">Next</a></li></ul></div>
+                </div>
+
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer no-padding">
+
+            </div>
+          </div>
+          <div class="callout callout-info" style="margin-bottom: 0!important;">
+            <h4><i class="fa fa-info"></i> Info:</h4>
+            <p>
+              Branch office is an outlet of a Company. To get started, you should have minimum one branch as your main office or headquarter.
+            </p>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+  </div>
+</section>
