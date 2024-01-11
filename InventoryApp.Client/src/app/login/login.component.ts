@@ -16,24 +16,24 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.loginService.login(this.loginId, this.password)
-      .subscribe(res => {
-        localStorage.setItem(authCookieKey, JSON.stringify(res))
-        this.router.navigateByUrl("/");
-      },
-        err => {
-          console.log(err);
-        },
-        () => {
-          if (this.loginService.redirectUrl) {
-            this.router.navigateByUrl(this.loginService.redirectUrl);
-            this.loginService.redirectUrl = "";
-          }
-          else {
-            this.router.navigate(['/']);
-          }
-        }
-      );
+    //this.loginService.login(this.loginId, this.password)
+    //  .subscribe(res => {
+    //    localStorage.setItem(authCookieKey, JSON.stringify(res))
+    //    this.router.navigateByUrl("/");
+    //  },
+    //    err => {
+    //      console.log(err);
+    //    },
+    //    () => {
+    //      if (this.loginService.redirectUrl) {
+    //        this.router.navigateByUrl(this.loginService.redirectUrl);
+    //        this.loginService.redirectUrl = "";
+    //      }
+    //      else {
+    //        this.router.navigate(['/']);
+    //      }
+    //    }
+    //  );
     this.router.navigate(['/']);
   }
 
