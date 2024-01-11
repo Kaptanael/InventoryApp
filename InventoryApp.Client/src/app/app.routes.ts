@@ -11,6 +11,9 @@ const routes: Routes = [
     children: [
       {
         path: "branch", loadChildren: () => import('./pages/branch/branch.module').then(m => m.BranchModule)
+      },
+      {
+        path: "warehouse", loadChildren: () => import('./pages/warehouse/warehouse.module').then(m => m.WarehouseModule)
       }
     ]
   },
