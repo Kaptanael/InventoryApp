@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AddEditWarehouseRoutingModule } from './add-edit-warehouse-routing.module';
 import { AddEditWarehouseComponent } from './add-edit-warehouse.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AddEditWarehouseComponent } from './add-edit-warehouse.component';
   ],
   imports: [
     CommonModule,
-    AddEditWarehouseRoutingModule
+    AddEditWarehouseRoutingModule,
+    RouterModule
   ]
 })
 export class AddEditWarehouseModule { }
