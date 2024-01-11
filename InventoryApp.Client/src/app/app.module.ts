@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './common/service/auth-interceptor.service';
 import { LoginService } from './login/login.service';
 import { AuthService } from './common/service/auth.service';
@@ -32,6 +32,7 @@ import { AuthGuard } from './auth.guard';
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   bootstrap: [AppComponent],
