@@ -65,6 +65,7 @@
     <None Include="Scripts\01-04-2024\05_AZ_05_RoleMenu.sql" />
     <None Include="Scripts\01-04-2024\04_AZ_04_Menu.sql" />
     <None Include="Scripts\01-04-2024\08_AZ_08_ProductType.sql" />
+    <None Include="Scripts\01-04-2024\09_AZ_09_Customer.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\01-04-2024\01_AZ_01_User.sql" />
