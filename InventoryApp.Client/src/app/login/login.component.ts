@@ -10,30 +10,31 @@ import { authCookieKey } from '../common/auth-key';
 })
 
 export class LoginComponent {
+
   public loginId: string = "";
   public password: string = "";
   constructor(private router: Router, private loginService: LoginService) {
   }
 
   onLogin() {
-    this.loginService.login(this.loginId, this.password)
-      .subscribe(res => {
+    this.loginService.login(this.loginId, this.password).subscribe({
+      next: (res) => {
         localStorage.setItem(authCookieKey, JSON.stringify(res))
         this.router.navigateByUrl("/");
       },
-        err => {
-          console.log(err);
-        },
-        () => {
-          if (this.loginService.redirectUrl) {
-            this.router.navigateByUrl(this.loginService.redirectUrl);
-            this.loginService.redirectUrl = "";
-          }
-          else {
-            this.router.navigate(['/']);
-          }
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        if (this.loginService.redirectUrl) {
+          this.router.navigateByUrl(this.loginService.redirectUrl);
+          this.loginService.redirectUrl = "";
         }
-      );
+        else {
+          this.router.navigate(['/']);
+        }
+      }
+    });
     this.router.navigate(['/']);
   }
 

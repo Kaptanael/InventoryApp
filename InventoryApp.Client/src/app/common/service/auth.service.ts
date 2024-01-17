@@ -1,4 +1,4 @@
-﻿import { HttpBackend, HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpBackend, HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
@@ -12,7 +12,6 @@ function getheaders(): HttpHeaders {
     });
     return headers;
 }
-
 
 @Injectable()
 export class AuthService {
@@ -47,7 +46,8 @@ export class AuthService {
     getToken(http: HttpClient, userID: string, password: string): Observable<any> {
         const body = accessTokenBody.replace('{0}', userID).replace('{1}', password);
         return http.post(accessTokenUrl, body, { headers: getheaders() });
-    }
+  }
+
     logout() {
         localStorage.removeItem(authCookieKey);
         const tokenInfo = this.getTokenInfo();
@@ -59,14 +59,16 @@ export class AuthService {
             localStorage.removeItem(authCookieKey);
             this.logoutNavigate();
         }
-    }
+  }
+
     logoutNavigate() {
         this.router.navigate(['/login']).then(isNavigated => {
             if (isNavigated) {
 
             }
         });
-    }
+  }
+
     revokeToken(http: HttpClient, refreshToken: string): any {
         const body = refreshTokenRevokeBody.replace('{0}', refreshToken);
         return http.post(accessTokenRevokeUrl, body, { headers: getheaders() });

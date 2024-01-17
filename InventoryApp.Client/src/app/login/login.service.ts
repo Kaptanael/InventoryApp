@@ -1,25 +1,25 @@
-import { HttpBackend, HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpBackend, HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AuthService } from "../common/service/auth.service";
 
 @Injectable()
 export class LoginService {
-    private http: HttpClient;
-    public redirectUrl = ""; 
+  private httpClient: HttpClient;
+  public redirectUrl = "";
 
-    constructor(private authService: AuthService, private httpBackend: HttpBackend) {
-        this.http = new HttpClient(httpBackend);
-    }
+  constructor(private authService: AuthService, private httpBackend: HttpBackend) {
+    this.httpClient = new HttpClient(httpBackend);
+  }
 
+  get isLoggedIn() {
+    if (this.authService.isLoggedIn) {
+      return true;
+    }
+    return false;
+  }
 
-    get isLoggedIn() {
-        if (this.authService.isLoggedIn) {
-            return true;
-        }
-        return false;
-    }
-    login(userID: string, password: string) {
-        return this.authService.getToken(this.http, userID, password);
-    }
+  login(userId: string, password: string): Observable<HttpResponse<any>> {
+    return this.authService.getToken(this.httpClient, userId, password);
+  }
 }

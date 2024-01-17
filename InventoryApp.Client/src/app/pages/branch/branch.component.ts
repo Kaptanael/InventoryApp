@@ -15,7 +15,7 @@ export class BranchComponent implements OnInit {
 
   ngOnInit(): void {
     this.branchService.getAll().subscribe({
-      next: res => {
+      next: (res) => {
         console.log(res);
       }
     })
