@@ -66,6 +66,8 @@
     <None Include="Scripts\01-04-2024\04_AZ_04_Menu.sql" />
     <None Include="Scripts\01-04-2024\08_AZ_08_ProductType.sql" />
     <None Include="Scripts\01-04-2024\09_AZ_09_Customer.sql" />
+    <None Include="Scripts\01-04-2024\10_AZ_10_ProductSubType.sql" />
+    <None Include="Scripts\01-04-2024\11_AZ_11_Variation.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\01-04-2024\01_AZ_01_User.sql" />
@@ -75,5 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\01-04-2024\03_AZ_03_UserRole.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\01-04-2024\11_AZ_11_Unit.sql" />
   </ItemGroup>
 </Project>

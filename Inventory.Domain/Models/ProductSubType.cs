@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 namespace Inventory.Domain.Models;
 
-public partial class ProductType
+public partial class ProductSubType
 {
     public Guid Id { get; set; }
 
     public string Name { get; set; }
 
     public string Description { get; set; }
+
+    public Guid? ProductTypeId { get; set; }
 
     public Guid CreatedBy { get; set; }
 
@@ -21,7 +23,7 @@ public partial class ProductType
 
     public virtual User CreatedByNavigation { get; set; }
 
-    public virtual ProductSubType ProductSubType { get; set; }
+    public virtual ProductType IdNavigation { get; set; }
 
     public virtual User UpdatedByNavigation { get; set; }
 }

@@ -19,6 +19,8 @@ public partial class Branch
 
     public string Country { get; set; }
 
+    public bool? Status { get; set; }
+
     public Guid CreatedBy { get; set; }
 
     public DateTime CreatedDate { get; set; }
@@ -26,6 +28,10 @@ public partial class Branch
     public Guid UpdatedBy { get; set; }
 
     public DateTime UpdatedDate { get; set; }
+
+    public virtual User CreatedByNavigation { get; set; }
+
+    public virtual User UpdatedByNavigation { get; set; }
 
     public virtual ICollection<Warehouse> Warehouses { get; set; } = new List<Warehouse>();
 }

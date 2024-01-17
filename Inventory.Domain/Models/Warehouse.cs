@@ -19,6 +19,8 @@ public partial class Warehouse
 
     public string Province { get; set; }
 
+    public bool Status { get; set; }
+
     public string Country { get; set; }
 
     public Guid CreatedBy { get; set; }

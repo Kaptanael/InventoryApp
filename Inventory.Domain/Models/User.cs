@@ -29,11 +29,31 @@ public partial class User
 
     public DateTime UpdatedDate { get; set; }
 
+    public virtual ICollection<Branch> BranchCreatedByNavigations { get; set; } = new List<Branch>();
+
+    public virtual ICollection<Branch> BranchUpdatedByNavigations { get; set; } = new List<Branch>();
+
+    public virtual ICollection<Contact> ContactCreatedByNavigations { get; set; } = new List<Contact>();
+
+    public virtual Contact ContactIdNavigation { get; set; }
+
+    public virtual ICollection<ProductSubType> ProductSubTypeCreatedByNavigations { get; set; } = new List<ProductSubType>();
+
+    public virtual ICollection<ProductSubType> ProductSubTypeUpdatedByNavigations { get; set; } = new List<ProductSubType>();
+
     public virtual ICollection<ProductType> ProductTypeCreatedByNavigations { get; set; } = new List<ProductType>();
 
     public virtual ICollection<ProductType> ProductTypeUpdatedByNavigations { get; set; } = new List<ProductType>();
 
+    public virtual ICollection<Unit> UnitCreatedByNavigations { get; set; } = new List<Unit>();
+
+    public virtual ICollection<Unit> UnitUpdatedByNavigations { get; set; } = new List<Unit>();
+
     public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+
+    public virtual ICollection<Variation> VariationCreatedByNavigations { get; set; } = new List<Variation>();
+
+    public virtual ICollection<Variation> VariationUpdatedByNavigations { get; set; } = new List<Variation>();
 
     public virtual ICollection<Warehouse> WarehouseCreatedByNavigations { get; set; } = new List<Warehouse>();
 
