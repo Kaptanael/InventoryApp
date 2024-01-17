@@ -17,18 +17,20 @@
               <p-table [value]="branches" [tableStyle]="{ 'min-width': '50rem' }">
                 <ng-template pTemplate="header">
                   <tr>
-                    <th>Code</th>
                     <th>Name</th>
-                    <th>Category</th>
-                    <th>Quantity</th>
+                    <th>City</th>
+                    <th>Province</th>
+                    <th>Country</th>
+                    <th>Status</th>
                   </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-branch>
                   <tr>
-                    <td><!--{{ product.code }}--></td>
-                    <td><!--{{ product.name }}--></td>
-                    <td><!--{{ product.category }}--></td>
-                    <td><!--{{ product.quantity }}--></td>
+                    <td>{{ branch.name }}</td>
+                    <td>{{ branch.city }}</td>
+                    <td>{{ branch.province }}</td>
+                    <td>{{ branch.country }}</td>
+                    <td>{{ branch.status }}</td>
                   </tr>
                 </ng-template>
               </p-table>
