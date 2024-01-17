@@ -11,7 +11,7 @@ import { BranchComponent } from './branch.component';
   imports: [
     CommonModule,
     BranchRoutingModule,
-    RouterModule
+    RouterModule,    
   ]
 })
 export class BranchModule { }
