@@ -7,17 +7,17 @@ public partial class Branch
 {
     public Guid Id { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
-    public string StreetAddress { get; set; }
+    public string StreetAddress { get; set; } = null!;
 
-    public string City { get; set; }
+    public string City { get; set; } = null!;
 
-    public string Province { get; set; }
+    public string Province { get; set; } = null!;
 
-    public string Country { get; set; }
+    public string Country { get; set; } = null!;
 
     public bool? Status { get; set; }
 
@@ -29,9 +29,9 @@ public partial class Branch
 
     public DateTime UpdatedDate { get; set; }
 
-    public virtual User CreatedByNavigation { get; set; }
+    public virtual User CreatedByNavigation { get; set; } = null!;
 
-    public virtual User UpdatedByNavigation { get; set; }
+    public virtual User UpdatedByNavigation { get; set; } = null!;
 
     public virtual ICollection<Warehouse> Warehouses { get; set; } = new List<Warehouse>();
 }

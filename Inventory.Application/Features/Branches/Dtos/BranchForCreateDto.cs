@@ -14,5 +14,7 @@ public class BranchForCreateDto
     public string Province { get; set; }
 
     public string Country { get; set; }
-    
+
+    public bool? Status { get; set; }
+
 }

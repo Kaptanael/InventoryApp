@@ -9,7 +9,7 @@ public partial class RoleMenu
 
     public Guid MenuId { get; set; }
 
-    public virtual Menu Menu { get; set; }
+    public virtual Menu Menu { get; set; } = null!;
 
-    public virtual Role Role { get; set; }
+    public virtual Role Role { get; set; } = null!;
 }

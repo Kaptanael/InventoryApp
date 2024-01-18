@@ -7,9 +7,9 @@ public partial class Unit
 {
     public Guid Id { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
-    public string ShortName { get; set; }
+    public string ShortName { get; set; } = null!;
 
     public bool AllowDecimal { get; set; }
 
@@ -21,7 +21,7 @@ public partial class Unit
 
     public DateTime UpdatedDate { get; set; }
 
-    public virtual User CreatedByNavigation { get; set; }
+    public virtual User CreatedByNavigation { get; set; } = null!;
 
-    public virtual User UpdatedByNavigation { get; set; }
+    public virtual User UpdatedByNavigation { get; set; } = null!;
 }

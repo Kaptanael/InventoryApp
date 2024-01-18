@@ -52,26 +52,16 @@ public partial class InventoryDbContext : DbContext
             entity.ToTable("Branch");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.City)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.Country)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.City).HasMaxLength(50);
+            entity.Property(e => e.Country).HasMaxLength(50);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(200);
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.Province)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Province).HasMaxLength(50);
             entity.Property(e => e.Status)
                 .IsRequired()
                 .HasDefaultValueSql("((1))");
-            entity.Property(e => e.StreetAddress)
-                .IsRequired()
-                .HasMaxLength(200);
+            entity.Property(e => e.StreetAddress).HasMaxLength(200);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.BranchCreatedByNavigations)
@@ -90,36 +80,25 @@ public partial class InventoryDbContext : DbContext
             entity.HasIndex(e => e.ContactType, "IX_Customer_Name").IsUnique();
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.AddressLine1)
-                .IsRequired()
-                .HasMaxLength(200);
+            entity.Property(e => e.AddressLine1).HasMaxLength(200);
             entity.Property(e => e.AddressLine2).HasMaxLength(200);
             entity.Property(e => e.AlternateContactNumber)
                 .HasMaxLength(20)
                 .IsUnicode(false);
-            entity.Property(e => e.City)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.Country)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.City).HasMaxLength(50);
+            entity.Property(e => e.Country).HasMaxLength(50);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.CreditLimit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.Email)
-                .IsRequired()
-                .HasMaxLength(100);
+            entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.Landline)
                 .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.Mobile)
-                .IsRequired()
                 .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.OpeningBalance).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.PayTerm).HasMaxLength(10);
-            entity.Property(e => e.Province)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Province).HasMaxLength(50);
             entity.Property(e => e.TaxNumber).HasMaxLength(20);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
@@ -138,9 +117,7 @@ public partial class InventoryDbContext : DbContext
             entity.ToTable("Menu");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
 
             entity.HasOne(d => d.ParentMenu).WithMany(p => p.InverseParentMenu)
                 .HasForeignKey(d => d.ParentMenuId)
@@ -153,14 +130,10 @@ public partial class InventoryDbContext : DbContext
 
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Barcode).HasMaxLength(50);
-            entity.Property(e => e.Code)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Code).HasMaxLength(50);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(500);
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(100);
+            entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.SerialNumber).HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
         });
@@ -172,9 +145,7 @@ public partial class InventoryDbContext : DbContext
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(200);
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.ProductSubTypeCreatedByNavigations)
@@ -198,9 +169,7 @@ public partial class InventoryDbContext : DbContext
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(200);
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.ProductTypeCreatedByNavigations)
@@ -217,9 +186,7 @@ public partial class InventoryDbContext : DbContext
             entity.ToTable("Role");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<RoleMenu>(entity =>
@@ -245,12 +212,8 @@ public partial class InventoryDbContext : DbContext
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.ShortName)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.ShortName).HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.UnitCreatedByNavigations)
@@ -274,25 +237,13 @@ public partial class InventoryDbContext : DbContext
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Email)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.FirstName)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.LastName)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.Mobile)
-                .IsRequired()
-                .HasMaxLength(20);
-            entity.Property(e => e.Password)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.FirstName).HasMaxLength(50);
+            entity.Property(e => e.LastName).HasMaxLength(50);
+            entity.Property(e => e.Mobile).HasMaxLength(20);
+            entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
-            entity.Property(e => e.UserName)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.UserName).HasMaxLength(50);
         });
 
         modelBuilder.Entity<UserRole>(entity =>
@@ -318,13 +269,9 @@ public partial class InventoryDbContext : DbContext
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Value)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.Value).HasMaxLength(50);
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.VariationCreatedByNavigations)
                 .HasForeignKey(d => d.CreatedBy)
@@ -342,23 +289,13 @@ public partial class InventoryDbContext : DbContext
             entity.ToTable("Warehouse ");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.City)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.Country)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.City).HasMaxLength(50);
+            entity.Property(e => e.Country).HasMaxLength(50);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(200);
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.Province)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.StreetAddress)
-                .IsRequired()
-                .HasMaxLength(200);
+            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Province).HasMaxLength(50);
+            entity.Property(e => e.StreetAddress).HasMaxLength(200);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.Branch).WithMany(p => p.Warehouses)

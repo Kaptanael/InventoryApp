@@ -7,9 +7,9 @@ public partial class ProductType
 {
     public Guid Id { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     public Guid CreatedBy { get; set; }
 
@@ -19,9 +19,9 @@ public partial class ProductType
 
     public DateTime UpdatedDate { get; set; }
 
-    public virtual User CreatedByNavigation { get; set; }
+    public virtual User CreatedByNavigation { get; set; } = null!;
 
-    public virtual ProductSubType ProductSubType { get; set; }
+    public virtual ProductSubType? ProductSubType { get; set; }
 
-    public virtual User UpdatedByNavigation { get; set; }
+    public virtual User UpdatedByNavigation { get; set; } = null!;
 }

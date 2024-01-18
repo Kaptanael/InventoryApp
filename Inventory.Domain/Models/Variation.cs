@@ -7,9 +7,9 @@ public partial class Variation
 {
     public Guid Id { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
-    public string Value { get; set; }
+    public string Value { get; set; } = null!;
 
     public Guid CreatedBy { get; set; }
 
@@ -19,7 +19,7 @@ public partial class Variation
 
     public DateTime UpdatedDate { get; set; }
 
-    public virtual User CreatedByNavigation { get; set; }
+    public virtual User CreatedByNavigation { get; set; } = null!;
 
-    public virtual User UpdatedByNavigation { get; set; }
+    public virtual User UpdatedByNavigation { get; set; } = null!;
 }
