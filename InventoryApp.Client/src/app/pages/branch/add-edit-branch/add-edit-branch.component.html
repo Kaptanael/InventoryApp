@@ -9,86 +9,90 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-9">
-          <!-- DIRECT CHAT PRIMARY -->
+        <div class="col-md-9">          
           <div class="card card-primary card-outline">
-            <!--<div class="card-header">
+            <div class="card-header">
               <h3 class="card-title">Direct Chat</h3>
-            </div>-->
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <input type="hidden" data-val="true" data-val-length="The field Branch Id must be a string with a maximum length of 38." data-val-length-max="38" id="branchId" name="branchId" value="a6e1c619-3850-47aa-9325-baf021ca2226">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="control-label" for="branchName">Name</label>
-                        <input class="form-control" type="text" data-val-required="The Branch Name field is required." id="branchName" maxlength="50" name="branchName">
-                        <span class="text-danger field-validation-valid" data-valmsg-for="branchName" data-valmsg-replace="true"></span>
+            </div>            
+            <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" novalidate>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="hidden" data-val="true" data-val-length="The field Branch Id must be a string with a maximum length of 38." data-val-length-max="38" id="branchId" name="branchId" value="a6e1c619-3850-47aa-9325-baf021ca2226">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="control-label" for="name">Name</label>
+                          <input class="form-control" type="text" data-val-required="The Branch Name field is required."
+                                 id="name" name="name" formControlName="name" maxlength="50">
+                          <span class="text-danger field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true"></span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="control-label" for="description">Description</label>
-                        <input class="form-control" type="text" data-val-length="The field Branch Description must be a string with a maximum length of 200." id="description" maxlength="200" name="description">
-                        <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="control-label" for="description">Description</label>
+                          <input class="form-control" type="text" data-val-length="The field Branch Description must be a string with a maximum length of 200."
+                                 id="description" name="description" formControlName="description" maxlength="200">
+                          <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="control-label" for="street">Street Address</label>
-                        <input class="form-control" type="text" data-val-length="The field Street Address must be a string with a maximum length of 200."
-                               data-val-required="The Street Address field is required." id="street" maxlength="50" name="street">
-                        <span class="text-danger field-validation-valid" data-valmsg-for="street" data-valmsg-replace="true"></span>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="control-label" for="street">Street Address</label>
+                          <input class="form-control" type="text" data-val-length="The field Street Address must be a string with a maximum length of 200."
+                                 data-val-required="The Street Address field is required."
+                                 id="street" name="street" formControlName="street" maxlength="200">
+                          <span class="text-danger field-validation-valid" data-valmsg-for="street" data-valmsg-replace="true"></span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="control-label" for="city">City</label>
-                        <input class="form-control" type="text" data-val-length="The field City must be a string with a maximum length of 50." id="city" maxlength="50" name="city">
-                        <span class="text-danger field-validation-valid" data-valmsg-for="city" data-valmsg-replace="true"></span>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="control-label" for="city">City</label>
+                          <input class="form-control" type="text"
+                                 data-val-length="The field City must be a string with a maximum length of 50."
+                                 id="city" name="city" formControlName="city" maxlength="50">
+                          <span class="text-danger field-validation-valid" data-valmsg-for="city" data-valmsg-replace="true"></span>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="control-label" for="province">Province</label>
-                        <input class="form-control" type="text" data-val-length="The field Province must be a string with a maximum length of 50." id="province" maxlength="50" name="province">
-                        <span class="text-danger field-validation-valid" data-valmsg-for="province" data-valmsg-replace="true"></span>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="control-label" for="province">Province</label>
+                          <input class="form-control" type="text" data-val-length="The field Province must be a string with a maximum length of 50."
+                                 id="province" name="province" formControlName="province" maxlength="50">
+                          <span class="text-danger field-validation-valid" data-valmsg-for="province" data-valmsg-replace="true"></span>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="control-label" for="country">Country</label>
-                        <input class="form-control" type="text" data-val-length="The field Country must be a string with a maximum length of 50." id="country" maxlength="50" name="country">
-                        <span class="text-danger field-validation-valid" data-valmsg-for="country" data-valmsg-replace="true"></span>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="control-label" for="country">Country</label>
+                          <input class="form-control" type="text" data-val-length="The field Country must be a string with a maximum length of 50."
+                                 id="country" name="country" formControlName="country" maxlength="50">
+                          <span class="text-danger field-validation-valid" data-valmsg-for="country" data-valmsg-replace="true"></span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-              <div class="input-group">
-                <span class="input-group-append">
-                  <button type="submit" class="btn btn-primary mr-2">Save</button>
-                </span>
-                <span class="input-group-append">
-                  <a class="btn btn-default" routerLink='/branch'>Back To List</a>
-                </span>
-              </div>
-            </div>
-            <!-- /.card-footer-->
+              </div>              
+              <div class="card-footer">
+                <div class="input-group">
+                  <span class="input-group-append">
+                    <button type="submit" class="btn btn-primary mr-2">Save</button>
+                  </span>
+                  <span class="input-group-append">
+                    <a class="btn btn-default" routerLink='branch'>Back To List</a>
+                  </span>
+                </div>
+              </div>              
+            </form>
           </div>
         </div>
-
         <div class="col-md-3">
           <div class="info-box bg-gradient-info">
             <span class="info-box-icon"><i class="fa fa-info"></i></span>
@@ -97,7 +101,7 @@
                 Branch office is an outlet of a Company. To get started, you should have minimum one branch as your main office or headquarter.
               </p>
             </div>
-          </div>          
+          </div>
         </div>
       </div>
     </section>
