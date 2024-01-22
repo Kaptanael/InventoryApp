@@ -22,6 +22,9 @@ export class BranchComponent implements OnInit {
       next: (res) => {
         this.branches = res.body;
         console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
       }
     })
   }
