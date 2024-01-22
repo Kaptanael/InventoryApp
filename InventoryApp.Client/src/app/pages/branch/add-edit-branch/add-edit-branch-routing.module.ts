@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEditBranchComponent } from './add-edit-branch.component';
-import { BranchComponent } from '../branch.component';
+import { BranchService } from '../../../_services/branch.service';
 
 
 const routes: Routes = [{
@@ -17,6 +17,7 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [BranchService]
 })
 export class AddEditBranchRoutingModule { }

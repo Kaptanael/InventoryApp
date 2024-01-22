@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BranchService } from '../../../_services/branch.service';
 
 @Component({
   selector: 'app-add-edit-branch',
@@ -13,7 +14,7 @@ export class AddEditBranchComponent {
   public selectedBranch: any = {};
   public selectedBranchId: number | undefined;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private branchService: BranchService) {
     this.createFormGroup();
   }
 
@@ -29,7 +30,28 @@ export class AddEditBranchComponent {
   }
 
   onSubmit() {
-    console.log(this.formGroup);
+    const model = {
+      id: this.selectedBranchId,
+      name: this.formGroup.controls['name'].value,
+      description: this.formGroup.controls['description'].value,
+      streetAddress: this.formGroup.controls['street'].value,
+      city: this.formGroup.controls['city'].value,
+      province: this.formGroup.controls['province'].value,
+      country: this.formGroup.controls['country'].value,
+    }
+
+    this.branchService.save(model)
+      .subscribe({
+        next: (rse) => {
+          if (rse.status === 200) {
+            this.router.navigate(['/branch']);
+            //this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Influenza vaccination form has been saved' });
+          }
+        },
+        error: (err) => {
+          //this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Error', detail: 'Failed to update influenza vaccination' });
+        }
+      });
   }
 
 }

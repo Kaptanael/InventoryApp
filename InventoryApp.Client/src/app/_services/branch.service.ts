@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { resourceServerUrl } from '../common/auth-key';
 import { Observable } from 'rxjs';
@@ -8,11 +8,18 @@ import { Observable } from 'rxjs';
 })
 export class BranchService {
 
-  constructor(private http: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   getAll(): Observable<HttpResponse<any>> {
-    return this.http.get(`${resourceServerUrl}/api/v1/branch/getAll`, { observe: 'response' });
+    return this.httpClient.get(`${resourceServerUrl}/api/v1/branch/getAll`, { observe: 'response' });
+  }
+
+  save(model: any): Observable<HttpResponse<any>> {
+    return this.httpClient.post(`${resourceServerUrl}/api/v1/branch/create`, model, {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json'), observe: 'response', responseType: 'text'
+    });
   }
 
 }
