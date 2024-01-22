@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
+/*@import "primeng/resources/themes/lara-light-blue/theme.css";*/
+/*@import "primeng/resources/primeng.css";*/
 
 .card-primary.card-outline {
   border-top: 3px solid #3ab0c3 !important;  
+}
+
+.p-datatable-header {
+  background-color: red !important;
+}
+
+p-datatable-header {
+  background-color: red !important;
 }
