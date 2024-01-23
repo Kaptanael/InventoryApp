@@ -10,8 +10,6 @@
     <Folder Include="src\app\common\component\" />
     <Folder Include="src\app\_components\" />
     <Folder Include="src\app\_services\" />
-    <Folder Include="src\app\pages\" />
-    <Folder Include="src\app\pages\" />
   </ItemGroup>
 
 </Project>

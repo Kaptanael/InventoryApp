@@ -2,12 +2,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+   /* canActivate: [AuthGuard],*/
     children: [
       {
         path: "branch", loadChildren: () => import('./pages/branch/branch.module').then(m => m.BranchModule)
@@ -29,7 +31,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: "/page-not-found"
+    loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
+    //redirectTo: "/page-not-found"
   }
 ];
 
