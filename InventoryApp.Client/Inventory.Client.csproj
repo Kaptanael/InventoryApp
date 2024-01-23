@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="src\app\_components\**" />
+    <EmbeddedResource Remove="src\app\_components\**" />
+    <None Remove="src\app\_components\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="src\app\common\component\" />
-    <Folder Include="src\app\_components\" />
     <Folder Include="src\app\_services\" />
   </ItemGroup>
 

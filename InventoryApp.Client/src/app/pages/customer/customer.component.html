@@ -1,1 +1,62 @@
-<p>customer works!</p>
+<section class="content">
+  <div class="container-fluid">
+    <section class="content mt-3">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header with-border">
+              <h3 class="card-title"><span>Customer List</span></h3>
+              <div class="card-tools pull-right">
+                <!--<div class="has-feedback">
+                  <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>-->
+                <div class="has-feedback mr-2">
+                  <button type="button" class="btn btn-primary" [routerLink]="['add-edit-branch']">
+                    <i class="fa fa-plus"></i> Add
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body no-padding">
+              <p-table [value]="customers"
+                       [tableStyle]="{ 'min-width': '100rem' }"
+                       [responsive]="true"
+                       selectionMode="single"
+                       dataKey="id"
+                       stateStorage="session"
+                       stateKey="statedemo-session"
+                       [paginator]="true"
+                       [rows]="5"
+                       [rowsPerPageOptions]="[5,10,15,20]">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="customerName">Customer Name <p-sortIcon field="customerName"></p-sortIcon></th>
+                    <th pSortableColumn="businessSize">Business Size<p-sortIcon field="businessSize"></p-sortIcon></th>
+                    <th>Action</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-customer>
+                  <tr>
+                    <td>{{ customer.customerName }}</td>
+                    <td>{{ customer.businessSize }}</td>
+                    <td>
+                    </td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="4">No Customer list found.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+            <div class="card-footer no-padding">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
