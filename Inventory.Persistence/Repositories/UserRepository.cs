@@ -1,4 +1,5 @@
-﻿namespace Inventory.Persistence.Repositories;
+﻿
+namespace Inventory.Persistence.Repositories;
 
 public class UserRepository : IUserRepository
 {
@@ -74,5 +75,11 @@ public class UserRepository : IUserRepository
          _context.Users.Remove(user);
         await _context.SaveChangesAsync();
         return user.Id;
+    }
+
+    public async Task<List<User>> GetUserList()
+    {
+        var user = await _context.Users.ToListAsync();
+        return user;
     }
 }
