@@ -13,6 +13,9 @@ const routes: Routes = [{
       },
       {
         path: 'add-edit-branch', loadChildren: () => import('./add-edit-branch/add-edit-branch.module').then(m => m.AddEditBranchModule)
+      },
+      {
+        path: 'add-edit-branch/:id', loadChildren: () => import('./add-edit-branch/add-edit-branch.module').then(m => m.AddEditBranchModule)
       }
     ]
 }];
