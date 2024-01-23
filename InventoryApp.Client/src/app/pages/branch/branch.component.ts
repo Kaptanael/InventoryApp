@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BranchService } from '../../_services/branch.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-branch',
@@ -14,32 +14,21 @@ export class BranchComponent implements OnInit {
   public selectedBranchId: string | undefined;
 
   constructor(private branchService: BranchService,
-    private activeRoute: ActivatedRoute,
+    private router: Router,
+    private route: ActivatedRoute,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {
   }
 
-  ngOnInit(): void {
-    this.getBranchId();
+  ngOnInit(): void {    
     this.getAll();
-  }
-
-  getBranchId() {
-    this.activeRoute.paramMap.subscribe(params => {
-      console.log(params);
-      if (params.get('id')) {
-        this.selectedBranchId = params.get('id')?.toString();
-        console.log(this.selectedBranchId);
-      }
-    });
-  }
+  }  
 
   getAll() {
     this.branchService.getAll().subscribe({
       next: (res) => {
-        this.branches = res.body;
-        console.log(res);
+        this.branches = res.body;        
       },
       error: (err) => {
         console.log(err);
@@ -48,7 +37,7 @@ export class BranchComponent implements OnInit {
   }
 
   onEdit(branch: any) {
-
+    this.router.navigate(['./add-edit-branch', branch.id], { relativeTo: this.route });
   }
 
   onDelete(branch: any) {
