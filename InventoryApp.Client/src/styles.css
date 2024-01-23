@@ -17,7 +17,7 @@
 .p-datatable .p-datatable-tbody > tr > td {
   border: 1.5px solid #dee2e6;
   border-width: 0 0 1.5px 0;
-  padding: 1rem 1rem;
+  padding: 0.8rem 0.8rem;
 }
 
 /*************************** Primeng-p-paginator ***************************/
@@ -30,6 +30,15 @@
     border-radius: 0;
   }
 
+/*************************** Primeng-p-dropdown ***************************/
+
+.p-dropdown .p-dropdown-trigger {
+  background: transparent;
+  color: #6b7280;
+  width: 2rem;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;  
+}
 
 .card-primary.card-outline {
   border-top: 3px solid #3ab0c3 !important;
