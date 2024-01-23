@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BranchService } from '../../_services/branch.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-branch',
@@ -9,16 +10,29 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class BranchComponent implements OnInit {
 
-  public branches: [] = [];
+  public branches: any[] = [];
+  public selectedBranchId: string | undefined;
 
   constructor(private branchService: BranchService,
+    private activeRoute: ActivatedRoute,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {
   }
 
   ngOnInit(): void {
+    this.getBranchId();
     this.getAll();
+  }
+
+  getBranchId() {
+    this.activeRoute.paramMap.subscribe(params => {
+      console.log(params);
+      if (params.get('id')) {
+        this.selectedBranchId = params.get('id')?.toString();
+        console.log(this.selectedBranchId);
+      }
+    });
   }
 
   getAll() {
