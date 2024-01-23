@@ -2,8 +2,37 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
+/*************************** Primeng-p-datatable ***************************/
+
+.p-datatable .p-datatable-header {
+  padding: 0.8rem 0.8rem;
+  background-color: #3c4b64;
+  color: #ffffff;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  padding: 0.8rem 0.8rem;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  border: 1.5px solid #dee2e6;
+  border-width: 0 0 1.5px 0;
+  padding: 1rem 1rem;
+}
+
+/*************************** Primeng-p-paginator ***************************/
+
+.p-paginator {
+  padding: 0.8rem 0.8rem;
+}
+
+  .p-paginator .p-dropdown {
+    border-radius: 0;
+  }
+
+
 .card-primary.card-outline {
-  border-top: 3px solid #3ab0c3 !important;  
+  border-top: 3px solid #3ab0c3 !important;
 }
 
 /* Prime Ng Error Area */
@@ -81,3 +110,10 @@ p-calendar.ng-pending input:not(:required) {
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
+.table {
+  margin-bottom: 0px;
+}
+
+  .table td, .table th {
+    border: 0px;
+  }

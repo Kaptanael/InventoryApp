@@ -26,7 +26,7 @@ export class BranchComponent implements OnInit {
       error: (err) => {
         console.log(err);
       }
-    })
+    });
   }
 
 }
