@@ -22,6 +22,9 @@ const routes: Routes = [
       },
       {
         path: "user", loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: "good-receive", loadChildren: () => import('./pages/good-receive/good-receive.module').then(m => m.GoodReceiveModule)
       }
     ]
   },
