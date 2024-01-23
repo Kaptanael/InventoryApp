@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BranchService } from '../../../_services/branch.service';
 
 @Component({
@@ -8,14 +8,22 @@ import { BranchService } from '../../../_services/branch.service';
   templateUrl: './add-edit-branch.component.html',
   styleUrl: './add-edit-branch.component.css'
 })
-export class AddEditBranchComponent {
+export class AddEditBranchComponent implements OnInit {
 
   public formGroup!: FormGroup;
-  public selectedBranch: any = {};
-  public selectedBranchId: number | undefined;
+  public selectedBranch: any = null;
+  public selectedBranchId: string | undefined;
 
-  constructor(private fb: FormBuilder, private router: Router, private branchService: BranchService) {
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private branchService: BranchService) {
     this.createFormGroup();
+  }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => params.get('id') ? this.selectedBranchId = params.get('id')?.toString() : null);
+    this.getById();
   }
 
   createFormGroup() {
@@ -27,6 +35,33 @@ export class AddEditBranchComponent {
       province: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
       country: ['', Validators.compose([Validators.required, Validators.maxLength(50)])]
     });
+  }
+
+  getById() {
+    if (this.selectedBranchId) {
+      this.branchService.getById(this.selectedBranchId).subscribe({
+        next: (res) => {
+          this.selectedBranch = res.body;
+          this.fillUpFields();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
+  }
+
+  fillUpFields() {
+    if (this.selectedBranch) {
+      this.formGroup.patchValue({
+        name : this.selectedBranch.name,
+        description: this.selectedBranch.description,
+        street: this.selectedBranch.streetAddress,
+        city: this.selectedBranch.city,
+        province: this.selectedBranch.province,
+        country: this.selectedBranch.country,
+      })
+    }
   }
 
   onSubmit() {

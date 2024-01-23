@@ -15,6 +15,10 @@ export class BranchService {
     return this.httpClient.get(`${resourceServerUrl}/api/v1/branch/getAll`, { observe: 'response' });
   }
 
+  getById(id: string): Observable<HttpResponse<any>> {
+    return this.httpClient.get(`${resourceServerUrl}/api/v1/branch/getById/${id}`, { observe: 'response' });
+  }
+
   save(model: any): Observable<HttpResponse<any>> {
     return this.httpClient.post(`${resourceServerUrl}/api/v1/branch/create`, model, {
       headers: new HttpHeaders()
