@@ -35,7 +35,6 @@
                     <th pSortableColumn="transferStatus">Transfer Order Status <p-sortIcon field="transferStatus"></p-sortIcon></th>
                     <th pSortableColumn="fromWarehouse">From Warehouse <p-sortIcon field="fromWarehouse"></p-sortIcon></th>
                     <th pSortableColumn="toWarehouse">To Warehouse <p-sortIcon field="toWarehouse"></p-sortIcon></th>
-                    <th>Action</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-to>
@@ -44,8 +43,6 @@
                     <td>{{ to.transferStatus }}</td>
                     <td>{{ to.fromWarehouse }}</td>
                     <td>{{ to.toWarehouse }}</td>
-                    <td>
-                    </td>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="emptymessage">
