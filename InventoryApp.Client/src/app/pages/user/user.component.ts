@@ -1,12 +1,30 @@
 import { Component } from '@angular/core';
+import { UserRoleService } from '../user-role/user-role.service';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user',
-  standalone: true,
-  imports: [],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
 export class UserComponent {
+  public userLists: [] = [];
+  constructor(private userService: UserService) {
+  }
 
+  ngOnInit(): void {
+    this.getAll();
+  }
+
+  getAll() {
+    //this.branchService.getAll().subscribe({
+    //  next: (res) => {
+    //    this.branches = res.body;
+    //    console.log(res);
+    //  },
+    //  error: (err) => {
+    //    console.log(err);
+    //  }
+    //
+  }
 }
