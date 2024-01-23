@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GoodIssueService } from './good-issue.service';
 
 @Component({
   selector: 'app-good-issue',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './good-issue.component.css'
 })
 export class GoodIssueComponent {
+  public goodIssues: [] = [];
+  constructor(private goodIssueService: GoodIssueService) {
+  }
 
+  ngOnInit(): void {
+    this.getAll();
+  }
+
+  getAll() {
+    //this.branchService.getAll().subscribe({
+    //  next: (res) => {
+    //    this.branches = res.body;
+    //    console.log(res);
+    //  },
+    //  error: (err) => {
+    //    console.log(err);
+    //  }
+    //});
+  }
 }
