@@ -3,7 +3,7 @@
 @import "primeng/resources/primeng.css";
 
 .card-primary.card-outline {
-  border-top: 3px solid #3ab0c3 !important;  
+  border-top: 3px solid #3ab0c3 !important;
 }
 
 /* Prime Ng Error Area */
@@ -81,3 +81,10 @@ p-calendar.ng-pending input:not(:required) {
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
+.table {
+  margin-bottom: 0px;
+}
+
+  .table td, .table th {
+    border: 0px;
+  }
