@@ -1,1 +1,64 @@
-<p>receiving works!</p>
+<section class="content">
+  <div class="container-fluid">
+    <section class="content mt-3">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header with-border">
+              <h3 class="card-title"><span>Receiving List</span></h3>
+              <div class="card-tools pull-right">
+                <!--<div class="has-feedback">
+                  <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>-->
+                <div class="has-feedback mr-2">
+                  <button type="button" class="btn btn-primary" [routerLink]="['add-edit-branch']">
+                    <i class="fa fa-plus"></i> Add
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body no-padding">
+              <p-table [value]="receivingList"
+                       [tableStyle]="{ 'min-width': '100rem' }"
+                       [responsive]="true"
+                       selectionMode="single"
+                       dataKey="id"
+                       stateStorage="session"
+                       stateKey="statedemo-session"
+                       [paginator]="true"
+                       [rows]="5"
+                       [rowsPerPageOptions]="[5,10,15,20]">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="GSRNNo">GSRN Number <p-sortIcon field="GSRNNo"></p-sortIcon></th>
+                    <th pSortableColumn="GSRNDate">GSRN Date<p-sortIcon field="GSRNDate"></p-sortIcon></th>
+                    <th pSortableColumn="po">Purchase Order<p-sortIcon field="poStatus"></p-sortIcon></th>
+                    <th>Action</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-receive>
+                  <tr>
+                    <td>{{ receive.GSRNNo }}</td>
+                    <td>{{ receive.GSRNDate }}</td>
+                    <td>{{ receive.po }}</td>
+                    <td>
+                    </td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="4">No Receiving list found.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+            <div class="card-footer no-padding">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
