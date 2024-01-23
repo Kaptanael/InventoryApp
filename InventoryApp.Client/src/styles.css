@@ -20,6 +20,10 @@
   padding: 0.8rem 0.8rem;
 }
 
+.p-datatable > .p-datatable-wrapper {
+  overflow: hidden;
+}
+
 /*************************** Primeng-p-paginator ***************************/
 
 .p-paginator {
