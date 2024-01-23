@@ -1,5 +1,13 @@
 
 
 .p-datatable-thead {
-  background: red!important;
+  background: red !important;
+}
+
+.p-datatable-table > thead {
+  background: red !important;
+}
+
+.ui-datatable .ui-datatable-thead > tr > th {
+  background: red !important;
 }
