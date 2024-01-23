@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ShipmentRoutingModule } from './shipment-routing.module';
+import { ShipmentComponent } from './shipment.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ShipmentComponent],
   imports: [
     CommonModule,
     ShipmentRoutingModule
