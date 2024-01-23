@@ -1,15 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
-/*@import "primeng/resources/themes/lara-light-blue/theme.css";*/
-/*@import "primeng/resources/primeng.css";*/
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 
 .card-primary.card-outline {
   border-top: 3px solid #3ab0c3 !important;  
 }
 
-.p-datatable-header {
-  background-color: red !important;
+/* Prime Ng Error Area */
+input:required.ng-valid,
+textarea:required.ng-valid,
+select:required.ng-valid,
+p-calendar.ng-valid input:required,
+p-autocomplete.ng-valid input:required {
+  border-left: 5px solid green !important;
 }
 
-p-datatable-header {
-  background-color: red !important;
+input:required.ng-invalid,
+textarea:required.ng-invalid,
+select:required.ng-invalid,
+p-calendar.ng-invalid input:required,
+p-autocomplete.ng-invalid input:required {
+  border-left: 5px solid red !important;
 }
+
+input:required.ng-pending,
+textarea:required.ng-pending,
+select:required.ng-pending,
+p-calendar.ng-pending input:required {
+  border-left: 5px solid orange !important;
+}
+
+input:required.ng-touched.ng-invalid,
+textarea:required.ng-touched.ng-invalid,
+select:required.ng-touched.ng-invalid,
+p-calendar.ng-touched.ng-invalid input:required {
+  border: 1px solid red !important;
+  border-left: 5px solid red !important;
+}
+
+p-chips.ng-dirty.ng-touched.ng-invalid > div {
+  border: 1px solid red !important;
+  border-left: 5px solid red !important;
+}
+
+input:required.ng-touched.ng-pending,
+textarea:required.ng-touched.ng-pending,
+select:required.ng-touched.ng-pending,
+p-calendar.ng-touched.ng-pending input:required {
+  border: 1px solid orange !important;
+  border-left: 5px solid orange !important;
+}
+
+input:not(:required).ng-invalid,
+textarea:not(:required).ng-invalid,
+p-calendar.ng-invalid input:not(:required) {
+  border: 1px solid red !important;
+}
+
+input:not(:required).ng-pending,
+textarea:not(:required).ng-pending,
+p-calendar.ng-pending input:not(:required) {
+  border: 1px solid orange !important;
+}
+
+.ui-tooltip .ui-tooltip-text {
+  background: #003663 !important;
+  white-space: normal !important;
+  padding: 10px !important;
+}
+
+.ui-tooltip {
+  position: absolute !important;
+  display: none !important;
+  max-width: 100% !important;
+  z-index: 10000 !important;
+}
+
+/* Prime Ng Overlay Area */
+.ui-widget-overlay {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+

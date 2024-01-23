@@ -20,12 +20,12 @@ export class AddEditBranchComponent {
 
   createFormGroup() {
     this.formGroup = this.fb.group({
-      name: ['', Validators.compose([Validators.maxLength(50)])],
+      name: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
       description: ['', Validators.compose([Validators.maxLength(200)])],
-      street: ['', Validators.compose([Validators.maxLength(200)])],
-      city: ['', Validators.compose([Validators.maxLength(50)])],
-      province: ['', Validators.compose([Validators.maxLength(50)])],
-      country: ['', Validators.compose([Validators.maxLength(50)])]
+      street: ['', Validators.compose([Validators.required, Validators.maxLength(200)])],
+      city: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
+      province: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
+      country: ['', Validators.compose([Validators.required, Validators.maxLength(50)])]
     });
   }
 
