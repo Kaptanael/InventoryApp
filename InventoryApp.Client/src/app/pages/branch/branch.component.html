@@ -19,14 +19,23 @@
               </div>
             </div>
             <div class="card-body no-padding">
-              <p-table [value]="branches" [tableStyle]="{ 'min-width': '100rem' }">
+              <p-table [value]="branches"
+                       [tableStyle]="{ 'min-width': '100rem' }"
+                       [responsive]="true"
+                       selectionMode="single"
+                       dataKey="id"
+                       stateStorage="session"
+                       stateKey="statedemo-session"
+                       [paginator]="true"
+                       [rows]="5"
+                       [rowsPerPageOptions]="[5,10,15,20]">
                 <ng-template pTemplate="header">
                   <tr>
-                    <th>Name</th>
-                    <th>City</th>
-                    <th>Province</th>
-                    <th>Country</th>
-                    <th>Status</th>
+                    <th pSortableColumn="name">Name</th>
+                    <th pSortableColumn="city">City</th>
+                    <th pSortableColumn="province">Province</th>
+                    <th pSortableColumn="country">Country</th>
+                    <th pSortableColumn="status">Status</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-branch>
@@ -36,6 +45,11 @@
                     <td>{{ branch.province }}</td>
                     <td>{{ branch.country }}</td>
                     <td>{{ branch.status === true ? 'Active' : 'Inactive' }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="4">No branches found.</td>
                   </tr>
                 </ng-template>
               </p-table>
