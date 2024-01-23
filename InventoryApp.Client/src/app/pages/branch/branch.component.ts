@@ -29,4 +29,7 @@ export class BranchComponent implements OnInit {
     });
   }
 
+  onEdit(branch: any) {
+  }
+
 }
