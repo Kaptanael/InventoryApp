@@ -1,1 +1,66 @@
-<p>transfer-order works!</p>
+<section class="content">
+  <div class="container-fluid">
+    <section class="content mt-3">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header with-border">
+              <h3 class="card-title"><span>Transfer Order List</span></h3>
+              <div class="card-tools pull-right">
+                <!--<div class="has-feedback">
+                  <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>-->
+                <div class="has-feedback mr-2">
+                  <button type="button" class="btn btn-primary" [routerLink]="['add-edit-branch']">
+                    <i class="fa fa-plus"></i> Add
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body no-padding">
+              <p-table [value]="transferOrders"
+                       [tableStyle]="{ 'min-width': '100rem' }"
+                       [responsive]="true"
+                       selectionMode="single"
+                       dataKey="id"
+                       stateStorage="session"
+                       stateKey="statedemo-session"
+                       [paginator]="true"
+                       [rows]="5"
+                       [rowsPerPageOptions]="[5,10,15,20]">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="transferNumber">Transfer Number <p-sortIcon field="transferNumber"></p-sortIcon></th>
+                    <th pSortableColumn="transferStatus">Transfer Order Status <p-sortIcon field="transferStatus"></p-sortIcon></th>
+                    <th pSortableColumn="fromWarehouse">From Warehouse <p-sortIcon field="fromWarehouse"></p-sortIcon></th>
+                    <th pSortableColumn="toWarehouse">To Warehouse <p-sortIcon field="toWarehouse"></p-sortIcon></th>
+                    <th>Action</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-to>
+                  <tr>
+                    <td>{{ to.transferNumber }}</td>
+                    <td>{{ to.transferStatus }}</td>
+                    <td>{{ to.fromWarehouse }}</td>
+                    <td>{{ to.toWarehouse }}</td>
+                    <td>
+                    </td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="4">No Transfer order list found.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+            <div class="card-footer no-padding">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
