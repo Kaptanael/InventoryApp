@@ -1,9 +1,9 @@
 <section class="content">
   <div class="container-fluid">
     <section class="content mt-3">
-      <div class="row">               
+      <div class="row">
         <div class="col-md-12">
-          <div class="card card-primary card-outline">            
+          <div class="card card-primary card-outline">
             <div class="card-header with-border">
               <h3 class="card-title"><span>Branch List</span></h3>
               <div class="card-tools pull-right">
@@ -46,7 +46,10 @@
                     <td>{{ branch.province }}</td>
                     <td>{{ branch.country }}</td>
                     <td>{{ branch.status === true ? 'Active' : 'Inactive' }}</td>
-                    <td class="text-center"><a (click)="onEdit(branch)"><i class="pi pi-pencil"></i></a></td>                                      
+                    <td>
+                      <a class="btn btn-primary btn-xs mr-1" (click)="onEdit(branch)"><i class="fas fa-edit"></i></a>                      
+                      <a class="btn btn-danger btn-xs mr-1" (click)="onDelete(branch)"><i class="fa fa-trash"></i></a>
+                    </td>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="emptymessage">
@@ -66,8 +69,8 @@
               Branch office is an outlet of a Company. To get started, you should have minimum one branch as your main office or headquarter.
             </p>
           </div>
-        </div>        
-      </div>      
+        </div>
+      </div>
     </section>
   </div>
 </section>
