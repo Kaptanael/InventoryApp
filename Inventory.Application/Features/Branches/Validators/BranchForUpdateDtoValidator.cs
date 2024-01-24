@@ -15,8 +15,7 @@ public class BranchForUpdateDtoValidator : AbstractValidator<BranchForUpdateDto>
             .NotEmpty().WithMessage("{PropertyName} is required")            
             .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters");
 
-        RuleFor(a => a.Description)
-            .NotEmpty().WithMessage("{PropertyName} is required")
+        RuleFor(a => a.Description)            
             .MaximumLength(200).WithMessage("{PropertyName} must not exceed 200 characters");
 
         RuleFor(a => a.StreetAddress)
