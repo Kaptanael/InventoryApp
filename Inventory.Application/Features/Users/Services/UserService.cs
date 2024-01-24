@@ -55,6 +55,13 @@ public class UserService : BaseService, IUserService
         return response;
     }
 
+    public async Task<List<UserForListDto>> GetAllUser()
+    {
+        var userFromRepo = await _userRepository.GetAllUser();
+        var userToReturn = _mapper.Map<List<UserForListDto>>(userFromRepo);
+        return userToReturn;
+    }
+
     public async Task<UserForListDto> GetUser(string userName, string password)
     {
         var userFromRepo = await _userRepository.GetUser(userName, password);

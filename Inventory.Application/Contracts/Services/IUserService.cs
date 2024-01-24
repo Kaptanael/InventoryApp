@@ -9,4 +9,6 @@ public interface IUserService
     Task<UserForListDto> GetUser(Guid id);
 
     Task<bool> IsActiveUser(Guid id);
+
+    Task<List<UserForListDto>> GetAllUser();
 }

@@ -9,7 +9,7 @@ public interface IUserRepository
     Task<Guid> Delete(User user);
 
     Task<User> GetUser(string userName, string password);
-    Task<List<User>> GetUserList();
+    Task<List<User>> GetAllUser();
 
     Task<User> GetUser(Guid id);
 
