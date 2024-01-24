@@ -106,9 +106,9 @@ export class AddEditBranchComponent implements OnInit {
       this.branchService.create(model)
         .subscribe({
           next: (rse) => {
-            if (rse.status === 200) {
-              this.router.navigate(['/branch']);
+            if (rse.status === 200) {              
               this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Created successfully' });
+              this.router.navigate(['/branch']);
             }
           },
           error: (err) => {
@@ -119,9 +119,9 @@ export class AddEditBranchComponent implements OnInit {
       this.branchService.update(this.selectedBranchId, model)
         .subscribe({
           next: (rse) => {
-            if (rse.status === 200) {
-              //this.router.navigate(['/branch']);
+            if (rse.status === 200) {              
               this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Updated successfully' });
+              this.router.navigate(['/branch']);
             }
           },
           error: (err) => {
