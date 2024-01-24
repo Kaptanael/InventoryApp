@@ -62,6 +62,7 @@ public class BranchService : IBranchService
         entity.City = request.City;
         entity.Province = request.Province;
         entity.Country = request.Country;
+        entity.Status =request.Status;
         entity.CreatedBy = _currentUserService.UserId;
         entity.CreatedDate = _dateTimeService.Now;
         entity.UpdatedBy = _currentUserService.UserId;
@@ -105,6 +106,7 @@ public class BranchService : IBranchService
         entity.StreetAddress = request.StreetAddress;
         entity.City = request.City;
         entity.Province = request.Province;
+        entity.Status = request.Status;
         entity.Country = request.Country;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTimeService.Now;
