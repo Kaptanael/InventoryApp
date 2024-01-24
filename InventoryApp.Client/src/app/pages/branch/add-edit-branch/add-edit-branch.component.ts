@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BranchService } from '../../../_services/branch.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-edit-branch',
@@ -13,22 +14,26 @@ export class AddEditBranchComponent implements OnInit {
   public formGroup!: FormGroup;
   public selectedBranch: any = null;
   public selectedBranchId: string | undefined;
+  public title: string | undefined;
 
   constructor(private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private messageService: MessageService,
     private branchService: BranchService) {
     this.createFormGroup();
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => params.get('id') ? this.selectedBranchId = params.get('id')?.toString() : null);
+    this.title = this.selectedBranchId ? 'Edit Branch' : 'Add Branch';
     this.getById();
   }
 
   createFormGroup() {
     this.formGroup = this.fb.group({
       name: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
+      status: [''],
       description: ['', Validators.compose([Validators.maxLength(200)])],
       street: ['', Validators.compose([Validators.required, Validators.maxLength(200)])],
       city: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
@@ -54,7 +59,8 @@ export class AddEditBranchComponent implements OnInit {
   fillUpFields() {
     if (this.selectedBranch) {
       this.formGroup.patchValue({
-        name : this.selectedBranch.name,
+        name: this.selectedBranch.name,
+        status: this.selectedBranch.status,
         description: this.selectedBranch.description,
         street: this.selectedBranch.streetAddress,
         city: this.selectedBranch.city,
@@ -65,9 +71,13 @@ export class AddEditBranchComponent implements OnInit {
   }
 
   onSubmit() {
+
+    console.log(this.formGroup.controls['status'].value);
+
     const model = {
       id: this.selectedBranchId,
       name: this.formGroup.controls['name'].value,
+      status: +this.formGroup.controls['status'].value == 1 ? true : false,
       description: this.formGroup.controls['description'].value,
       streetAddress: this.formGroup.controls['street'].value,
       city: this.formGroup.controls['city'].value,
@@ -75,18 +85,33 @@ export class AddEditBranchComponent implements OnInit {
       country: this.formGroup.controls['country'].value,
     }
 
-    this.branchService.save(model)
-      .subscribe({
-        next: (rse) => {
-          if (rse.status === 200) {
-            this.router.navigate(['/branch']);
-            //this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Influenza vaccination form has been saved' });
+    if (!this.selectedBranchId) {
+      this.branchService.create(model)
+        .subscribe({
+          next: (rse) => {
+            if (rse.status === 200) {
+              this.router.navigate(['/branch']);
+              this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Created successfully' });
+            }
+          },
+          error: (err) => {
+            this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Error', detail: 'Failed to create' });
           }
-        },
-        error: (err) => {
-          //this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Error', detail: 'Failed to update influenza vaccination' });
-        }
-      });
+        });
+    } else {
+      this.branchService.update(this.selectedBranchId, model)
+        .subscribe({
+          next: (rse) => {
+            if (rse.status === 200) {
+              //this.router.navigate(['/branch']);
+              this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Updated successfully' });
+            }
+          },
+          error: (err) => {
+            this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Error', detail: 'Failed to update' });
+          }
+        });
+    }
   }
 
 }
