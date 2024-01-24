@@ -84,9 +84,7 @@ export class AddEditBranchComponent implements OnInit {
     return "0";
   }
 
-  onSubmit() {
-
-    console.log(this.formGroup.controls['status'].value);
+  onSubmit() {   
 
     const model = {
       id: this.selectedBranchId,
@@ -97,14 +95,7 @@ export class AddEditBranchComponent implements OnInit {
       city: this.formGroup.controls['city'].value,
       province: this.formGroup.controls['province'].value,
       country: this.formGroup.controls['country'].value,
-    }
-
-    if (this.formGroup.controls['status'].value === "1") {
-      console.log("true");
-    }
-    if (this.formGroup.controls['status'].value === "0") {
-      console.log("false");
-    }
+    }    
 
     if (!this.selectedBranchId) {
       this.branchService.create(model)
