@@ -33,4 +33,11 @@ export class BranchService {
     });
   }
 
+  delete(id: string): Observable<HttpResponse<any>> {
+    return this.httpClient.delete(`${resourceServerUrl}/api/v1/branch/delete/${id}`, {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json'), observe: 'response', responseType: 'text'
+    });
+  }
+
 }

@@ -21,14 +21,14 @@ export class BranchComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.getAll();
-  }  
+  }
 
   getAll() {
     this.branchService.getAll().subscribe({
       next: (res) => {
-        this.branches = res.body;        
+        this.branches = res.body;
       },
       error: (err) => {
         console.log(err);
@@ -44,23 +44,20 @@ export class BranchComponent implements OnInit {
     this.confirmationService.confirm({
       message: `Are you sure to delete  <b>${branch.name}</b>`,
       accept: () => {
-        //this.userManagementService.deleteUserById(loginId)
-        //  .subscribe(response => {
-        //    if (response.status === 200) {
-        //      this.isLoading = false;
-        //      this.messageService.add({ key: 'toastKey1', severity: 'success', summary: `User ${loginId} has been deleted.`, detail: '' });
-        //      this.getUsers();
-        //    }
-        //  },
-        //    err => {
-        //      this.isLoading = false;
-        //      this.messageService.add({ key: 'toastKey1', severity: 'error', summary: err.error.ExceptionMessage, detail: '' });
-        //    },
-        //    () => {
-        //      this.isLoading = false;
-        //    });
+        this.branchService.delete(branch.id)
+          .subscribe({
+            next: (res) => {
+              if (res.status === 200) {
+                this.getAll();
+                this.messageService.add({ key: 'toastKey1', severity: 'success', summary: `Branch ${branch.name} has been deleted.`, detail: '' });
+              }
+            },
+            error: (err) => {
+              this.messageService.add({ key: 'toastKey1', severity: 'error', summary: err.error.ExceptionMessage, detail: '' });
+            }
+          });
       }
     });
   }
-
 }
+    

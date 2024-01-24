@@ -44,11 +44,43 @@
   border-bottom-right-radius: 0px;  
 }
 
+/*************************** Primeng-p-dialog css ***************************/
+
+.p-dialog .p-dialog-header {
+  background: #3c4b64;
+  color: #ffffff;
+  padding: .5rem;
+  border-radius: 0px;
+}
+
+.p-dialog .p-dialog-footer {
+  background: #EBEDEF;
+  border-radius: 0px;
+  padding-top: 0.7rem;
+  padding-right: 1rem;
+  padding-bottom: 3px;
+}
+
+p-dialog .p-dialog-header {
+  background-color: #3c4b64;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 0px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.p-confirm-dialog .p-dialog-content {
+  padding: 16px;
+}
+
+/*************************** Card css ***************************/
+
 .card-primary.card-outline {
   border-top: 3px solid #3ab0c3 !important;
 }
 
-/* Prime Ng Error Area */
+/*************************** Error css ***************************/
 input:required.ng-valid,
 textarea:required.ng-valid,
 select:required.ng-valid,
@@ -118,15 +150,15 @@ p-calendar.ng-pending input:not(:required) {
   z-index: 10000 !important;
 }
 
-/* Prime Ng Overlay Area */
+/*************************** Primeng-p-overlay css  ***************************/
 .ui-widget-overlay {
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
-.table {
-  margin-bottom: 0px;
+/**************************** Buttons *********************************/
+.btn {
+  border-radius: 0 !important;  
 }
 
-  .table td, .table th {
-    border: 0px;
-  }
+
+
