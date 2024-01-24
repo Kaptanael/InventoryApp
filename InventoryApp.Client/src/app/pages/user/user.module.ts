@@ -5,6 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { TableModule } from 'primeng/table';
 import { UserComponent } from './user.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   imports: [
     CommonModule,
     UserRoutingModule,
-    TableModule
+    TableModule,
+    FormsModule
   ],
   providers: [ConfirmationService, MessageService]
 })
