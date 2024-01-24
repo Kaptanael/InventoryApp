@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BranchService } from '../../../_services/branch.service';
 import { MessageService } from 'primeng/api';
@@ -32,13 +32,13 @@ export class AddEditBranchComponent implements OnInit {
 
   createFormGroup() {
     this.formGroup = this.fb.group({
-      name: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
-      status: [''],
-      description: ['', Validators.compose([Validators.maxLength(200)])],
-      street: ['', Validators.compose([Validators.required, Validators.maxLength(200)])],
-      city: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
-      province: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
-      country: ['', Validators.compose([Validators.required, Validators.maxLength(50)])]
+      name: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
+      status: ['', Validators.required],
+      description: ['', [this.noWhitespaceValidator, Validators.maxLength(200)]],
+      street: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(200)]],
+      city: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
+      province: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
+      country: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]]
     });
   }
 
@@ -60,7 +60,7 @@ export class AddEditBranchComponent implements OnInit {
     if (this.selectedBranch) {
       this.formGroup.patchValue({
         name: this.selectedBranch.name,
-        status: this.selectedBranch.status,
+        status: this.getStringBoolean(this.selectedBranch.status),
         description: this.selectedBranch.description,
         street: this.selectedBranch.streetAddress,
         city: this.selectedBranch.city,
@@ -70,6 +70,20 @@ export class AddEditBranchComponent implements OnInit {
     }
   }
 
+  noWhitespaceValidator(control: AbstractControl) {
+    if (control && control.value && !control.value.replace(/\s/g, '').length) {
+      control.setValue('');
+    }
+    return null;
+  }
+
+  getStringBoolean(value: boolean) {
+    if (value == true) {
+      return "1";
+    }
+    return "0";
+  }
+
   onSubmit() {
 
     console.log(this.formGroup.controls['status'].value);
@@ -77,12 +91,19 @@ export class AddEditBranchComponent implements OnInit {
     const model = {
       id: this.selectedBranchId,
       name: this.formGroup.controls['name'].value,
-      status: +this.formGroup.controls['status'].value == 1 ? true : false,
+      status: +this.formGroup.controls['status'].value === 1 ? true : false,
       description: this.formGroup.controls['description'].value,
       streetAddress: this.formGroup.controls['street'].value,
       city: this.formGroup.controls['city'].value,
       province: this.formGroup.controls['province'].value,
       country: this.formGroup.controls['country'].value,
+    }
+
+    if (this.formGroup.controls['status'].value === "1") {
+      console.log("true");
+    }
+    if (this.formGroup.controls['status'].value === "0") {
+      console.log("false");
     }
 
     if (!this.selectedBranchId) {
