@@ -20,7 +20,7 @@
             </div>
             <div class="card-body no-padding">
               <p-table [value]="branches"
-                       [tableStyle]="{ 'min-width': '100rem' }"                       
+                       [tableStyle]="{ 'min-width': '50rem' }"                       
                        selectionMode="single"
                        dataKey="id"
                        stateStorage="session"
@@ -73,3 +73,10 @@
     </section>
   </div>
 </section>
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle text-danger">
+  <p-footer>
+    <button type="button" class="btn btn-primary btn-portal-border btn-dialog btn-cancel" pButton label="No" (click)="cd.reject()"></button>
+    <button type="button" class="btn btn-primary btn-portal btn-dialog" pButton label="Yes" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>
+<p-toast key="toastKey1"></p-toast>
