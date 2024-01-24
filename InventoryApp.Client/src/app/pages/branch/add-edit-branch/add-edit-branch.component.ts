@@ -30,7 +30,7 @@ export class AddEditBranchComponent implements OnInit {
     this.getById();
   }
 
-  createFormGroup() {
+  createFormGroup(): void {
     this.formGroup = this.fb.group({
       name: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
       status: ['', Validators.required],
@@ -42,7 +42,7 @@ export class AddEditBranchComponent implements OnInit {
     });
   }
 
-  getById() {
+  getById(): void {
     if (this.selectedBranchId) {
       this.branchService.getById(this.selectedBranchId).subscribe({
         next: (res) => {
@@ -56,7 +56,7 @@ export class AddEditBranchComponent implements OnInit {
     }
   }
 
-  fillUpFields() {
+  fillUpFields(): void{
     if (this.selectedBranch) {
       this.formGroup.patchValue({
         name: this.selectedBranch.name,
@@ -77,14 +77,19 @@ export class AddEditBranchComponent implements OnInit {
     return null;
   }
 
-  getStringBoolean(value: boolean) {
+  getStringBoolean(value: boolean): string {
     if (value == true) {
       return "1";
     }
     return "0";
   }
 
-  onSubmit() {   
+  onClear(): void {
+    this.formGroup.reset();
+    this.formGroup.patchValue({ status: 1 });
+  }
+
+  onSubmit(): void {   
 
     const model = {
       id: this.selectedBranchId,

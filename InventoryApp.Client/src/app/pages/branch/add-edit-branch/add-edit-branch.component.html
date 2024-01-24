@@ -94,7 +94,7 @@
                     <button type="submit" class="btn btn-primary mr-2" [disabled]="!formGroup.valid">Save</button>
                   </span>
                   <span class="input-group-append">
-                    <a class="btn btn-default mr-2">Clear</a>
+                    <a class="btn btn-default mr-2" (click)="onClear()">Clear</a>
                   </span>
                   <span class="input-group-append">
                     <a class="btn btn-default" [routerLink]="['/branch']">Back To List</a>
