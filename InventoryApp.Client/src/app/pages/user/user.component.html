@@ -47,7 +47,9 @@
                     <td>{{ user.lastName }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.mobile }}</td>
-                    <td>{{ user.isActive == true ? 'Active' : 'Inactive' }}</td>
+                    <td>
+                      <span *ngIf="user.isActive" style="color:green">Active</span><span *ngIf="!user.isActive" style="color:red">Inactive</span>
+                    </td>
                     <td>
                       <a class="btn btn-primary btn-xs mr-1" (click)="onEdit(user.id)"><i class="fas fa-edit"></i></a>
                       <a class="btn btn-danger btn-xs mr-1" (click)="onDelete(user)"><i class="fa fa-trash"></i></a>
