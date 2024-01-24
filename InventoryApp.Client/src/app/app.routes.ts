@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    /* canActivate: [AuthGuard],*/
+    canActivate: [AuthGuard],
     children: [
       {
         path: "branch", loadChildren: () => import('./pages/branch/branch.module').then(m => m.BranchModule)
