@@ -31,7 +31,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="control-label" for="status">Status</label>
-                          <select class="form-control" id="status" name="status" required>                            
+                          <select class="form-control" id="status" name="status" formControlName="status" required>                            
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>                            
                           </select>
@@ -94,7 +94,7 @@
                     <button type="submit" class="btn btn-primary mr-2" [disabled]="!formGroup.valid">Save</button>
                   </span>
                   <span class="input-group-append">
-                    <a class="btn btn-default mr-2">Clear</a>
+                    <a class="btn btn-default mr-2" (click)="onClear()">Clear</a>
                   </span>
                   <span class="input-group-append">
                     <a class="btn btn-default" [routerLink]="['/branch']">Back To List</a>
@@ -119,4 +119,5 @@
     <!-- /.content -->
   </div>
 </section>
+<p-toast key="toastKey1"></p-toast>
 

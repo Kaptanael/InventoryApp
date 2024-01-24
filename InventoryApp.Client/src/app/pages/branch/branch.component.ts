@@ -28,8 +28,7 @@ export class BranchComponent implements OnInit {
   getAll() {
     this.branchService.getAll().subscribe({
       next: (res) => {
-        this.branches = res.body;
-        console.log(this.branches);
+        this.branches = res.body;        
       },
       error: (err) => {
         console.log(err);
