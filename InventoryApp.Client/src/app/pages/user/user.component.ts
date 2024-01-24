@@ -17,14 +17,15 @@ export class UserComponent {
   }
 
   getAll() {
-    //this.branchService.getAll().subscribe({
-    //  next: (res) => {
-    //    this.branches = res.body;
-    //    console.log(res);
-    //  },
-    //  error: (err) => {
-    //    console.log(err);
-    //  }
-    //
+    this.userService.getAll().subscribe({
+      next: (res) => {
+        this.userLists = res.body;
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+
+    })
   }
 }

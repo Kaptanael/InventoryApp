@@ -77,7 +77,7 @@ public class UserRepository : IUserRepository
         return user.Id;
     }
 
-    public async Task<List<User>> GetUserList()
+    public async Task<List<User>> GetAllUser()
     {
         var user = await _context.Users.ToListAsync();
         return user;
