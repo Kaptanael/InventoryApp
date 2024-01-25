@@ -7,19 +7,15 @@
             <div class="card-header with-border">
               <h3 class="card-title"><span>User List</span></h3>
               <div class="card-tools pull-right">
-                <!--<div class="has-feedback">
-                  <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>-->
                 <div class="has-feedback mr-2">
-                  <button type="button" class="btn btn-primary" [routerLink]="['add-edit-branch']">
+                  <!--<button type="button" class="btn btn-primary" [routerLink]="['add-edit-branch']">
                     <i class="fa fa-plus"></i> Add
-                  </button>
+                  </button>-->
                 </div>
               </div>
             </div>
             <div class="card-body no-padding">
-              <p-table [value]="userLists"
+              <p-table #userTableRef [value]="userLists" 
                        [tableStyle]="{ 'min-width': '100rem' }"
                        [responsive]="true"
                        selectionMode="single"
@@ -27,8 +23,27 @@
                        stateStorage="session"
                        stateKey="statedemo-session"
                        [paginator]="true"
-                       [rows]="5"
+                       [rows]="5" [globalFilterFields]="['userName']"
                        [rowsPerPageOptions]="[5,10,15,20]">
+                <ng-template pTemplate="caption">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-11 pl-0">
+                        <input type="text" class="form-input search-input" id="searchUser"
+                               tabindex="1" maxlength="30"
+                               placeholder="Search User name, first name, last name, email, mobile no"
+                               (input) = "userTableRef.filterGlobal($event.target, 'contains')" />
+                      </div>
+                      <div class="col-md-1 pr-0 pl-0">
+                        <button type="button" class="btn btn-default btn-block btn-primary btn-add lang-bn">
+                          (click)="addNew()"
+                          <i class="pi pi-plus"></i>
+                          ADD
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
                 <ng-template pTemplate="header">
                   <tr>
                     <th pSortableColumn="userName">User Name <p-sortIcon field="userName"></p-sortIcon></th>
