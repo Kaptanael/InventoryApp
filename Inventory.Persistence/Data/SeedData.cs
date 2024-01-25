@@ -89,7 +89,7 @@ public class SeedData
                     new Menu { Id = STOCK_MENU_ID, Name = "Stock"},
                     new Menu { Id = VENDOR_MENU_ID, Name = "Vendor"},
                     new Menu { Id = ORDER_MENU_ID, Name = "Order"},
-                    new Menu { Id = CUSTOMER_MENU_ID, Name = "Customer"},                    
+                    new Menu { Id = CUSTOMER_MENU_ID, Name = "Customer"},
                 };
 
             context.Menus.AddRange(menus);
@@ -102,15 +102,15 @@ public class SeedData
         {
             var menus = new List<ProductType>()
                 {
-                    new ProductType { Name = "Skin Care"},
-                    new ProductType { Name = "Health Care"},
-                    new ProductType { Name = "Makeup"},
-                    new ProductType { Name = "Fragrances"},
-                    new ProductType { Name = "Beauty Tools"},
-                    new ProductType { Name = "Bath & Body"},
-                    new ProductType { Name = "Personal Care"},
-                    new ProductType { Name = "Men's Care"},
-                    new ProductType { Name = "Sexual Wellness"},
+                    new ProductType { Name = "Skin Care", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
+                    new ProductType { Name = "Health Care", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
+                    new ProductType { Name = "Makeup", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
+                    new ProductType { Name = "Fragrances", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
+                    new ProductType { Name = "Beauty Tools", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
+                    new ProductType { Name = "Bath & Body", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
+                    new ProductType { Name = "Personal Care", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
+                    new ProductType { Name = "Men's Care", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
+                    new ProductType { Name = "Sexual Wellness", CreatedBy = ADMIN_USER_ID, CreatedDate = DateTime.Now, UpdatedBy = ADMIN_USER_ID, UpdatedDate = DateTime.Now},
                 };
 
             context.ProductTypes.AddRange(menus);

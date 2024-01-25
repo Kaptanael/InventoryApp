@@ -170,6 +170,9 @@ public partial class InventoryDbContext : DbContext
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(200);
             entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Status)
+                .IsRequired()
+                .HasDefaultValueSql("((1))");
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.ProductTypeCreatedByNavigations)
