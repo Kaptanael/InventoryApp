@@ -27,6 +27,7 @@ public class SeedData
         addRoles(context);
         addUsers(context);
         addMenus(context);
+        addProductTypes(context);
         SaveChanges(context);
     }
 
@@ -92,6 +93,27 @@ public class SeedData
                 };
 
             context.Menus.AddRange(menus);
+        }
+    }
+
+    private static void addProductTypes(InventoryDbContext context)
+    {
+        if (!context.ProductTypes.Any())
+        {
+            var menus = new List<ProductType>()
+                {
+                    new ProductType { Name = "Skin Care"},
+                    new ProductType { Name = "Health Care"},
+                    new ProductType { Name = "Makeup"},
+                    new ProductType { Name = "Fragrances"},
+                    new ProductType { Name = "Beauty Tools"},
+                    new ProductType { Name = "Bath & Body"},
+                    new ProductType { Name = "Personal Care"},
+                    new ProductType { Name = "Men's Care"},
+                    new ProductType { Name = "Sexual Wellness"},
+                };
+
+            context.ProductTypes.AddRange(menus);
         }
     }
 

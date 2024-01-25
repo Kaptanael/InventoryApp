@@ -5,7 +5,19 @@ import { ProductTypeComponent } from './product-type.component';
 
 const routes: Routes = [{
   path: '',
-  component: ProductTypeComponent
+  children:
+    [
+      {
+        path: '',
+        component: ProductTypeComponent
+      },
+      //{
+      //  path: 'add-edit-branch', loadChildren: () => import('./add-edit-branch/add-edit-branch.module').then(m => m.AddEditBranchModule)
+      //},
+      //{
+      //  path: 'add-edit-branch/:id', loadChildren: () => import('./add-edit-branch/add-edit-branch.module').then(m => m.AddEditBranchModule)
+      //}
+    ]
 }];
 
 @NgModule({
