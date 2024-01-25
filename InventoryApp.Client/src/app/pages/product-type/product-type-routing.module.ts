@@ -11,12 +11,12 @@ const routes: Routes = [{
         path: '',
         component: ProductTypeComponent
       },
-      //{
-      //  path: 'add-edit-branch', loadChildren: () => import('./add-edit-branch/add-edit-branch.module').then(m => m.AddEditBranchModule)
-      //},
-      //{
-      //  path: 'add-edit-branch/:id', loadChildren: () => import('./add-edit-branch/add-edit-branch.module').then(m => m.AddEditBranchModule)
-      //}
+      {
+        path: 'add-edit-product-type', loadChildren: () => import('./add-edit-product-type/add-edit-product-type.module').then(m => m.AddEditProductTypeModule)
+      },
+      {
+        path: 'add-edit-product-type/:id', loadChildren: () => import('./add-edit-product-type/add-edit-product-type.module').then(m => m.AddEditProductTypeModule)
+      }
     ]
 }];
 

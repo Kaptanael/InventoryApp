@@ -1,32 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BranchService } from '../../../_services/branch.service';
 import { MessageService } from 'primeng/api';
 
+import { ProductTypeService } from '../../../_services/product-type.service';
+
 @Component({
-  selector: 'app-add-edit-branch',
-  templateUrl: './add-edit-branch.component.html',
-  styleUrl: './add-edit-branch.component.css'
+  selector: 'add-edit-product-type',
+  templateUrl: './add-edit-product-type.component.html',
+  styleUrl: './add-edit-product-type.component.css'
 })
-export class AddEditBranchComponent implements OnInit {
+export class AddEditProductTypeComponent implements OnInit {
 
   public formGroup!: FormGroup;
-  public selectedBranch: any = null;
-  public selectedBranchId: string | undefined;
+  public selectedProductType: any = null;
+  public selectedProductTypeId: string | undefined;
   public title: string | undefined;
 
   constructor(private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private messageService: MessageService,
-    private branchService: BranchService) {
+    private productTypeService: ProductTypeService) {
     this.createFormGroup();
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => params.get('id') ? this.selectedBranchId = params.get('id')?.toString() : null);
-    this.title = this.selectedBranchId ? 'Edit Branch' : 'Add Branch';
+    this.route.paramMap.subscribe(params => params.get('id') ? this.selectedProductTypeId = params.get('id')?.toString() : null);
+    this.title = this.selectedProductTypeId ? 'Edit Product Type' : 'Add Product Type';
     this.getById();
   }
 
@@ -34,19 +35,15 @@ export class AddEditBranchComponent implements OnInit {
     this.formGroup = this.fb.group({
       name: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
       status: ['1', Validators.required],
-      description: ['', [this.noWhitespaceValidator, Validators.maxLength(200)]],
-      street: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(200)]],
-      city: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
-      province: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
-      country: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]]
+      description: ['', [this.noWhitespaceValidator, Validators.maxLength(200)]]      
     });
   }
 
   getById(): void {
-    if (this.selectedBranchId) {
-      this.branchService.getById(this.selectedBranchId).subscribe({
+    if (this.selectedProductTypeId) {
+      this.productTypeService.getById(this.selectedProductTypeId).subscribe({
         next: (res) => {
-          this.selectedBranch = res.body;
+          this.selectedProductType = res.body;
           this.fillUpFields();
         },
         error: (err) => {
@@ -57,15 +54,11 @@ export class AddEditBranchComponent implements OnInit {
   }
 
   fillUpFields(): void{
-    if (this.selectedBranch) {
+    if (this.selectedProductType) {
       this.formGroup.patchValue({
-        name: this.selectedBranch.name,
-        status: this.getStringBoolean(this.selectedBranch.status),
-        description: this.selectedBranch.description,
-        street: this.selectedBranch.streetAddress,
-        city: this.selectedBranch.city,
-        province: this.selectedBranch.province,
-        country: this.selectedBranch.country,
+        name: this.selectedProductType.name,
+        status: this.getStringBoolean(this.selectedProductType.status),
+        description: this.selectedProductType.description        
       })
     }
   }
@@ -92,24 +85,20 @@ export class AddEditBranchComponent implements OnInit {
   onSubmit(): void {   
 
     const model = {
-      id: this.selectedBranchId,
+      id: this.selectedProductTypeId,
       name: this.formGroup.controls['name'].value,
       status: +this.formGroup.controls['status'].value === 1 ? true : false,
-      description: this.formGroup.controls['description'].value,
-      streetAddress: this.formGroup.controls['street'].value,
-      city: this.formGroup.controls['city'].value,
-      province: this.formGroup.controls['province'].value,
-      country: this.formGroup.controls['country'].value,
+      description: this.formGroup.controls['description'].value     
     }    
 
-    if (!this.selectedBranchId) {
-      this.branchService.create(model)
+    if (!this.selectedProductTypeId) {
+      this.productTypeService.create(model)
         .subscribe({
           next: (rse) => {
             if (rse.status === 200) {              
               this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Created successfully' });
               setTimeout(() => {
-                this.router.navigate(['/branch']);
+                this.router.navigate(['/product-type']);
               }, 1000);
             }
           },
@@ -118,13 +107,13 @@ export class AddEditBranchComponent implements OnInit {
           }
         });
     } else {
-      this.branchService.update(this.selectedBranchId, model)
+      this.productTypeService.update(this.selectedProductTypeId, model)
         .subscribe({
           next: (rse) => {
             if (rse.status === 200) {
               this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Updated successfully' });
               setTimeout(() => {
-                this.router.navigate(['/branch']);
+                this.router.navigate(['/product-type']);
               },1000);              
             }
           },
