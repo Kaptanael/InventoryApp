@@ -55,6 +55,9 @@ const routes: Routes = [
       },
       {
         path: "user-role", loadChildren: () => import('./pages/user-role/user-role.module').then(m => m.UserRoleModule)
+      },
+      {
+        path: "role", loadChildren: () => import('./pages/role/role.module').then(m => m.RoleModule)
       }
     ]
   },
