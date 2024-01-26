@@ -88,12 +88,14 @@ export class AddEditRoleComponent implements OnInit {
     if (!this.selectedRoleId) {
       this.roleService.create(model)
         .subscribe({
-          next: (rse) => {
-            if (rse.status === 200) {              
+          next: (res) => {
+            if (res.status === 200 && (res as any).success) {
               this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Role created successfully' });
               setTimeout(() => {
                 this.router.navigate(['/role']);
               }, 1000);
+            } else if (!(res as any).success) {              
+              this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Duplicate', detail: 'Role already exist' });
             }
           },
           error: (err) => {
