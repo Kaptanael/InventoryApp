@@ -27,26 +27,8 @@
                                  id="name" name="name" formControlName="name" maxlength="50" required>
                           <span class="text-danger field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true"></span>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="control-label" for="status">Status</label>
-                          <select class="form-control" id="status" name="status" formControlName="status" required>
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="control-label" for="description">Description</label>
-                          <textarea class="form-control" type="text" id="description" name="description" formControlName="description" maxlength="200" rows="3"></textarea>
-                          <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
-                        </div>
-                      </div>
-                    </div>
+                      </div>                      
+                    </div>                    
                   </div>
                 </div>
               </div>
@@ -59,7 +41,7 @@
                     <a class="btn btn-default mr-2" (click)="onClear()">Clear</a>
                   </span>
                   <span class="input-group-append">
-                    <a class="btn btn-default" [routerLink]="['/product-type']">Back To List</a>
+                    <a class="btn btn-default" [routerLink]="['/role']">Back To List</a>
                   </span>
                 </div>
               </div>

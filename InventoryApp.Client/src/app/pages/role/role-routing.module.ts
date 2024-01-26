@@ -12,12 +12,12 @@ const routes: Routes = [{
         path: '',
         component: RoleComponent
       },
-      //{
-      //  path: 'add-edit-product-type', loadChildren: () => import('./add-edit-product-type/add-edit-product-type.module').then(m => m.AddEditProductTypeModule)
-      //},
-      //{
-      //  path: 'add-edit-product-type/:id', loadChildren: () => import('./add-edit-product-type/add-edit-product-type.module').then(m => m.AddEditProductTypeModule)
-      //}
+      {
+        path: 'add-edit-role', loadChildren: () => import('./add-edit-role/add-edit-role.module').then(m => m.AddEditRoleModule)
+      },
+      {
+        path: 'add-edit-role/:id', loadChildren: () => import('./add-edit-role/add-edit-role.module').then(m => m.AddEditRoleModule)
+      }
     ]
 }];
 

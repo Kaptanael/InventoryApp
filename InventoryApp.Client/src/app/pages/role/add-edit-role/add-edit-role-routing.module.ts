@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AddEditProductTypeComponent } from './add-edit-product-type.component';
-import { ProductTypeService } from '../../../_services/product-type.service';
+import { AddEditRoleComponent } from './add-edit-role.component';
+import { RoleService } from '../../../_services/role.service';
 
 
 const routes: Routes = [{
@@ -11,7 +11,7 @@ const routes: Routes = [{
     [
       {
         path: '',
-        component: AddEditProductTypeComponent
+        component: AddEditRoleComponent
       }      
     ]
 }];
@@ -19,6 +19,6 @@ const routes: Routes = [{
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [ProductTypeService]
+  providers: [RoleService]
 })
-export class AddEditProductTypeRoutingModule { }
+export class AddEditRoleRoutingModule { }
