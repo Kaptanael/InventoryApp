@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UserRoleService } from '../user-role/user-role.service';
 import { UserService } from './user.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Table } from 'primeng/table'
 
 @Component({
   selector: 'app-user',
@@ -10,6 +11,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class UserComponent {
   public userLists: [] = [];
+
+  @ViewChild('userTableRef') dt: Table | undefined;
   constructor(private userService: UserService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService) {
@@ -34,6 +37,14 @@ export class UserComponent {
 
   onEdit(id: number) {
     //this.router.navigate(['./add-edit-branch', branch.id], { relativeTo: this.route });
+  }
+
+  addNewUser() {
+
+  }
+
+  applyFilterGlobal($event: any, stringVal: any) {
+    this.dt?.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
 
   onDelete(user: any) {

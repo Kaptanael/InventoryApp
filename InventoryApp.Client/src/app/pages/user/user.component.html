@@ -15,7 +15,8 @@
               </div>
             </div>
             <div class="card-body no-padding">
-              <p-table #userTableRef [value]="userLists" 
+              <p-table #userTableRef
+                       [value]="userLists"
                        [tableStyle]="{ 'min-width': '100rem' }"
                        [responsive]="true"
                        selectionMode="single"
@@ -23,21 +24,23 @@
                        stateStorage="session"
                        stateKey="statedemo-session"
                        [paginator]="true"
-                       [rows]="5" [globalFilterFields]="['userName']"
+                       [rows]="5"
+                       [globalFilterFields]="['userName','firstName','lastName','email','mobile']"
                        [rowsPerPageOptions]="[5,10,15,20]">
                 <ng-template pTemplate="caption">
                   <div class="container-fluid">
                     <div class="row">
-                      <div class="col-md-11 pl-0">
-                        <input type="text" class="form-input search-input" id="searchUser"
-                               tabindex="1" maxlength="30"
+                      <div class="col-md-10 pl-0">
+                        <input type="text" class="form-input search-input" style="width:100%;height:38px" id="searchUser"
+                               tabindex="1" maxlength="30"  (input) = "applyFilterGlobal($event, 'contains')" 
                                placeholder="Search User name, first name, last name, email, mobile no"
-                               (input) = "userTableRef.filterGlobal($event.target, 'contains')" />
+                                />
+                      </div>
+                      <div class="col-md-1">
                       </div>
                       <div class="col-md-1 pr-0 pl-0">
-                        <button type="button" class="btn btn-default btn-block btn-primary btn-add lang-bn">
-                          (click)="addNew()"
-                          <i class="pi pi-plus"></i>
+                        <button type="button" class="btn btn-block btn-primary" (click)="addNewUser()">
+                          <i class="fa fa-plus"></i>
                           ADD
                         </button>
                       </div>

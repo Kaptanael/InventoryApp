@@ -24,11 +24,11 @@ public class SeedData
     }
     private static void AddInitialData(InventoryDbContext context)
     {
-        addRoles(context);
-        addUsers(context);
-        addMenus(context);
-        addProductTypes(context);
-        SaveChanges(context);
+        //addRoles(context);
+        //addUsers(context);
+        //addMenus(context);
+        //addProductTypes(context);
+        //SaveChanges(context);
     }
 
     private static void addRoles(InventoryDbContext context)
