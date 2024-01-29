@@ -13,22 +13,7 @@ public static class ConfigureApplicationServices
         builder.Services.AddScoped<IWarehouseService, WarehouseService>();
         builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
         return builder;
-    }
-
-    private static WebApplicationBuilder AddSerilogFromSerilogConfig(this WebApplicationBuilder builder)
-    {
-        var logger = new LoggerConfiguration()
-           .ReadFrom.Configuration(new ConfigurationBuilder()
-           .AddJsonFile("serilog.development.config.json")
-           .Build())
-           .Enrich.FromLogContext()
-           .CreateLogger();
-        builder.Logging.ClearProviders();
-        builder.Logging.AddConsole();
-        builder.Logging.AddSerilog(logger);
-
-        return builder;
-    }
+    }   
 
     private static WebApplicationBuilder AddSerilogFromAppSettings(this WebApplicationBuilder builder)
     {
