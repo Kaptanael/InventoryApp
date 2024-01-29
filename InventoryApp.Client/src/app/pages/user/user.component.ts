@@ -39,10 +39,6 @@ export class UserComponent {
     //this.router.navigate(['./add-edit-branch', branch.id], { relativeTo: this.route });
   }
 
-  addNewUser() {
-
-  }
-
   applyFilterGlobal($event: any, stringVal: any) {
     this.dt?.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
