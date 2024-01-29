@@ -7,6 +7,7 @@ import { ToastModule } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddEditUserComponent } from './add-edit-user.component';
+import { RoleService } from '../../../_services/role.service';
 
 
 @NgModule({
@@ -18,6 +19,6 @@ import { AddEditUserComponent } from './add-edit-user.component';
     ReactiveFormsModule,
     ToastModule
   ],
-  providers: [MessageService]
+  providers: [MessageService, RoleService]
 })
 export class AddEditUserModule { }

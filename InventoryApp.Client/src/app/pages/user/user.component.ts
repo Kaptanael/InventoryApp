@@ -3,6 +3,7 @@ import { UserRoleService } from '../user-role/user-role.service';
 import { UserService } from './user.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -15,7 +16,8 @@ export class UserComponent {
 
   @ViewChild('userTableRef') dt: Table | undefined;
 
-  constructor(private userService: UserService, private messageService: MessageService, private confirmationService: ConfirmationService) {
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute,
+    private messageService: MessageService, private confirmationService: ConfirmationService) {
   }
 
   ngOnInit(): void {
@@ -31,12 +33,11 @@ export class UserComponent {
       error: (err) => {
         console.log(err);
       }
-
     })
   }
 
   onEdit(id: number) {
-    //this.router.navigate(['./add-edit-branch', branch.id], { relativeTo: this.route });
+    this.router.navigate(['./add-edit-user', id], { relativeTo: this.route });
   }
 
   applyFilterGlobal($event: any, stringVal: any) {

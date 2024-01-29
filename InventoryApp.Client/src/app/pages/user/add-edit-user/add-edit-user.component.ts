@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { UserService } from '../user.service';
+import { RoleService } from '../../../_services/role.service';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -15,12 +16,16 @@ export class AddEditUserComponent {
   public selectedUser: any = null;
   public selectedUserId: string | undefined;
   public title: string | undefined;
+  public roles: any = [{
+    id: '', name: ''
+    }
+  ];
 
   constructor(private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private messageService: MessageService,
-    private userService: UserService) {
+    private userService: UserService, private roleService: RoleService) {
     this.createFormGroup();
   }
 
@@ -28,6 +33,7 @@ export class AddEditUserComponent {
     this.route.paramMap.subscribe(params => params.get('id') ? this.selectedUserId = params.get('id')?.toString() : null);
     this.title = this.selectedUserId ? 'Edit User' : 'Add User';
     this.getById();
+    this.getAllRole();
   }
 
   createFormGroup(): void {
@@ -36,6 +42,7 @@ export class AddEditUserComponent {
       password: ['', [this.noWhitespaceValidator, Validators.maxLength(50)]],
       firstName: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
       lastName: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
+      userRole: ['', Validators.required],
       email: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
       mobile: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(14)]],
       status: ['1', Validators.required],
@@ -47,6 +54,18 @@ export class AddEditUserComponent {
       control.setValue('');
     }
     return null;
+  }
+
+  getAllRole() {
+    this.roleService.getAll().subscribe({
+      next: (res) => {
+        this.roles = res.body;
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   getById(): void {
