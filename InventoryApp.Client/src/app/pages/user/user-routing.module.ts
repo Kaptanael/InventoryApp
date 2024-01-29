@@ -5,7 +5,18 @@ import { UserComponent } from './user.component';
 
 const routes: Routes = [{
   path: '',
-  component: UserComponent
+  children: [
+    {
+      path: '',
+      component: UserComponent,
+    },
+    {
+      path: 'add-edit-user', loadChildren: () => import('./add-edit-user/add-edit-user.module').then(m => m.AddEditUserModule)
+    },
+    {
+      path: 'add-edit-user/:id', loadChildren: () => import('./add-edit-user/add-edit-user.module').then(m => m.AddEditUserModule)
+    }
+  ]
 }];
 
 @NgModule({

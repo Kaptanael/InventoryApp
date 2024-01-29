@@ -10,12 +10,12 @@ import { Table } from 'primeng/table'
   styleUrl: './user.component.css'
 })
 export class UserComponent {
+
   public userLists: [] = [];
 
   @ViewChild('userTableRef') dt: Table | undefined;
-  constructor(private userService: UserService,
-    private messageService: MessageService,
-    private confirmationService: ConfirmationService) {
+
+  constructor(private userService: UserService, private messageService: MessageService, private confirmationService: ConfirmationService) {
   }
 
   ngOnInit(): void {
@@ -37,10 +37,6 @@ export class UserComponent {
 
   onEdit(id: number) {
     //this.router.navigate(['./add-edit-branch', branch.id], { relativeTo: this.route });
-  }
-
-  addNewUser() {
-
   }
 
   applyFilterGlobal($event: any, stringVal: any) {
