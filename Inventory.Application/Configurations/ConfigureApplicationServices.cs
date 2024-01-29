@@ -6,11 +6,10 @@ public static class ConfigureApplicationServices
     {
         builder.AddSerilogFromAppSettings();
         builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-        builder.Services.AddAutoMapper(typeof(MappingProfile));
-        //builder.Services.AddFluentValidationAutoValidation();
+        builder.Services.AddAutoMapper(typeof(MappingProfile));        
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IRoleService, RoleService>();
-        builder.Services.AddScoped<IBranchService, BranchService>();
+        builder.Services.AddScoped<IBranchService, BranchService>();        
         builder.Services.AddScoped<IWarehouseService, WarehouseService>();
         builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
         return builder;
