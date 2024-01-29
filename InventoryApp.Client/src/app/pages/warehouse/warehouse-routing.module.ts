@@ -13,6 +13,9 @@ const routes: Routes = [{
       },
       {
         path: 'add-edit-warehouse', loadChildren: () => import('./add-edit-warehouse/add-edit-warehouse.module').then(m => m.AddEditWarehouseModule)
+      },
+      {
+        path: 'add-edit-warehouse/:id', loadChildren: () => import('./add-edit-warehouse/add-edit-warehouse.module').then(m => m.AddEditWarehouseModule)
       }
     ]
 }];

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BranchService } from '../../../_services/branch.service';
 import { MessageService } from 'primeng/api';
+
+import { BranchService } from '../../../_services/branch.service';
+
 
 @Component({
   selector: 'app-add-edit-branch',

@@ -1,288 +1,63 @@
 <section class="content">
   <div class="container-fluid">
-    <section class="content">
+    <section class="content mt-3">
       <div class="row">
-        <div class="col-md-3">
-          <a class="btn btn-primary btn-block margin-bottom"  routerLink='/warehouse/add-edit-warehouse'><i class="fa fa-cubes"></i> <span>New Warehouse</span></a>
-          <input type="hidden" id="transMessage">
-          <div class="card card-solid">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
             <div class="card-header with-border">
-              <h3 class="card-title">Product In</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-card-tool" data-widget="collapse">
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="/PurchaseOrder"><i class="fa fa-circle-o text-red"></i> Purchase</a></li>
-                <li><a href="/Receiving"><i class="fa fa-circle-o text-yellow"></i> Receiving</a></li>
-                <li><a href="/TransferOrder"><i class="fa fa-circle-o text-light-blue"></i> Transfer Order</a></li>
-              </ul>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-          <div class="card card-solid">
-            <div class="card-header with-border">
-              <h3 class="card-title">Product Out</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-card-tool" data-widget="collapse">
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="/SalesOrder"><i class="fa fa-circle-o text-red"></i> Sales</a></li>
-                <li><a href="/Shipment"><i class="fa fa-circle-o text-yellow"></i> Shipment</a></li>
-                <li><a href="/TransferOrder"><i class="fa fa-circle-o text-light-blue"></i> Transfer Order</a></li>
-              </ul>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-9">
-
-          <div class="card card-primary">
-            <div class="card-header with-border">
-              <h3 class="card-title"><i class="fa fa-cubes text-primary"></i> <span>Warehouse List</span></h3>
+              <h3 class="card-title"><span>Branch List</span></h3>
               <div class="card-tools pull-right">
-                <div class="has-feedback">
+                <!--<div class="has-feedback">
                   <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
                   <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>-->
+                <div class="has-feedback mr-2">
+                  <button type="button" class="btn btn-primary" [routerLink]="['add-edit-warehouse']">
+                    <i class="fa fa-plus"></i> Add
+                  </button>
                 </div>
               </div>
-              <!-- /.card-tools -->
             </div>
-            <!-- /.card-header -->
             <div class="card-body no-padding">
-              <div class="mailcard-controls">
-                <div class="text-center">
-                  <button type="button" id="btn-export-excel" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"></i></button>
-                  <button type="button" id="btn-export-pdf" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"></i></button>
-                  <button type="button" id="btn-export-csv" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i></button>
-                </div>
-              </div>
-              <div class="table-responsive mailcard-messages">
-
-
-
-                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                  <table class="table table-hover table-striped dataTable no-footer" style="width: 100%;" id="DataTables_Table_0" role="grid">
-                    <thead>
-                      <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending" style="width: 176px;"></th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                Branch Name
-            : activate to sort column ascending" style="width: 250px;">
-                          Branch Name
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                Warehouse Name
-            : activate to sort column ascending" style="width: 310px;">
-                          Warehouse Name
-                        </th>
-                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                Warehouse Description
-            : activate to sort column ascending" style="width: 0px;">
-                          Warehouse Description
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                Street Address 1
-            : activate to sort column ascending" style="width: 351px;">
-                          Street Address 1
-                        </th>
-                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                Street Address 2
-            : activate to sort column ascending" style="width: 0px;">
-                          Street Address 2
-                        </th>
-                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                City
-            : activate to sort column ascending" style="width: 0px;">
-                          City
-                        </th>
-                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                Province
-            : activate to sort column ascending" style="width: 0px;">
-                          Province
-                        </th>
-                        <th class="hidden sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                Country
-            : activate to sort column ascending" style="width: 0px;">
-                          Country
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-
-
-
-
-                      <tr role="row" class="odd">
-                        <td class="sorting_1">
-                          <div class="tools">
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Edit/1dcf4a6b-317a-4fe8-88e0-497c1e1088fa"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Details/1dcf4a6b-317a-4fe8-88e0-497c1e1088fa"><i class="fa fa-list"></i></a>
-                            <a class="btn btn-danger btn-xs" href="/Warehouse/Delete/1dcf4a6b-317a-4fe8-88e0-497c1e1088fa"><i class="fa fa-trash"></i></a>
-                          </div>
-
-                        </td>
-                        <td>
-                          HQ
-                        </td>
-                        <td>
-                          WH5
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td>
-                          Berliner Platz 43
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-
-                      </tr>
-                      <tr role="row" class="even">
-                        <td class="sorting_1">
-                          <div class="tools">
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Edit/b575678f-626d-430d-82a1-de4210d7e1a0"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Details/b575678f-626d-430d-82a1-de4210d7e1a0"><i class="fa fa-list"></i></a>
-                            <a class="btn btn-danger btn-xs" href="/Warehouse/Delete/b575678f-626d-430d-82a1-de4210d7e1a0"><i class="fa fa-trash"></i></a>
-                          </div>
-
-                        </td>
-                        <td>
-                          HQ
-                        </td>
-                        <td>
-                          WH4
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td>
-                          Åkergatan 24
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="sorting_1">
-                          <div class="tools">
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Edit/2b980557-07a0-43e4-b464-47fd799f8ca3"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Details/2b980557-07a0-43e4-b464-47fd799f8ca3"><i class="fa fa-list"></i></a>
-                            <a class="btn btn-danger btn-xs" href="/Warehouse/Delete/2b980557-07a0-43e4-b464-47fd799f8ca3"><i class="fa fa-trash"></i></a>
-                          </div>
-
-                        </td>
-                        <td>
-                          HQ
-                        </td>
-                        <td>
-                          WH3
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td>
-                          184, chaussée de Tournai
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-
-                      </tr>
-                      <tr role="row" class="even">
-                        <td class="sorting_1">
-                          <div class="tools">
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Edit/d259af22-d3d6-442a-a931-a909bbdffc27"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Details/d259af22-d3d6-442a-a931-a909bbdffc27"><i class="fa fa-list"></i></a>
-                            <a class="btn btn-danger btn-xs" href="/Warehouse/Delete/d259af22-d3d6-442a-a931-a909bbdffc27"><i class="fa fa-trash"></i></a>
-                          </div>
-
-                        </td>
-                        <td>
-                          HQ
-                        </td>
-                        <td>
-                          WH2
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td>
-                          C/ Moralzarzal, 86
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="sorting_1">
-                          <div class="tools">
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Edit/5d5cedb1-62e6-460e-bec7-7f3711b03fa8"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-primary btn-xs" href="/Warehouse/Details/5d5cedb1-62e6-460e-bec7-7f3711b03fa8"><i class="fa fa-list"></i></a>
-                            <a class="btn btn-danger btn-xs" href="/Warehouse/Delete/5d5cedb1-62e6-460e-bec7-7f3711b03fa8"><i class="fa fa-trash"></i></a>
-                          </div>
-
-                        </td>
-                        <td>
-                          HQ
-                        </td>
-                        <td>
-                          WH1
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td>
-                          Rua Orós, 92
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-                        <td class="hidden">
-                        </td>
-
-                      </tr>
-                    </tbody>
-                  </table><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">Next</a></li></ul></div>
-                </div>
-
-                <!-- /.table -->
-              </div>
-              <!-- /.mail-card-messages -->
+              <p-table [value]="warehouses"
+                       [tableStyle]="{ 'min-width': '50rem' }"
+                       selectionMode="single"
+                       dataKey="id"
+                       stateStorage="session"
+                       stateKey="warehouse-session"
+                       [paginator]="true"
+                       [rows]="5"
+                       [rowsPerPageOptions]="[5,10,15,20]">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="city">City <p-sortIcon field="city"></p-sortIcon></th>
+                    <th pSortableColumn="province">Province <p-sortIcon field="province"></p-sortIcon></th>
+                    <th pSortableColumn="country">Country <p-sortIcon field="country"></p-sortIcon></th>
+                    <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                    <th>Action</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-warehouse>
+                  <tr>
+                    <td>{{ warehouse.name }}</td>
+                    <td>{{ warehouse.city }}</td>
+                    <td>{{ warehouse.province }}</td>
+                    <td>{{ warehouse.country }}</td>
+                    <td>{{ warehouse.status === true ? 'Active' : 'Inactive' }}</td>
+                    <td>
+                      <a class="btn btn-primary btn-xs mr-1" (click)="onEdit(warehouse)"><i class="fas fa-edit"></i></a>
+                      <a class="btn btn-danger btn-xs mr-1" (click)="onDelete(warehouse)"><i class="fa fa-trash"></i></a>
+                    </td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="5">No warehouses found.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
             </div>
-            <!-- /.card-body -->
             <div class="card-footer no-padding">
 
             </div>
@@ -290,13 +65,18 @@
           <div class="callout callout-info" style="margin-bottom: 0!important;">
             <h4><i class="fa fa-info"></i> Info:</h4>
             <p>
-              Warehouse is commercial building for storage of goods or products. One branch office can have single or multiple warehouse.
+              Warehouse is an store of a Company. To get started, you should have minimum one warehouse as your main store.
             </p>
           </div>
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </section>
   </div>
 </section>
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle text-danger">
+  <p-footer>
+    <button type="button" class="btn btn-default mr-2" pButton label="No" (click)="cd.reject()"></button>
+    <button type="button" class="btn btn-primary" pButton label="Yes" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>
+<p-toast key="toastKey1"></p-toast>

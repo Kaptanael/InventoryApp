@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AddEditBranchComponent } from './add-edit-branch.component';
 import { BranchService } from '../../../_services/branch.service';
 
