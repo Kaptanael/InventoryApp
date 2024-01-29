@@ -107,16 +107,18 @@ export class AddEditWarehouseComponent implements OnInit {
     if (!this.selectedWarehouseId) {
       this.warehouseService.create(model)
         .subscribe({
-          next: (rse) => {
-            if (rse.status === 200) {
-              this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Created successfully' });
+          next: (res) => {
+            if (res.status === 200 && (res as any).success) {
+              this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Warehouse created successfully' });
               setTimeout(() => {
-                this.router.navigate(['/branch']);
+                this.router.navigate(['/warehouse']);
               }, 1000);
+            } else if (!(res as any).success) {
+              this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Duplicate', detail: 'Warehouse already exist' });
             }
           },
           error: (err) => {
-            this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Error', detail: 'Failed to create' });
+            this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Error', detail: 'Failed to create Warehouse' });
           }
         });
     } else {
@@ -124,14 +126,14 @@ export class AddEditWarehouseComponent implements OnInit {
         .subscribe({
           next: (rse) => {
             if (rse.status === 200) {
-              this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Updated successfully' });
+              this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Warehouse updated successfully' });
               setTimeout(() => {
-                this.router.navigate(['/branch']);
+                this.router.navigate(['/warehouse']);
               }, 1000);
             }
           },
           error: (err) => {
-            this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Error', detail: 'Failed to update' });
+            this.messageService.add({ key: 'toastKey1', severity: 'error', summary: 'Error', detail: 'Failed to update Warehouse' });
           }
         });
     }
