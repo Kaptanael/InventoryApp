@@ -16,4 +16,23 @@ public class UserController : ControllerBase
     {
         return Ok(await _userService.GetAllUser());
     }
+
+
+    [HttpGet("GetById/{id}")]
+    public async Task<ActionResult<UserForListDto>> GetByIdAsync(Guid id)
+    {
+        return Ok(await _userService.GetUser(id));
+    }
+
+    [HttpPost("Create")]
+    public async Task<ActionResult> CrteateAsync([FromBody] UserForCreateDto request)
+    {
+        return Ok(await _userService.CreateAsync(request));
+    }
+
+    [HttpPut("Update/{id}")]
+    public async Task<ActionResult> UpdateAsync(Guid id, [FromBody] UserForUpdateDto request)
+    {
+        return Ok(await _userService.UpdateAsync(id, request));
+    }
 }

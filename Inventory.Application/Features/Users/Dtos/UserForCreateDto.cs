@@ -12,7 +12,8 @@ public class UserForCreateDto
 
     public string Email { get; set; }
 
-    public string Mobile { get; set; }       
+    public string Mobile { get; set; }     
+    public bool isActive { get; set; }
 
     public string[] Roles { get; set; }
 }
