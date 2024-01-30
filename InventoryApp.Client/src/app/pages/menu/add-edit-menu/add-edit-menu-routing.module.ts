@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AddEditProductTypeComponent } from './add-edit-product-type.component';
-import { ProductTypeService } from '../../../_services/product-type.service';
+import { AddEditMenuComponent } from './add-edit-menu.component';
+import { MenuService } from '../../../_services/menu.service';
 
 
 const routes: Routes = [{
@@ -11,7 +11,7 @@ const routes: Routes = [{
     [
       {
         path: '',
-        component: AddEditProductTypeComponent
+        component: AddEditMenuComponent
       }      
     ]
 }];
@@ -19,6 +19,6 @@ const routes: Routes = [{
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [ProductTypeService]
+  providers: [MenuService]
 })
-export class AddEditProductTypeRoutingModule { }
+export class AddEditMenuRoutingModule { }

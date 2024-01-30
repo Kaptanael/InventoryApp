@@ -12,12 +12,12 @@ const routes: Routes = [{
         path: '',
         component: MenuComponent
       },
-      //{
-      //  path: 'add-edit-menu', loadChildren: () => import('./add-edit-menu/add-edit-menu.module').then(m => m.AddEditProductTypeModule)
-      //},
-      //{
-      //  path: 'add-edit-menu/:id', loadChildren: () => import('./add-edit-menu/add-edit-menu.module').then(m => m.AddEditProductTypeModule)
-      //}
+      {
+        path: 'add-edit-menu', loadChildren: () => import('./add-edit-menu/add-edit-menu.module').then(m => m.AddEditMenuModule)
+      },
+      {
+        path: 'add-edit-menu/:id', loadChildren: () => import('./add-edit-menu/add-edit-menu.module').then(m => m.AddEditMenuModule)
+      }
     ]
 }];
 

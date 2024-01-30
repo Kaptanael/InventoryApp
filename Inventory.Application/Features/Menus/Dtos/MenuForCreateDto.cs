@@ -6,4 +6,6 @@ public class MenuForCreateDto
 
     public bool Status { get; set; }
 
+    public Guid? ParentMenuId { get; set; }
+
 }

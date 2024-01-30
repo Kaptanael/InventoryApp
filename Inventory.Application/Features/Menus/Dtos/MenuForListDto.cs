@@ -8,6 +8,8 @@ public class MenuForListDto
 
     public bool Status { get; set; }
 
+    public Guid? ParentMenuId { get; set; }
+
     public Guid CreatedBy { get; set; }
 
     public DateTime CreatedDate { get; set; }

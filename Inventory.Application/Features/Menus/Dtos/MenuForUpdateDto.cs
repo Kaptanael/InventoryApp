@@ -8,4 +8,6 @@ public class MenuForUpdateDto
 
     public bool Status { get; set; }
 
+    public Guid? ParentMenuId { get; set; }
+
 }

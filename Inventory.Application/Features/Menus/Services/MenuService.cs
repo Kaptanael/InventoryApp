@@ -57,11 +57,8 @@ public class MenuService : IMenuService
 
         var entity = new Menu();
         entity.Name = request.Name.Trim();
-        //entity.Status = request.Status;
-        //entity.CreatedBy = _currentUserService.UserId;
-        //entity.CreatedDate = _dateTimeService.Now;
-        //entity.UpdatedBy = _currentUserService.UserId;
-        //entity.UpdatedDate = _dateTimeService.Now;
+        entity.Status = request.Status;
+        entity.ParentMenuId = request.ParentMenuId;
         await _menuRepository.Create(entity);
 
         response.Success = true;
@@ -96,12 +93,9 @@ public class MenuService : IMenuService
         }
 
         entity.Id = request.Id;
-        entity.Name = request.Name.Trim();
-        //entity.Status = request.Status;
-        //entity.CreatedBy = _currentUserService.UserId;        
-        //entity.CreatedDate = _dateTimeService.Now;
-        //entity.UpdatedBy = _currentUserService.UserId;
-        //entity.UpdatedDate = _dateTimeService.Now;
+        entity.Name = request.Name.Trim();        
+        entity.Status = request.Status;
+        entity.ParentMenuId = request.ParentMenuId;
         await _menuRepository.Update(entity);
 
         response.Success = true;
