@@ -14,12 +14,10 @@ export class AddEditUserComponent {
 
   public formGroup!: FormGroup;
   public selectedUser: any = null;
+  public isEditMode: boolean = false;
   public selectedUserId: string | undefined;
   public title: string | undefined;
-  public roles: any = [{
-    id: '', name: ''
-    }
-  ];
+  public roles: any = [{ id: '', name: '' }];
 
   constructor(private fb: FormBuilder,
     private router: Router,
@@ -32,6 +30,8 @@ export class AddEditUserComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => params.get('id') ? this.selectedUserId = params.get('id')?.toString() : null);
     this.title = this.selectedUserId ? 'Edit User' : 'Add User';
+    this.selectedUserId ? this.formGroup.get('userName')?.disable() : this.formGroup.get('userName')?.enable();
+    this.selectedUserId ? this.formGroup.get('password')?.disable() : this.formGroup.get('password')?.enable();
     this.getById();
     this.getAllRole();
   }
