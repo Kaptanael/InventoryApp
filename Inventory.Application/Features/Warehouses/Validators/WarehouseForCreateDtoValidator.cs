@@ -31,6 +31,9 @@ public class WarehouseForCreateDtoValidator : AbstractValidator<WarehouseForCrea
            .NotEmpty().WithMessage("{PropertyName} is required")
            .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters");
 
+        RuleFor(a => a.Status).
+            Must(x => x == false || x == true).WithMessage("{PropertyName} is required");
+
         RuleFor(x => x)
            .Must(x => !IsExistWarehouse(x.Name))
            .WithMessage("Role already exist");

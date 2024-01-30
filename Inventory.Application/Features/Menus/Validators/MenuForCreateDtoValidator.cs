@@ -10,7 +10,10 @@ public class MenuForCreateDtoValidator : AbstractValidator<MenuForCreateDto>
 
         RuleFor(a => a.Name)
             .NotEmpty().WithMessage("{PropertyName} is required")            
-            .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters");        
+            .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters");
+
+        RuleFor(a => a.Status).
+             Must(x => x == false || x == true).WithMessage("{PropertyName} is required");
 
         RuleFor(x => x)
            .Must(x => !IsExistMenu(x.Name))

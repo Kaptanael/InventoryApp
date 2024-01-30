@@ -34,9 +34,12 @@ public class BranchForUpdateDtoValidator : AbstractValidator<BranchForUpdateDto>
            .NotEmpty().WithMessage("{PropertyName} is required")
            .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters");
 
+        RuleFor(a => a.Status).
+            Must(x => x == false || x == true).WithMessage("{PropertyName} is required");
+
         RuleFor(x => x)
            .Must(x => !IsExistBranch(x.Name, x.Id))
-           .WithMessage("Role already exist");
+           .WithMessage("Branch already exist");
     }
 
     private bool IsExistBranch(string name, Guid id)

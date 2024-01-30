@@ -15,6 +15,9 @@ public class ProductTypeForCreateDtoValidator : AbstractValidator<ProductTypeFor
         RuleFor(a => a.Description)            
             .MaximumLength(200).WithMessage("{PropertyName} must not exceed 50 characters");
 
+        RuleFor(a => a.Status).
+            Must(x => x == false || x == true).WithMessage("{PropertyName} is required");
+
         RuleFor(x => x)
            .Must(x => !IsExistProductType(x.Name))
            .WithMessage("Product type already exist");

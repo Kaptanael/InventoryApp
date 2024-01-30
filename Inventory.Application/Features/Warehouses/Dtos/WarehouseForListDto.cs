@@ -18,6 +18,8 @@ public class WarehouseForListDto
 
     public string Country { get; set; }
 
+    public bool Status { get; set; }
+
     public Guid CreatedBy { get; set; }
 
     public DateTime CreatedDate { get; set; }
