@@ -12,6 +12,7 @@ public static class ConfigureApplicationServices
         builder.Services.AddScoped<IBranchService, BranchService>();        
         builder.Services.AddScoped<IWarehouseService, WarehouseService>();
         builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
+        builder.Services.AddScoped<IMenuService, MenuService>();
         return builder;
     }   
 
