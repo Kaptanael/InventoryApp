@@ -7,7 +7,7 @@ public partial class Warehouse
 {
     public Guid Id { get; set; }
 
-    public Guid BranchId { get; set; }
+    public Guid? BranchId { get; set; }
 
     public string Name { get; set; } = null!;
 
@@ -31,7 +31,7 @@ public partial class Warehouse
 
     public DateTime UpdatedDate { get; set; }
 
-    public virtual Branch Branch { get; set; } = null!;
+    public virtual Branch? Branch { get; set; }
 
     public virtual User CreatedByNavigation { get; set; } = null!;
 
