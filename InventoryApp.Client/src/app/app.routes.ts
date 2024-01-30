@@ -58,6 +58,9 @@ const routes: Routes = [
       },
       {
         path: "role", loadChildren: () => import('./pages/role/role.module').then(m => m.RoleModule)
+      },
+      {
+        path: "menu", loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuModule)
       }
     ]
   },

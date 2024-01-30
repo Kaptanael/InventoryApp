@@ -6,9 +6,9 @@ public class ProductTypeController : ControllerBase
 {
     private readonly IProductTypeService _productTypeService;
 
-    public ProductTypeController(IProductTypeService roleService)
+    public ProductTypeController(IProductTypeService productTypeService)
     {
-        _productTypeService = roleService;
+        _productTypeService = productTypeService;
     }
     
     [HttpGet("GetAll")]

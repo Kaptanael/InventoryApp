@@ -1,4 +1,6 @@
-﻿namespace Inventory.Application.Configurations;
+﻿using Inventory.Application.Features;
+
+namespace Inventory.Application.Configurations;
 
 public static class ConfigureApplicationServices
 {
