@@ -1,6 +1,4 @@
-﻿using Inventory.Application.Features;
-
-namespace Inventory.Application.Configurations;
+﻿namespace Inventory.Application.Configurations;
 
 public static class ConfigureApplicationServices
 {
@@ -15,6 +13,7 @@ public static class ConfigureApplicationServices
         builder.Services.AddScoped<IWarehouseService, WarehouseService>();
         builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
         builder.Services.AddScoped<IMenuService, MenuService>();
+        builder.Services.AddScoped<IVendorService, VendorService>();
         return builder;
     }   
 

@@ -1,6 +1,6 @@
 ﻿namespace Inventory.Application.Features;
 
-public class VendorService 
+public class VendorService : IVendorService
 {
     private readonly IMapper _mapper;
     private readonly IVendorRepository _vendorRepository;
@@ -63,7 +63,7 @@ public class VendorService
         entity.City = request.City;
         entity.Province = request.Province;
         entity.Country = request.Country;
-        entity.Status =request.Status;
+        entity.Status = request.Status;
         entity.CreatedBy = _currentUserService.UserId;
         entity.CreatedDate = _dateTimeService.Now;
         entity.UpdatedBy = _currentUserService.UserId;
@@ -103,7 +103,7 @@ public class VendorService
 
         entity.Id = request.Id;
         entity.Name = request.Name;
-        entity.BusinessSize= request.BusinessSize;
+        entity.BusinessSize = request.BusinessSize;
         entity.Description = request.Description;
         entity.StreetAddress = request.StreetAddress;
         entity.City = request.City;
