@@ -47,11 +47,60 @@ public class UserService : BaseService, IUserService
             UpdatedBy = _currentUserService.UserId,
             UpdatedDate = DateTime.Now,
             UserRoles = userRoles
-        };         
-        await _userRepository.Insert(entity);        
+        };
+        await _userRepository.Insert(entity);
 
         response.Success = true;
         response.Message = "Creating Successful";
+        return response;
+    }
+
+    public async Task<BaseCommandResponse> UpdateAsync(Guid guid, UserForUpdateDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new UserForUpdateDtoValidator(_serviceProvider);
+        var validationResult = await validator.ValidateAsync(request);
+
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Creating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
+
+        var userFromRepo = _userRepository.GetUser(guid);
+
+        if (userFromRepo.Id != request.Id)
+        {
+            response.Success = false;
+            response.Message = "User Not Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
+
+        var userRoles = new List<UserRole>();
+        //foreach (var roleId in request.Roles)
+        //{
+        //    var role = new UserRole { UserId = _currentUserService.UserId, RoleId = new Guid(roleId) };
+        //    userRoles.Add(role);
+        //}
+
+        var entity = new User
+        {
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Email = request.Email,
+            Mobile = request.Mobile,
+            IsActive = request.isActive,
+            UpdatedBy = _currentUserService.UserId,
+            UpdatedDate = DateTime.Now,
+            UserRoles = userRoles
+        };
+        await _userRepository.Update(entity);
+
+        response.Success = true;
+        response.Message = "Update Successful";
         return response;
     }
 
@@ -79,5 +128,15 @@ public class UserService : BaseService, IUserService
     public async Task<bool> IsActiveUser(Guid id)
     {
         return await _userRepository.IsActiveUser(id);
+    }
+
+    public Task<Guid> CreateUserRoleAsync(UserRole userRole)
+    {
+        return  _userRepository.InsertUserRole(userRole);
+    }
+
+    public Task<Guid> DeleteUserRoleAsync(UserRole userRole)
+    {
+        return _userRepository.DeleteUserRole(userRole);
     }
 }
