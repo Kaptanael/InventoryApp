@@ -130,11 +130,6 @@ public class UserService : BaseService, IUserService
         return await _userRepository.IsActiveUser(id);
     }
 
-    public Task<Guid> CreateUserRoleAsync(UserRole userRole)
-    {
-        return  _userRepository.InsertUserRole(userRole);
-    }
-
     public Task<Guid> DeleteUserRoleAsync(UserRole userRole)
     {
         return _userRepository.DeleteUserRole(userRole);

@@ -21,6 +21,5 @@ public interface IUserRepository
     Task<bool> IsActiveUser(Guid id);
 
     Task<Guid> DeleteUserRole(UserRole userRole);
-    Task<Guid> InsertUserRole(UserRole userRole);
 
 }

@@ -91,11 +91,4 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
         return userRole.UserId;
     }
-
-    public async Task<Guid> InsertUserRole(UserRole userRole)
-    {
-        await _context.UserRoles.AddAsync(userRole);
-        await _context.SaveChangesAsync();
-        return userRole.Id;
-    }
 }
