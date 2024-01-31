@@ -23,16 +23,16 @@ public class VendorService : IVendorService
 
     public async Task<List<VendorForListDto>> GetAll()
     {
-        var branchesFromRepo = await _vendorRepository.GetAll();
-        var branchesToReturn = _mapper.Map<List<VendorForListDto>>(branchesFromRepo);
-        return branchesToReturn;
+        var vendorsFromRepo = await _vendorRepository.GetAll();
+        var vendorsToReturn = _mapper.Map<List<VendorForListDto>>(vendorsFromRepo);
+        return vendorsToReturn;
     }
 
     public async Task<VendorForListDto> GetById(Guid id)
     {
-        var branchFromRepo = await _vendorRepository.GetById(id);
-        var branchToReturn = _mapper.Map<VendorForListDto>(branchFromRepo);
-        return branchToReturn;
+        var vendorFromRepo = await _vendorRepository.GetById(id);
+        var vendorToReturn = _mapper.Map<VendorForListDto>(vendorFromRepo);
+        return vendorToReturn;
     }
 
     public async Task<bool> IsExist(string name, Guid? id = null)
