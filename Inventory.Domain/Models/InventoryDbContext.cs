@@ -39,6 +39,8 @@ public partial class InventoryDbContext : DbContext
 
     public virtual DbSet<Variation> Variations { get; set; }
 
+    public virtual DbSet<Vendor> Vendors { get; set; }
+
     public virtual DbSet<Warehouse> Warehouses { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -287,6 +289,33 @@ public partial class InventoryDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
             entity.HasOne(d => d.UpdatedByNavigation).WithMany(p => p.VariationUpdatedByNavigations)
+                .HasForeignKey(d => d.UpdatedBy)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+        modelBuilder.Entity<Vendor>(entity =>
+        {
+            entity.ToTable("Vendor");
+
+            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+            entity.Property(e => e.BusinessSize).HasMaxLength(50);
+            entity.Property(e => e.City).HasMaxLength(50);
+            entity.Property(e => e.Country).HasMaxLength(50);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Description).HasMaxLength(200);
+            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Province).HasMaxLength(50);
+            entity.Property(e => e.Status)
+                .IsRequired()
+                .HasDefaultValueSql("((1))");
+            entity.Property(e => e.StreetAddress).HasMaxLength(200);
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.VendorCreatedByNavigations)
+                .HasForeignKey(d => d.CreatedBy)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.UpdatedByNavigation).WithMany(p => p.VendorUpdatedByNavigations)
                 .HasForeignKey(d => d.UpdatedBy)
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });

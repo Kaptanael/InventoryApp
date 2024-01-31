@@ -55,6 +55,10 @@ public partial class User
 
     public virtual ICollection<Variation> VariationUpdatedByNavigations { get; set; } = new List<Variation>();
 
+    public virtual ICollection<Vendor> VendorCreatedByNavigations { get; set; } = new List<Vendor>();
+
+    public virtual ICollection<Vendor> VendorUpdatedByNavigations { get; set; } = new List<Vendor>();
+
     public virtual ICollection<Warehouse> WarehouseCreatedByNavigations { get; set; } = new List<Warehouse>();
 
     public virtual ICollection<Warehouse> WarehouseUpdatedByNavigations { get; set; } = new List<Warehouse>();
