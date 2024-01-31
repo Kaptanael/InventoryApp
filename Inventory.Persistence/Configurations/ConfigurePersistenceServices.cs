@@ -17,6 +17,7 @@ public static class ConfigurePersistenceServices
         builder.Services.AddScoped<IProductTypeRepository, ProductTypeRepository>();
         builder.Services.AddScoped<IMenuRepository, MenuRepository>();
         builder.Services.AddScoped<IUnitRepository, UnitRepository>();
+        builder.Services.AddScoped<IVendorRepository,VendorRepository>();
 
         return builder;
     }

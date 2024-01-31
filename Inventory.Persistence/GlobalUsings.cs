@@ -5,4 +5,4 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Builder;
 global using Inventory.Domain.Models;
-global using Inventory.Application.Repositories;
+global using Inventory.Application.Contracts.Persistence;

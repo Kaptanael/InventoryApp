@@ -1,4 +1,4 @@
-﻿namespace Inventory.Application.Repositories;
+﻿namespace Inventory.Application.Contracts.Persistence;
 
 public interface IProductTypeRepository
 {   
