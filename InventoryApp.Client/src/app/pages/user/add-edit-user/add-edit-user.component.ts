@@ -86,11 +86,11 @@ export class AddEditUserComponent {
     if (this.selectedUser) {
       this.formGroup.patchValue({
         userName: this.selectedUser.userName,
-        firstName: this.selectedUser.description,
-        lastName: this.selectedUser.description,
-        email: this.selectedUser.streetAddress,
-        mobile: this.selectedUser.city,
-        status: this.getStringBoolean(this.selectedUser.status),
+        firstName: this.selectedUser.firstName,
+        lastName: this.selectedUser.lastName,
+        email: this.selectedUser.email,
+        mobile: this.selectedUser.mobile,
+        status: this.getStringBoolean(this.selectedUser.isActive),
       })
     }
   }
