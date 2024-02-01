@@ -10,5 +10,6 @@ public class MappingProfile : Profile
         CreateMap<Warehouse, WarehouseForListDto>().ReverseMap();
         CreateMap<ProductType, ProductTypeForListDto>().ReverseMap();
         CreateMap<Menu, MenuForListDto>().ReverseMap();
+        CreateMap<Vendor, VendorForListDto>().ReverseMap();
     }
 }

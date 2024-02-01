@@ -28,13 +28,14 @@ export class AddEditVendorComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => params.get('id') ? this.selectedBranchId = params.get('id')?.toString() : null);
-    this.title = this.selectedBranchId ? 'Edit Branch' : 'Add Branch';
+    this.title = this.selectedBranchId ? 'Edit Vendor' : 'Add Vendor';
     this.getById();
   }
 
   createFormGroup(): void {
     this.formGroup = this.fb.group({
       name: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
+      businessSize: ['', Validators.required],
       status: ['1', Validators.required],
       description: ['', [this.noWhitespaceValidator, Validators.maxLength(200)]],
       street: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(200)]],
@@ -58,10 +59,11 @@ export class AddEditVendorComponent implements OnInit {
     }
   }
 
-  fillUpFields(): void{
+  fillUpFields(): void {
     if (this.selectedBranch) {
       this.formGroup.patchValue({
         name: this.selectedBranch.name,
+        businessSize: this.selectedBranch.businessSize,
         status: this.getStringBoolean(this.selectedBranch.status),
         description: this.selectedBranch.description,
         street: this.selectedBranch.streetAddress,
@@ -91,27 +93,28 @@ export class AddEditVendorComponent implements OnInit {
     this.formGroup.patchValue({ status: 1 });
   }
 
-  onSubmit(): void {   
+  onSubmit(): void {
 
     const model = {
       id: this.selectedBranchId,
       name: this.formGroup.controls['name'].value,
       status: +this.formGroup.controls['status'].value === 1 ? true : false,
+      businessSize: this.formGroup.controls['businessSize'].value,
       description: this.formGroup.controls['description'].value,
       streetAddress: this.formGroup.controls['street'].value,
       city: this.formGroup.controls['city'].value,
       province: this.formGroup.controls['province'].value,
       country: this.formGroup.controls['country'].value,
-    }    
+    }
 
     if (!this.selectedBranchId) {
       this.vendorService.create(model)
         .subscribe({
           next: (rse) => {
-            if (rse.status === 200) {              
+            if (rse.status === 200) {
               this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Created successfully' });
               setTimeout(() => {
-                this.router.navigate(['/branch']);
+                this.router.navigate(['/vendor']);
               }, 1000);
             }
           },
@@ -126,8 +129,8 @@ export class AddEditVendorComponent implements OnInit {
             if (rse.status === 200) {
               this.messageService.add({ key: 'toastKey1', severity: 'success', summary: 'Success', detail: 'Updated successfully' });
               setTimeout(() => {
-                this.router.navigate(['/branch']);
-              },1000);              
+                this.router.navigate(['/vendor']);
+              }, 1000);
             }
           },
           error: (err) => {

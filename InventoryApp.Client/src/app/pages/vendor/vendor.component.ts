@@ -30,6 +30,7 @@ export class VendorComponent implements OnInit {
   getAll() {
     this.vendorService.getAll().subscribe({
       next: (res) => {
+        console.log(res);
         this.vendors = res.body;
       },
       error: (err) => {
