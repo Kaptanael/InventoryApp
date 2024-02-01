@@ -30,6 +30,7 @@ public class UserRepository : IUserRepository
         user = await (from u in _context.Users
                 join role in _context.UserRoles
                 on u.Id equals role.UserId
+                where u.Id == id
                 select (new UserWithRoleDto
                 {
                     Id = u.Id,

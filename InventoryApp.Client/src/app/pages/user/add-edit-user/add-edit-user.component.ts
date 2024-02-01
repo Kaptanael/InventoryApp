@@ -118,7 +118,7 @@ export class AddEditUserComponent {
       lastName: this.formGroup.controls['lastName'].value,
       email: this.formGroup.controls['email'].value,
       mobile: this.formGroup.controls['mobile'].value,
-      status: + this.formGroup.controls['status'].value === 1 ? true : false,
+      isActive: + this.formGroup.controls['status'].value === 1 ? true : false,
       roles: [this.formGroup.controls['userRole'].value],
     }
 
