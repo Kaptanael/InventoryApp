@@ -5,49 +5,55 @@
         <div class="col-md-12">
           <div class="card card-primary card-outline">
             <div class="card-header with-border">
-              <h3 class="card-title"><span> Vendor List</span></h3>
+              <h3 class="card-title"><span>Vendor List</span></h3>
               <div class="card-tools pull-right">
                 <!--<div class="has-feedback">
                   <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
                   <span class="glyphicon glyphicon-search form-control-feedback"></span>
                 </div>-->
                 <div class="has-feedback mr-2">
-                  <button type="button" class="btn btn-primary" [routerLink]="['add-edit-branch']">
+                  <button type="button" class="btn btn-primary" [routerLink]="['add-edit-vendor']">
                     <i class="fa fa-plus"></i> Add
                   </button>
                 </div>
               </div>
             </div>
             <div class="card-body no-padding">
-              <p-table [value]="vendorlist"
-                       [tableStyle]="{ 'min-width': '100rem' }"
-                       [responsive]="true"
+              <p-table [value]="vendors"
+                       [tableStyle]="{ 'min-width': '50rem' }"                       
                        selectionMode="single"
                        dataKey="id"
                        stateStorage="session"
-                       stateKey="statedemo-session"
+                       stateKey="vendor-session"
                        [paginator]="true"
                        [rows]="5"
                        [rowsPerPageOptions]="[5,10,15,20]">
                 <ng-template pTemplate="header">
                   <tr>
-                    <th pSortableColumn="vendorName">Vendor Name <p-sortIcon field="vendorName"></p-sortIcon></th>
-                    <th pSortableColumn="businessSize">Business Size <p-sortIcon field="businessSize"></p-sortIcon></th>
+                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="city">City <p-sortIcon field="city"></p-sortIcon></th>
+                    <th pSortableColumn="province">Province <p-sortIcon field="province"></p-sortIcon></th>
+                    <th pSortableColumn="country">Country <p-sortIcon field="country"></p-sortIcon></th>
+                    <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
                     <th>Action</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-vendor>
                   <tr>
-                    <td>{{ vendor.product }}</td>
-                    <td>{{ vendor.warehouse }}</td>
+                    <td>{{ vendor.name }}</td>
+                    <td>{{ vendor.city }}</td>
+                    <td>{{ vendor.province }}</td>
+                    <td>{{ vendor.country }}</td>
+                    <td>{{ vendor.status === true ? 'Active' : 'Inactive' }}</td>
                     <td>
-
+                      <a class="btn btn-primary btn-xs mr-1" (click)="onEdit(vendor)"><i class="fas fa-edit"></i></a>                      
+                      <a class="btn btn-danger btn-xs mr-1" (click)="onDelete(vendor)"><i class="fa fa-trash"></i></a>
                     </td>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="emptymessage">
                   <tr>
-                    <td colspan="4">No vendor name found.</td>
+                    <td colspan="5">No vendors found.</td>
                   </tr>
                 </ng-template>
               </p-table>
@@ -55,9 +61,16 @@
             <div class="card-footer no-padding">
 
             </div>
-          </div>
+          </div>          
         </div>
       </div>
     </section>
   </div>
 </section>
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle text-danger">
+  <p-footer>
+    <button type="button" class="btn btn-default mr-2" pButton label="No" (click)="cd.reject()"></button>
+    <button type="button" class="btn btn-primary" pButton label="Yes" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>
+<p-toast key="toastKey1"></p-toast>
