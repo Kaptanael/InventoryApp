@@ -13,6 +13,7 @@ export class BranchComponent implements OnInit {
 
   public branches: any[] = [];
   public selectedBranchId: string | undefined;
+  public search: string | undefined;
 
   constructor(private branchService: BranchService,
     private router: Router,
@@ -35,6 +36,10 @@ export class BranchComponent implements OnInit {
         console.log(err);
       }
     });
+  }
+
+  onSearch() {
+    console.log(this.search);
   }
 
   onEdit(branch: any) {
