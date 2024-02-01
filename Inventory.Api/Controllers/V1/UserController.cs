@@ -19,9 +19,9 @@ public class UserController : ControllerBase
 
 
     [HttpGet("GetById/{id}")]
-    public async Task<ActionResult<UserForListDto>> GetByIdAsync(Guid id)
+    public async Task<ActionResult<UserWithRoleDto>> GetByIdAsync(Guid id)
     {
-        return Ok(await _userService.GetUser(id));
+        return Ok(await _userService.GetUserWithRole(id));
     }
 
     [HttpPost("Create")]
