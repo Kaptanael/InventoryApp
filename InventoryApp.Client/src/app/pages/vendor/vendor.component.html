@@ -8,9 +8,9 @@
               <h3 class="card-title"><span>Vendor List</span></h3>
               <div class="card-tools pull-right">
                 <!--<div class="has-feedback">
-                  <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>-->
+          <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>-->
                 <div class="has-feedback mr-2">
                   <button type="button" class="btn btn-primary" [routerLink]="['add-edit-vendor']">
                     <i class="fa fa-plus"></i> Add
@@ -20,7 +20,7 @@
             </div>
             <div class="card-body no-padding">
               <p-table [value]="vendors"
-                       [tableStyle]="{ 'min-width': '50rem' }"                       
+                       [tableStyle]="{ 'min-width': '50rem' }"
                        selectionMode="single"
                        dataKey="id"
                        stateStorage="session"
@@ -46,7 +46,7 @@
                     <td>{{ vendor.country }}</td>
                     <td>{{ vendor.status === true ? 'Active' : 'Inactive' }}</td>
                     <td>
-                      <a class="btn btn-primary btn-xs mr-1" (click)="onEdit(vendor)"><i class="fas fa-edit"></i></a>                      
+                      <a class="btn btn-primary btn-xs mr-1" (click)="onEdit(vendor)"><i class="fas fa-edit"></i></a>
                       <a class="btn btn-danger btn-xs mr-1" (click)="onDelete(vendor)"><i class="fa fa-trash"></i></a>
                     </td>
                   </tr>
@@ -62,6 +62,14 @@
 
             </div>
           </div>          
+          <div class="info-box bg-gradient-info">
+            <span class="info-box-icon"><i class="fa fa-info"></i></span>
+            <div class="info-box-content">
+              <p>
+                Vendor is an organization that supplies products to your company. Your company buy products from them.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

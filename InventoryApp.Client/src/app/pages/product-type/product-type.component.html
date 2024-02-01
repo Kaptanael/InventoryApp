@@ -8,9 +8,9 @@
               <h3 class="card-title"><span>Product Type List</span></h3>
               <div class="card-tools pull-right">
                 <!--<div class="has-feedback">
-                  <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>-->
+          <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>-->
                 <div class="has-feedback mr-2">
                   <button type="button" class="btn btn-primary" [routerLink]="['add-edit-product-type']">
                     <i class="fa fa-plus"></i> Add
@@ -30,14 +30,14 @@
                        [rowsPerPageOptions]="[5,10,15,20]">
                 <ng-template pTemplate="header">
                   <tr>
-                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>                    
+                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
                     <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
                     <th>Action</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-productType>
                   <tr>
-                    <td>{{ productType.name }}</td>                    
+                    <td>{{ productType.name }}</td>
                     <td>{{ productType.status === true ? 'Active' : 'Inactive' }}</td>
                     <td>
                       <a class="btn btn-primary btn-xs mr-1" (click)="onEdit(productType)"><i class="fas fa-edit"></i></a>
@@ -55,12 +55,14 @@
             <div class="card-footer no-padding">
 
             </div>
-          </div>
-          <div class="callout callout-info" style="margin-bottom: 0!important;">
-            <h4><i class="fa fa-info"></i> Info:</h4>
-            <p>
-              Product type is a category of a product. To get started, you may have multiple product types.
-            </p>
+          </div>         
+          <div class="info-box bg-gradient-info">
+            <span class="info-box-icon"><i class="fa fa-info"></i></span>
+            <div class="info-box-content">
+              <p>
+                Product type is a category of a product. To get started, you may have multiple product types.
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -35,7 +35,7 @@ export class AddEditVendorComponent implements OnInit {
   createFormGroup(): void {
     this.formGroup = this.fb.group({
       name: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(50)]],
-      businessSize: ['', Validators.required],
+      businessSize: ['1', Validators.required],
       status: ['1', Validators.required],
       description: ['', [this.noWhitespaceValidator, Validators.maxLength(200)]],
       street: ['', [this.noWhitespaceValidator, Validators.required, Validators.maxLength(200)]],
@@ -91,6 +91,7 @@ export class AddEditVendorComponent implements OnInit {
   onClear(): void {
     this.formGroup.reset();
     this.formGroup.patchValue({ status: 1 });
+    this.formGroup.patchValue({ businessSize: 1 });
   }
 
   onSubmit(): void {

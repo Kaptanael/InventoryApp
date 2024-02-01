@@ -20,7 +20,7 @@
                   <div class="col-md-12">
                     <input type="hidden" data-val="true" data-val-length="The field Branch Id must be a string with a maximum length of 38." data-val-length-max="38" id="branchId" name="branchId" value="a6e1c619-3850-47aa-9325-baf021ca2226">
                     <div class="row">
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <div class="form-group">
                           <label class="control-label" for="name">Name</label>
                           <input class="form-control" type="text" data-val-required="The Branch Name field is required."
@@ -28,16 +28,20 @@
                           <span class="text-danger field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true"></span>
                         </div>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <div class="form-group">
                           <label class="control-label" for="businessSize">Business Size</label>
                           <select class="form-control" id="businessSize" name="businessSize" formControlName="businessSize" required>
-                            <option value="Small">Small</option>
-                            <option value="Large">Large</option>
+                            <option value="1">Small</option>
+                            <option value="2">Medium</option>
+                            <option value="3">SMB</option>
+                            <option value="4">Enterprise</option>
+                            <option value="5">Government</option>
+                            <option value="6">NGO</option>
                           </select>
                         </div>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <div class="form-group">
                           <label class="control-label" for="status">Status</label>
                           <select class="form-control" id="status" name="status" formControlName="status" required>
@@ -118,7 +122,7 @@
             <span class="info-box-icon"><i class="fa fa-info"></i></span>
             <div class="info-box-content">
               <p>
-                Branch office is an outlet of a Company. To get started, you should have minimum one branch as your main office or headquarter.
+                Vendor is an organization that supplies products to your company. Your company buy products from them.
               </p>
             </div>
           </div>
