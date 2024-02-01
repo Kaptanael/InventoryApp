@@ -31,6 +31,7 @@
                 <ng-template pTemplate="header">
                   <tr>
                     <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="businessSize">Business Size <p-sortIcon field="businessSize"></p-sortIcon></th>
                     <th pSortableColumn="city">City <p-sortIcon field="city"></p-sortIcon></th>
                     <th pSortableColumn="province">Province <p-sortIcon field="province"></p-sortIcon></th>
                     <th pSortableColumn="country">Country <p-sortIcon field="country"></p-sortIcon></th>
@@ -41,6 +42,7 @@
                 <ng-template pTemplate="body" let-vendor>
                   <tr>
                     <td>{{ vendor.name }}</td>
+                    <td>{{ vendor.businessSize }}</td>
                     <td>{{ vendor.city }}</td>
                     <td>{{ vendor.province }}</td>
                     <td>{{ vendor.country }}</td>

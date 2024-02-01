@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -17,9 +18,10 @@ import { BranchService } from '../../_services/branch.service';
     CommonModule,
     BranchRoutingModule,
     RouterModule,
+    FormsModule,
     TableModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule    
   ],
   providers: [ConfirmationService, MessageService, BranchService]
 })
