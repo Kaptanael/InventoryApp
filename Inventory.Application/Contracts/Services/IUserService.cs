@@ -8,7 +8,7 @@ public interface IUserService
     Task<UserForListDto> GetUser(string userName, string password);
 
     Task<UserForListDto> GetUser(Guid id);
-
+    Task<UserWithRoleDto> GetUserWithRole(Guid id);
     Task<bool> IsActiveUser(Guid id);
 
     Task<List<UserForListDto>> GetAllUser();

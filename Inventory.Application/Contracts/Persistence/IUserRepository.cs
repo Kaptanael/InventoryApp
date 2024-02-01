@@ -13,6 +13,7 @@ public interface IUserRepository
     Task<List<User>> GetAllUser();
 
     Task<User> GetUser(Guid id);
+    Task<UserWithRoleDto> GetUserWithRole(Guid id);
 
     Task<bool> IsExistUsername(string username);
 

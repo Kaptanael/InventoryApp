@@ -90,6 +90,7 @@ export class AddEditUserComponent {
         lastName: this.selectedUser.lastName,
         email: this.selectedUser.email,
         mobile: this.selectedUser.mobile,
+        userRole: this.selectedUser.roleId,
         status: this.getStringBoolean(this.selectedUser.isActive),
       })
     }

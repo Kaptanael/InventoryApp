@@ -134,4 +134,11 @@ public class UserService : BaseService, IUserService
     {
         return _userRepository.DeleteUserRole(userRole);
     }
+
+    public Task<UserWithRoleDto> GetUserWithRole(Guid id)
+    {
+        var userFromRepo =  _userRepository.GetUserWithRole(id);
+        //var userToReturn = _mapper.Map<UserWithRoleDto>(userFromRepo);
+        return userFromRepo;
+    }
 }

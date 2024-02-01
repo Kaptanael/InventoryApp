@@ -1,5 +1,5 @@
 ﻿
-using Inventory.Domain.Models;
+using Inventory.Application.Features;
 
 namespace Inventory.Persistence.Repositories;
 
@@ -21,6 +21,28 @@ public class UserRepository : IUserRepository
     public async Task<User> GetUser(Guid id)
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        return user;
+    }
+
+    public async Task<UserWithRoleDto> GetUserWithRole(Guid id)
+    {
+        UserWithRoleDto user = null;
+        user = await (from u in _context.Users
+                join role in _context.UserRoles
+                on u.Id equals role.UserId
+                select (new UserWithRoleDto
+                {
+                    Id = u.Id,
+                    UserName = u.UserName,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Email = u.Email,
+                    Mobile = u.Mobile,
+                    IsActive = u.IsActive,
+                    RoleId = role.RoleId
+                })
+                ).FirstOrDefaultAsync();
+        //var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         return user;
     }
 
