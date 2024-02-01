@@ -12,6 +12,5 @@ public interface IUserService
     Task<bool> IsActiveUser(Guid id);
 
     Task<List<UserForListDto>> GetAllUser();
-    Task<Guid> CreateUserRoleAsync(UserRole userRole);
     Task<Guid> DeleteUserRoleAsync(UserRole userRole);
 }

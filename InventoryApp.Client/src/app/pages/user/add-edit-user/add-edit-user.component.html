@@ -51,7 +51,7 @@
                           <label class="control-label" for="userRole">User Role</label>
                           <select class="form-control" id="userRole" name="userRole" formControlName="userRole" required>
                             <option value="">Select User Role</option>
-                            <option *ngFor="let role of roles" value=role.id>{{role.name}}</option>
+                            <option *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
                           </select>
                         </div>
                       </div>
