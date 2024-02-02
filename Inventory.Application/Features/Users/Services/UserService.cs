@@ -41,7 +41,7 @@ public class UserService : BaseService, IUserService
             Password = request.Password,
             Email = request.Email,
             Mobile = request.Mobile,
-            IsActive = true,
+            IsActive = request.IsActive,
             CreatedBy = _currentUserService.UserId,
             CreatedDate = DateTime.Now,
             UpdatedBy = _currentUserService.UserId,
@@ -60,14 +60,6 @@ public class UserService : BaseService, IUserService
         var response = new BaseCommandResponse();
         var validator = new UserForUpdateDtoValidator(_serviceProvider);
         var validationResult = await validator.ValidateAsync(request);
-
-        if (validationResult.IsValid == false)
-        {
-            response.Success = false;
-            response.Message = "Creating Failed";
-            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-            return response;
-        }
 
         var userFromRepo = _userRepository.GetUser(guid);
 
@@ -92,7 +84,7 @@ public class UserService : BaseService, IUserService
             LastName = request.LastName,
             Email = request.Email,
             Mobile = request.Mobile,
-            IsActive = request.isActive,
+            IsActive = request.IsActive,
             UpdatedBy = _currentUserService.UserId,
             UpdatedDate = DateTime.Now,
             UserRoles = userRoles
