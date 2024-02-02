@@ -2,7 +2,7 @@
 
 public interface IBranchRepository
 {   
-    Task<List<Branch>> GetAll();
+    Task<List<Branch>> GetAll(string? search);
 
     Task<Branch> GetById(Guid id);
 

@@ -11,8 +11,8 @@ export class BranchService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAll(): Observable<HttpResponse<any>> {
-    return this.httpClient.get(`${resourceServerUrl}/api/v1/branch/getAll`, { observe: 'response' });
+  getAll(search: string): Observable<HttpResponse<any>> {
+    return this.httpClient.get(`${resourceServerUrl}/api/v1/branch/getAll?search=${search}`, { observe: 'response' });
   }
 
   getById(id: string): Observable<HttpResponse<any>> {

@@ -2,7 +2,7 @@
 {
     public interface IBranchService
     {        
-        Task<List<BranchForListDto>> GetAll();
+        Task<List<BranchForListDto>> GetAll(string? search);
 
         Task<BranchForListDto> GetById(Guid id);
 

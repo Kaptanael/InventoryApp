@@ -12,9 +12,9 @@ public class BranchController : ControllerBase
     }
 
     [HttpGet("GetAll")]
-    public async Task<ActionResult<List<BranchForListDto>>> GetAllAsync()
+    public async Task<ActionResult<List<BranchForListDto>>> GetAllAsync(string? search)
     {
-        return Ok(await _branchService.GetAll());
+        return Ok(await _branchService.GetAll(search));
     }
 
     [HttpGet("GetById/{id}")]

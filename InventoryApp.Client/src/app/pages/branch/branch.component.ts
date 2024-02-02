@@ -13,7 +13,7 @@ export class BranchComponent implements OnInit {
 
   public branches: any[] = [];
   public selectedBranchId: string | undefined;
-  public search: string | undefined;
+  public search: string = '';
 
   constructor(private branchService: BranchService,
     private router: Router,
@@ -24,11 +24,11 @@ export class BranchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAll();
+    this.getAll(this.search);
   }
 
-  getAll() {
-    this.branchService.getAll().subscribe({
+  getAll(search: string) {
+    this.branchService.getAll(search).subscribe({
       next: (res) => {
         this.branches = res.body;
       },
@@ -39,7 +39,7 @@ export class BranchComponent implements OnInit {
   }
 
   onSearch() {
-    console.log(this.search);
+    this.getAll(this.search);
   }
 
   onEdit(branch: any) {
@@ -54,7 +54,7 @@ export class BranchComponent implements OnInit {
           .subscribe({
             next: (res) => {
               if (res.status === 200) {
-                this.getAll();
+                this.getAll(this.search);
                 this.messageService.add({ key: 'toastKey1', severity: 'success', summary: `Branch ${branch.name} has been deleted.`, detail: '' });
               }
             },
@@ -66,4 +66,4 @@ export class BranchComponent implements OnInit {
     });
   }
 }
-    
+

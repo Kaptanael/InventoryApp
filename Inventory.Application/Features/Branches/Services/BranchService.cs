@@ -21,9 +21,9 @@ public class BranchService : IBranchService
         _branchRepository = branchRepository;
     }
 
-    public async Task<List<BranchForListDto>> GetAll()
+    public async Task<List<BranchForListDto>> GetAll(string? search)
     {
-        var branchesFromRepo = await _branchRepository.GetAll();
+        var branchesFromRepo = await _branchRepository.GetAll(search);
         var branchesToReturn = _mapper.Map<List<BranchForListDto>>(branchesFromRepo);
         return branchesToReturn;
     }

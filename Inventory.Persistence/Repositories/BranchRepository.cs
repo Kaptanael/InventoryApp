@@ -9,9 +9,21 @@ public class BranchRepository : IBranchRepository
         _context = context;
     }
 
-    public async Task<List<Branch>> GetAll()
+    public async Task<List<Branch>> GetAll(string? search)
     {
-        var branches = await _context.Branches.ToListAsync();
+        List<Branch> branches = new List<Branch>();
+
+        if (!string.IsNullOrEmpty(search))
+        {
+            branches = await _context.Branches
+                .Where(b => b.Name.Contains(search) || b.City.Contains(search) || b.Province.Contains(search) || b.Country.Contains(search))
+                .ToListAsync();
+        }
+        else 
+        {
+            branches = await _context.Branches.ToListAsync();
+        }
+
         return branches;
     }
 
