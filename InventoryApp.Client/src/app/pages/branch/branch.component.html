@@ -54,7 +54,7 @@
                     <td>{{ branch.city }}</td>
                     <td>{{ branch.province }}</td>
                     <td>{{ branch.country }}</td>
-                    <td>{{ branch.status === true ? 'Active' : 'Inactive' }}</td>
+                    <td [ngStyle]="branch.status ? {'color': 'green'} : {'color': 'red'}">{{ branch.status === true ? 'Active' : 'Inactive' }}</td>
                     <td>
                       <a class="btn btn-primary btn-xs mr-1" (click)="onEdit(branch)"><i class="fas fa-edit"></i></a>
                       <a class="btn btn-danger btn-xs mr-1" (click)="onDelete(branch)"><i class="fa fa-trash"></i></a>
