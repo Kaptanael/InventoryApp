@@ -72,17 +72,22 @@ public class UserService : BaseService, IUserService
         }
 
         var userRoles = new List<UserRole>();
-        //foreach (var roleId in request.Roles)
-        //{
-        //    var role = new UserRole { UserId = _currentUserService.UserId, RoleId = new Guid(roleId) };
-        //    userRoles.Add(role);
-        //}
+        foreach (var roleId in request.Roles)
+        {
+            var role = new UserRole { UserId = _currentUserService.UserId, RoleId = new Guid(roleId) };
+            userRoles.Add(role);
+        }
 
         var entity = new User
         {
-            IsActive = false,
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Email = request.Email,
+            Mobile = request.Mobile,
+            IsActive = request.IsActive,
             UpdatedBy = _currentUserService.UserId,
-            UpdatedDate = DateTime.Now
+            UpdatedDate = DateTime.Now,
+            UserRoles = userRoles
         };
         await _userRepository.Update(entity);
 

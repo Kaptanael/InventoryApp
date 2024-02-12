@@ -138,6 +138,17 @@ export class AddEditUserComponent {
           }
         });
     } else {
+
+      const model = {
+        id: this.selectedUserId,
+        firstName: this.formGroup.controls['firstName'].value,
+        lastName: this.formGroup.controls['lastName'].value,
+        email: this.formGroup.controls['email'].value,
+        mobile: this.formGroup.controls['mobile'].value,
+        isActive: + this.formGroup.controls['status'].value === 1 ? true : false,
+        roles: [this.formGroup.controls['userRole'].value],
+      }
+
       this.userService.update(this.selectedUserId, model)
         .subscribe({
           next: (res) => {
