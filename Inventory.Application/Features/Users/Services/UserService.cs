@@ -80,14 +80,9 @@ public class UserService : BaseService, IUserService
 
         var entity = new User
         {
-            FirstName = request.FirstName,
-            LastName = request.LastName,
-            Email = request.Email,
-            Mobile = request.Mobile,
-            IsActive = request.IsActive,
+            IsActive = false,
             UpdatedBy = _currentUserService.UserId,
-            UpdatedDate = DateTime.Now,
-            UserRoles = userRoles
+            UpdatedDate = DateTime.Now
         };
         await _userRepository.Update(entity);
 

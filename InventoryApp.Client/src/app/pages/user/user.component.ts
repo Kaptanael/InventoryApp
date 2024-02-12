@@ -46,23 +46,23 @@ export class UserComponent {
 
   onDelete(user: any) {
     this.confirmationService.confirm({
-      message: `Are you sure to delete  <b>${user.firstName}</b>`,
+      message: `Are you sure you want to delete <b>${user.firstName} ${user.lastName} User</b>`,
       accept: () => {
-        //this.userManagementService.deleteUserById(loginId)
-        //  .subscribe(response => {
-        //    if (response.status === 200) {
-        //      this.isLoading = false;
-        //      this.messageService.add({ key: 'toastKey1', severity: 'success', summary: `User ${loginId} has been deleted.`, detail: '' });
-        //      this.getUsers();
-        //    }
-        //  },
-        //    err => {
-        //      this.isLoading = false;
-        //      this.messageService.add({ key: 'toastKey1', severity: 'error', summary: err.error.ExceptionMessage, detail: '' });
-        //    },
-        //    () => {
-        //      this.isLoading = false;
-        //    });
+        this.userService.delete(user.loginId)
+          .subscribe(response => {
+            if (response.status === 200) {
+              //this.isLoading = false;
+              this.messageService.add({ key: 'toastKey1', severity: 'success', summary: `${user.firstName} ${user.lastName} User has been deleted.`, detail: '' });
+              //this.getUsers();
+            }
+          },
+            err => {
+              //this.isLoading = false;
+              this.messageService.add({ key: 'toastKey1', severity: 'error', summary: err.error.ExceptionMessage, detail: '' });
+            },
+            () => {
+              //this.isLoading = false;
+            });
       }
     });
   }

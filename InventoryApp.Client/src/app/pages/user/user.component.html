@@ -32,9 +32,8 @@
                     <div class="row">
                       <div class="col-md-10 pl-0">
                         <input type="text" class="form-input search-input" style="width:100%;height:38px" id="searchUser"
-                               tabindex="1" maxlength="30"  (input) = "applyFilterGlobal($event, 'contains')" 
-                               placeholder="Search by User name, First name, Last name, Email, Mobile no"
-                                />
+                               tabindex="1" maxlength="30" (input)="applyFilterGlobal($event, 'contains')"
+                               placeholder="Search by User name, First name, Last name, Email, Mobile no" />
                       </div>
                       <div class="col-md-1">
                       </div>
@@ -90,3 +89,11 @@
     </section>
   </div>
 </section>
+
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle text-danger">
+  <p-footer>
+    <button type="button" class="btn btn-default mr-2" pButton label="No" (click)="cd.reject()"></button>
+    <button type="button" class="btn btn-primary" pButton label="Yes" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>
+<p-toast key="toastKey1"></p-toast>

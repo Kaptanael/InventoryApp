@@ -6,6 +6,8 @@ import { TableModule } from 'primeng/table';
 import { UserComponent } from './user.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     UserRoutingModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    ConfirmDialogModule,
+    ToastModule   
   ],
   providers: [ConfirmationService, MessageService]
 })
