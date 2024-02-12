@@ -35,4 +35,9 @@ public class UserController : ControllerBase
     {
         return Ok(await _userService.UpdateAsync(id, request));
     }
+    [HttpPut("Update-status/{id}")]
+    public async Task<ActionResult> UpdateStatusAsync(Guid id)
+    {
+        return Ok(await _userService.UpdateStatusAsync(id));
+    }
 }

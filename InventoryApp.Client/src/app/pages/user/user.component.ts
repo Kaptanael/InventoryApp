@@ -48,12 +48,12 @@ export class UserComponent {
     this.confirmationService.confirm({
       message: `Are you sure you want to delete <b>${user.firstName} ${user.lastName} User</b>`,
       accept: () => {
-        this.userService.delete(user.loginId)
+        this.userService.delete(user.id)
           .subscribe(response => {
             if (response.status === 200) {
               //this.isLoading = false;
               this.messageService.add({ key: 'toastKey1', severity: 'success', summary: `${user.firstName} ${user.lastName} User has been deleted.`, detail: '' });
-              //this.getUsers();
+              this.getAll();
             }
           },
             err => {

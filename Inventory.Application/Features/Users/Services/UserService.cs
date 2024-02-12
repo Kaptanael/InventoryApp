@@ -91,6 +91,38 @@ public class UserService : BaseService, IUserService
         return response;
     }
 
+    public async Task<BaseCommandResponse> UpdateStatusAsync(Guid guid)
+    {
+        var response = new BaseCommandResponse();
+        //var validator = new UserForUpdateDtoValidator(_serviceProvider);
+        //var validationResult = await validator.ValidateAsync(request);
+
+        User userFromRepo = await _userRepository.GetUser(guid);
+
+        //userFromRepo. = false;
+        //if (userFromRepo.Id != request.Id)
+        //{
+        //    response.Success = false;
+        //    response.Message = "User Not Failed";
+        //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+        //    return response;
+        //}
+        userFromRepo.IsActive = false;
+        userFromRepo.UpdatedBy = _currentUserService.UserId;
+        userFromRepo.UpdatedDate = DateTime.Now;
+        //var entity = new User
+        //{
+        //    IsActive = false,
+        //    UpdatedBy = _currentUserService.UserId,
+        //    UpdatedDate = DateTime.Now
+        //};
+        await _userRepository.Update(userFromRepo);
+
+        response.Success = true;
+        response.Message = "Update Successful";
+        return response;
+    }
+
     public async Task<List<UserForListDto>> GetAllUser()
     {
         var userFromRepo = await _userRepository.GetAllUser();

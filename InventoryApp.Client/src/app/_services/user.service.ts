@@ -33,7 +33,7 @@ export class UserService {
   }
 
   delete(id: string): Observable<HttpResponse<any>> {
-    return this.httpClient.delete(`${resourceServerUrl}/api/v1/user/delete/${id}`, {
+    return this.httpClient.put(`${resourceServerUrl}/api/v1/user/update-status/${id}`,'', {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json'), observe: 'response', responseType: 'text'
     });
