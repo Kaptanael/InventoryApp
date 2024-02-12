@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { resourceServerUrl } from '../../common/auth-key';
+import { resourceServerUrl } from '../common/auth-key';
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { UserService } from '../user.service';
+import { UserService } from '../../../_services/user.service';
 import { RoleService } from '../../../_services/role.service';
 
 @Component({

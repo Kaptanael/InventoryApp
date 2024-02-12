@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { UserRoleService } from '../user-role/user-role.service';
-import { UserService } from './user.service';
+import { UserRoleService } from '../../_services/user-role.service';
+import { UserService } from '../../_services/user.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table'
 import { ActivatedRoute, Router } from '@angular/router';
