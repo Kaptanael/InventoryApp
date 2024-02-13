@@ -19,6 +19,8 @@ public interface IUserRepository
 
     Task<bool> IsExistEmail(string email);
 
+    Task<bool> IsExistEmailExceptMe(string email,Guid id);
+
     Task<bool> IsActiveUser(Guid id);
 
     Task<Guid> DeleteUserRole(UserRole userRole);

@@ -28,20 +28,20 @@ public class UserRepository : IUserRepository
     {
         UserWithRoleDto user = null;
         user = await (from u in _context.Users
-                join role in _context.UserRoles
-                on u.Id equals role.UserId
-                where u.Id == id
-                select (new UserWithRoleDto
-                {
-                    Id = u.Id,
-                    UserName = u.UserName,
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                    Email = u.Email,
-                    Mobile = u.Mobile,
-                    IsActive = u.IsActive,
-                    RoleId = role.RoleId
-                })
+                      join role in _context.UserRoles
+                      on u.Id equals role.UserId
+                      where u.Id == id
+                      select (new UserWithRoleDto
+                      {
+                          Id = u.Id,
+                          UserName = u.UserName,
+                          FirstName = u.FirstName,
+                          LastName = u.LastName,
+                          Email = u.Email,
+                          Mobile = u.Mobile,
+                          IsActive = u.IsActive,
+                          RoleId = role.RoleId
+                      })
                 ).FirstOrDefaultAsync();
         //var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         return user;
@@ -61,6 +61,17 @@ public class UserRepository : IUserRepository
     public async Task<bool> IsExistEmail(string email)
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        if (user != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public async Task<bool> IsExistEmailExceptMe(string email, Guid id)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Id != id);
         if (user != null)
         {
             return true;

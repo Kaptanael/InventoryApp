@@ -90,11 +90,11 @@ public class UserService : BaseService, IUserService
         }
 
         var userRoles = new List<UserRole>();
-        foreach (var roleId in request.Roles)
-        {
-            var role = new UserRole { UserId = _currentUserService.UserId, RoleId = new Guid(roleId) };
-            userRoles.Add(role);
-        }
+        //foreach (var roleId in request.Roles)
+        //{
+        var role = new UserRole { UserId = _currentUserService.UserId, RoleId = new Guid(request.Roles[0].ToString()) };
+        userRoles.Add(role);
+        //}
 
         entity.FirstName = request.FirstName;
         entity.LastName = request.LastName;
@@ -194,7 +194,7 @@ public class UserService : BaseService, IUserService
 
     public Task<UserWithRoleDto> GetUserWithRole(Guid id)
     {
-        var userFromRepo =  _userRepository.GetUserWithRole(id);
+        var userFromRepo = _userRepository.GetUserWithRole(id);
         //var userToReturn = _mapper.Map<UserWithRoleDto>(userFromRepo);
         return userFromRepo;
     }
