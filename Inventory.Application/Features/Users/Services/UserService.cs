@@ -1,4 +1,10 @@
-﻿namespace Inventory.Application.Features;
+﻿using Inventory.Application.Contracts.Infrastructure;
+using Inventory.Application.Contracts.Persistence;
+using Inventory.Domain.Models;
+using static IdentityServer4.Models.IdentityResources;
+using System.Reflection;
+
+namespace Inventory.Application.Features;
 
 public class UserService : BaseService, IUserService
 {
@@ -63,12 +69,24 @@ public class UserService : BaseService, IUserService
 
         var userFromRepo = _userRepository.GetUser(guid);
 
-        if (userFromRepo.Id != request.Id)
+        if (validationResult.IsValid == false)
         {
             response.Success = false;
-            response.Message = "User Not Failed";
+            response.Message = "Updating Failed";
             response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
             return response;
+        }
+
+        var entity = await _userRepository.GetUser(guid);
+
+        if (guid != new Guid(request.Id))
+        {
+            throw new BadRequestException("Id does not match");
+        }
+
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(Branch), guid.ToString());
         }
 
         var userRoles = new List<UserRole>();
@@ -78,22 +96,37 @@ public class UserService : BaseService, IUserService
             userRoles.Add(role);
         }
 
-        var entity = new User
-        {
-            FirstName = request.FirstName,
-            LastName = request.LastName,
-            Email = request.Email,
-            Mobile = request.Mobile,
-            IsActive = request.IsActive,
-            UpdatedBy = _currentUserService.UserId,
-            UpdatedDate = DateTime.Now,
-            UserRoles = userRoles
-        };
+        entity.FirstName = request.FirstName;
+        entity.LastName = request.LastName;
+        entity.Email = request.Email;
+        entity.Mobile = request.Mobile;
+        entity.IsActive = request.IsActive;
+        entity.UpdatedBy = _currentUserService.UserId;
+        entity.UpdatedDate = DateTime.Now;
+        entity.UserRoles = userRoles;
+
         await _userRepository.Update(entity);
 
         response.Success = true;
-        response.Message = "Update Successful";
+        response.Message = "Updating Successful";
         return response;
+
+        //var entity = new User
+        //{
+        //    FirstName = request.FirstName,
+        //    LastName = request.LastName,
+        //    Email = request.Email,
+        //    Mobile = request.Mobile,
+        //    IsActive = request.IsActive,
+        //    UpdatedBy = _currentUserService.UserId,
+        //    UpdatedDate = DateTime.Now,
+        //    UserRoles = userRoles
+        //};
+        //await _userRepository.Update(entity);
+
+        //response.Success = true;
+        //response.Message = "Update Successful";
+        //return response;
     }
 
     public async Task<BaseCommandResponse> UpdateStatusAsync(Guid guid)

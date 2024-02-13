@@ -72,6 +72,7 @@ export class AddEditUserComponent {
     if (this.selectedUserId) {
       this.userService.getById(this.selectedUserId).subscribe({
         next: (res) => {
+          console.log(res);
           this.selectedUser = res.body;
           this.fillUpFields();
         },
@@ -148,7 +149,7 @@ export class AddEditUserComponent {
         isActive: + this.formGroup.controls['status'].value === 1 ? true : false,
         roles: [this.formGroup.controls['userRole'].value],
       }
-
+      console.log(model);
       this.userService.update(this.selectedUserId, model)
         .subscribe({
           next: (res) => {
